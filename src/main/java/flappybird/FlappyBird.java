@@ -1,37 +1,26 @@
 package flappybird;
 
+// fa partire il gioco
+//run using gradle-> applicatiomn->run
+// or go in exemple1.main and run as java application
 
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
+public final class FlappyBird {
 
-public final class FlappyBird extends Application {
-
-    @Override
-    public final void start(final Stage primaryStage) throws Exception {
-        final Label message = new Label("Hello again JavaFX!"); 
-        message.setFont(new Font(100));
-        primaryStage.setScene(new Scene(message));
-        primaryStage.setTitle("JavaFXApp2");
-        primaryStage.show();
+   
+    private FlappyBird() {
+        // the constructor will never be called directly.
     }
 
-    public static void run(final String... args) {
-        launch();
+    public static void main(final String[] args) {
+        Exemple1.run(args);
     }
 
-    public static final class Main {
-        private Main() {
-            // the constructor will never be called directly.
-        }
-
-        public static void main(final String... args) {
-            FlappyBird.run(args);
-        }
+  
     }
+
+ 
+    
    
     
-}
+
