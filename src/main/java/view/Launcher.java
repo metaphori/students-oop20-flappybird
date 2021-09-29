@@ -1,14 +1,10 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.Point;
 
-import controller.Controller;
-import controller.ControllerImp;
+
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -34,7 +30,7 @@ public final class Launcher extends Application{
      
 
         primaryStage.setTitle("ciao");
-        Column col = new Column(new Point(width,500), 30,60);
+       // Column col = new Column(new Point(width,500), 30,60);
         Rectangle rec = new Rectangle();
         rec.setLayoutX(width);
         rec.setLayoutY(350);
@@ -57,6 +53,9 @@ public final class Launcher extends Application{
                 }
         });
         thread.start();
+       
+       
+        
         AnchorPane lay = new AnchorPane();
         
         
@@ -75,7 +74,7 @@ public final class Launcher extends Application{
     
         //Controller c = new ControllerImp();    
         
-        
+ 
         primaryStage.setMaxHeight(height);
         primaryStage.setMaxWidth(width);
         primaryStage.setScene(new Scene(lay));
