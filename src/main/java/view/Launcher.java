@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Column;
+
 
 
 public final class Launcher extends Application{
