@@ -59,7 +59,7 @@ tasks.withType<Test> {
 
 application {
     // Define the main class for the application
-    mainClass.set("flappybird.Flappybird")
+    mainClass.set("flappybird.FlappyBird")
 }
 
 java {
