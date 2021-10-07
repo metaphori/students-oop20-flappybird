@@ -28,6 +28,7 @@ public class FlappyBird {
        // view.set(ctx, args);
         ctx.start(args,view);
       // view.run(args);
+     // view.run(args);
         
     }
 
