@@ -36,7 +36,9 @@ public class ViewImp extends Application implements View {
     public void set (Controller c,String[] args) {
         //System.out.println("ciaoo1");
        // this.controller = c;
-        //ViewImp.run(args);
+        //ViewImp.run(args);;
+        controller = c;
+       
           launch();
     }
 
@@ -54,7 +56,7 @@ public class ViewImp extends Application implements View {
         // TODO Auto-generated method stub
         primaryStage.setTitle("ciao");
         // Column col = new Column(new Point(width,500), 30,60);
-       controller = new ControllerImp();
+      
         
      
         
@@ -80,7 +82,7 @@ public class ViewImp extends Application implements View {
         
         
          
-         this.controller.updateState();
+        
          primaryStage.show();
          
        
