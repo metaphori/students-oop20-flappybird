@@ -1,5 +1,7 @@
 package model;
 
+import controller.Controller;
+import controller.ControllerImp;
 import controller.State;
 import model.loop.GameLoop;
 import model.loop.GameLoopImp;
@@ -16,9 +18,8 @@ public class ModelImp implements Model {
     
     
     
-    public ModelImp() {
-        this.gameLoop = new GameLoopImp();
-        this.gameLoop.initiate();
+    public ModelImp(Controller controllerImp) {
+        this.gameLoop = new GameLoopImp(controllerImp,GAME_WORLD_WIDTH,GAME_WORLD_HEIGHT);
     }
 
     @Override
@@ -48,7 +49,8 @@ public class ModelImp implements Model {
     @Override
     public void startGame() {
         // TODO Auto-generated method stub
-        this.gameLoop.startGameLoop();
+        System.out.println("inizio creazione thread gameloop");
+        this.gameLoop.start();
     }
 
 }

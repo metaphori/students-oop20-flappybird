@@ -1,9 +1,20 @@
 package view;
 
+import java.util.List;
+
+import controller.Controller;
+import controller.ControllerImp;
 import controller.State;
+import model.Column;
 
 public interface View {
 
-    void render(State gameState);
+   
+
+     void set(Controller c, String[] args);
+    
+     void  render();
+
+    
 
 }

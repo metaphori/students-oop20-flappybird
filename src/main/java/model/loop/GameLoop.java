@@ -1,11 +1,17 @@
 package model.loop;
 
+import java.util.List;
+
+import model.Column;
+
 public interface GameLoop {
     
    
 
     void initiate();
     
-    void startGameLoop();
+  
+    
+    List<Column> getColumn();
 
 }

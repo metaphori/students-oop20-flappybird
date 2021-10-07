@@ -1,18 +1,18 @@
 package model;
 
+import java.util.List;
+
 public interface World {
     
     void addScore(Score score);
     
     void updateScore();
+  
     
-    void addColumn();
-    
-    void removeColumn();
-    
-    void updateColumns();
+   List<Column> getColumns();
 
     void update();
+   
     
     
     

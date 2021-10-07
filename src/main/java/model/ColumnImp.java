@@ -56,6 +56,12 @@ public  abstract class ColumnImp implements Column{
     //This is a themplate method
     public void setHeight() {
         this.height = this.height - this.updateHeight();
+        
+        
+    }
+    
+    public Rectangle getColumn() {
+        return this.column;
     }
     
     public abstract double updateHeight();
