@@ -11,9 +11,9 @@ public interface View {
 
    
 
-     void set(Controller c, String[] args);
+    // void set(Controller c, String[] args);
     
-     void  render();
+     void  render(List<Column> list);
 
     
 

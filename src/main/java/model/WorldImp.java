@@ -41,14 +41,7 @@ public class WorldImp implements World{
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-      /*  double x = this.column.getPosition().getX();
-        double y = this.column.getPosition().getY();
-        Point a = new Point();
-        a.setLocation(x-10, y);
-        this.column.updatePosition(a);
-        System.out.println(this.column.getPosition());
-        */
+    
         this.generator.update();
     }
 
@@ -58,8 +51,8 @@ public class WorldImp implements World{
     public List<Column> getColumns() {
         // TODO Auto-generated method stub
      
-        //return this.generator.getWorldElements();
-        return null;
+        return this.generator.getWorldElements();
+        
     }
    
     

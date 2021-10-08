@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import model.Column;
 import model.Model;
 import model.ModelImp;
-import view.GamePane;
+
 
 import view.View;
 import view.ViewImp;
@@ -64,17 +64,17 @@ public class ControllerImp implements Controller{
         
     }
     
-    public void render() {
+    public void render(List<Column> list) {
        
          //
        
           //  this.view.render();
         System.out.println("inizio a chiamare Platform.runLate()");
-     Platform.runLater(()->{
+    
          System.out.println("--dentro platform.runLater--");
-           this.view.render();
+           this.view.render(list);
            System.out.println("fine platform.runLater");
-     });
+   
        
    
        
@@ -83,18 +83,13 @@ public class ControllerImp implements Controller{
 
   
 
+   
     @Override
-    public void setPane(GamePane gamePane) {
-        // TODO Auto-generated method stub
-        pane = gamePane;
-    }
-
-    @Override
-    public void update() {
+    public void update(View viewd) {
         // TODO Auto-generated method stub
      
-                this.view.render();
-        
+        this.view = viewd;
+        this.updateState();
         
     }
 
@@ -102,9 +97,11 @@ public class ControllerImp implements Controller{
     public void start(String[] args, View view) {
         // TODO Auto-generated method stub
       //  System.out.println("ciaoo2--");
-        view.set(this, args);
+     //   view.set(this, args);
         this.updateState();
     }
+
+   
 
 
   

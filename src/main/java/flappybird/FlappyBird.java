@@ -2,8 +2,7 @@ package flappybird;
 
 import controller.Controller;
 import controller.ControllerImp;
-
-
+import javafx.application.Application;
 import view.View;
 import view.ViewImp;
 
@@ -23,11 +22,12 @@ public class FlappyBird {
     public static void main(final String[] args) {
         
         
-        final Controller ctx = new ControllerImp();
-        final View view = new ViewImp();
+       // final Controller ctx = new ControllerImp();
+      //  final View view = new ViewImp();
        // view.set(ctx, args);
-        ctx.start(args,view);
+       // ctx.start(args,view);
       // view.run(args);
+        Application.launch(ViewImp.class, args);
         
     }
 
