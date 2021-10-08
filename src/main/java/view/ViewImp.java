@@ -24,25 +24,19 @@ public class ViewImp extends Application implements View {
     
     private static final int width = 800;
     private static final int height = 600;
-    private List<Column> columns;
+  
     Rectangle rec;
     Controller controller;
+    ViewObstacle viewObstacle;
+    Pane p;
+            
     
     public ViewImp() {
-     
-     
-    }
-    
-    public void set (Controller c,String[] args) {
-        //System.out.println("ciaoo1");
-       // this.controller = c;
-        //ViewImp.run(args);;
-        controller = c;
-       
-          launch();
+     controller = new ControllerImp();
+     p = new Pane();
+     viewObstacle = new ViewObstacleImp(p);
     }
 
-  
 
 
 
@@ -55,34 +49,29 @@ public class ViewImp extends Application implements View {
     public void start(Stage primaryStage) throws Exception {
         // TODO Auto-generated method stub
         primaryStage.setTitle("ciao");
-        // Column col = new Column(new Point(width,500), 30,60);
+       
       
         
      
         
-        Pane p = new Pane();
-         rec = new Rectangle();
-        rec.setLayoutX(width-50);
-        rec.setLayoutY(350);
-        rec.setWidth(50);
-        rec.setHeight(200);
-        rec.setFill(new ImagePattern(new Image("column.png")));
         ImageView img = new ImageView();
         img.setImage(new Image("background.png"));
         img.setFitHeight(height);
         img.setFitWidth(width);
         
         p.getChildren().add(img);
-        p.getChildren().add(rec);
+     
+       
+       
          primaryStage.setMaxHeight(height);
          primaryStage.setMaxWidth(width);
-        // primaryStage.setScene(new Scene(new GamePane(c)));
+        
          primaryStage.setScene(new Scene(p));
          
         
         
          
-        
+        this.controller.update(this);
          primaryStage.show();
          
        
@@ -92,25 +81,31 @@ public class ViewImp extends Application implements View {
         launch();
     }
     
-    public  void render() {
+    public  void render(List<Column> columns) {
         // TODO Auto-generated method stub
      
-           /* columns.forEach(a->{
-                list.add(new Rectangle());
-                Rectangle r = list.get(list.size()-1);
-              
-                r.setLayoutX(a.getPosition().getX());
-                r.setLayoutY(a.getPosition().getY());
-                r.setWidth(a.getWidth());
-                r.setHeight(a.getHeigth());
-                r.setFill(new ImagePattern(new Image("column.png")));
-            });*/
+            
 
-            //    System.out.println("ciaou");
-          //  rec.setTranslateX(-10);
-           System.out.println("ciaoo");
+        
+     
+         
+      
+          Platform.runLater(()->{
+              
+              viewObstacle.render(columns);
+
+            
+              }); 
+          
        
     }
+
+
+
+
+
+
+
 
 
 

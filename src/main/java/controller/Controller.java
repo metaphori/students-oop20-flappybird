@@ -4,7 +4,7 @@ import java.util.List;
 
 import javafx.stage.Stage;
 import model.Column;
-import view.GamePane;
+
 import view.View;
 import view.ViewImp;
 
@@ -19,15 +19,15 @@ public interface Controller {
     
    
 
-    void render();
+    void render(List<Column> list);
 
    
 
     void updateState();
 
-    void setPane(GamePane gamePane);
+  
 
-    void update();
+    void update(View viewImp);
     
  
 

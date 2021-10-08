@@ -34,11 +34,11 @@ public class GameLoopImp  extends Thread implements GameLoop{
             final int elapsed = (int) (current - lastTime);
             lastTime = current;
          //  System.out.println("ok");
-           // this.world.update();
-            //this.controller.render(this.world.getColumns());
+            this.world.update();
+           this.controller.render(this.getColumn());
             System.out.println("inizio ciclo while gameloop");
                 
-                this.controller.render();
+              
                 System.out.println(" fine ciclo while gameloop");
             
             
@@ -53,8 +53,8 @@ public class GameLoopImp  extends Thread implements GameLoop{
         if (delta < PERIOD) {
             try {
                 
-               // Thread.sleep(PERIOD - delta);
-                Thread.sleep(1000);
+                Thread.sleep(PERIOD - delta);
+                //Thread.sleep(1000);
             } catch (Exception ex) {
                 Thread.currentThread().interrupt();
             }

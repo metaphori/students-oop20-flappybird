@@ -56,15 +56,11 @@ public class ObstacleGenerator implements Generator{
           //  addElement(UpsideDown.DOWN);
             
         }
-        System.out.println(this.obstacles.size());
-       /* Point p = new Point();
-        p.setLocation(this.obstacles.get(0).getPosition());
-        p.translate(-10, 0);
-        this.obstacles.get(0).updatePosition(p);*/
+     
         this.obstacles.forEach(a->{
             Point c = new Point();
             c.setLocation(a.getPosition());
-            c.translate(-10, 0);
+            c.translate(-2, 0);
             a.updatePosition(c);
         });
         
