@@ -19,7 +19,7 @@ public class ControllerImp implements Controller{
     
     
 
-    private State gameState;
+    private GameState gameState;
     public Model model;
     public View view;
     Pane pane;
@@ -28,17 +28,18 @@ public class ControllerImp implements Controller{
         
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
-        this.gameState = State.INITIALIZE;
+        this.gameState = GameState.INITIALIZE;
        
     }
 
     @Override
     public void updateState() {
        
-      //  System.out.println("ciaoo2-");
+        System.out.println(gameState);
         switch (gameState) {
         case GAME_OVER:
-          
+            System.out.println("controll game over");
+          this.view.gameOver();
             break;
         case INITIALIZE:
        //     System.out.println("ciaoo2");
@@ -59,21 +60,18 @@ public class ControllerImp implements Controller{
     }
 
     @Override
-    public void setState(State state) {
+    public void setState(GameState state) {
         // TODO Auto-generated method stub
-        
+        gameState = state;
     }
     
     public void render(List<Column> list) {
        
-         //
+  
        
-          //  this.view.render();
-        System.out.println("inizio a chiamare Platform.runLate()");
-    
-         System.out.println("--dentro platform.runLater--");
+      
            this.view.render(list);
-           System.out.println("fine platform.runLater");
+     
    
        
    
@@ -96,8 +94,7 @@ public class ControllerImp implements Controller{
     @Override
     public void start(String[] args, View view) {
         // TODO Auto-generated method stub
-      //  System.out.println("ciaoo2--");
-     //   view.set(this, args);
+    
         this.updateState();
     }
 

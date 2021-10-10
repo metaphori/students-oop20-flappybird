@@ -19,6 +19,7 @@ public  abstract class ColumnImp implements Column{
         
        
         this.column = new Rectangle();
+        
         this.column.setRect(position.getX(), position.getY(), height, WEIGHT);
     }
 
@@ -55,7 +56,7 @@ public  abstract class ColumnImp implements Column{
     
     //This is a themplate method
     public void setHeight() {
-        this.height = this.height - this.updateHeight();
+        this.height = this.updateHeight();
         
         
     }

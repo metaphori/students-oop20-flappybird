@@ -5,7 +5,7 @@ import java.util.List;
 
 import controller.Controller;
 import controller.ControllerImp;
-import controller.State;
+import controller.GameState;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
@@ -28,6 +28,7 @@ public class ViewImp extends Application implements View {
     Rectangle rec;
     Controller controller;
     ViewObstacle viewObstacle;
+    FinishView finish;
     Pane p;
             
     
@@ -35,6 +36,7 @@ public class ViewImp extends Application implements View {
      controller = new ControllerImp();
      p = new Pane();
      viewObstacle = new ViewObstacleImp(p);
+     finish = new FinishView(p, controller);
     }
 
 
@@ -71,7 +73,8 @@ public class ViewImp extends Application implements View {
         
         
          
-        this.controller.update(this);
+         this.controller.update(this);
+         
          primaryStage.show();
          
        
@@ -98,6 +101,25 @@ public class ViewImp extends Application implements View {
               }); 
           
        
+    }
+
+
+
+
+
+
+
+
+
+    @Override
+    public void gameOver() {
+        // TODO Auto-generated method stub
+        Platform.runLater(()->{
+            System.out.println("view game over");
+            finish.showFinishView();
+
+          
+            }); 
     }
 
 

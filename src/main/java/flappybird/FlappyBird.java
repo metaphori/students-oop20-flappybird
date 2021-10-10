@@ -27,11 +27,11 @@ public class FlappyBird {
        // view.set(ctx, args);
        // ctx.start(args,view);
       // view.run(args);
-<<<<<<< HEAD
+
      // view.run(args);
-=======
+
         Application.launch(ViewImp.class, args);
->>>>>>> rolnic
+
         
     }
 

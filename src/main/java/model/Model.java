@@ -1,10 +1,10 @@
 package model;
 
-import controller.State;
+import controller.GameState;
 
 public interface Model {
 
-    void updateState(State gameState);
+    void updateState(GameState gameState);
     
     double getGameHeight();
     

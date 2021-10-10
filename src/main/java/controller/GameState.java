@@ -1,6 +1,6 @@
 package controller;
 
-public enum State {
+public enum GameState {
     
  
     GAME_OVER,

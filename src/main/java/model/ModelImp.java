@@ -2,7 +2,7 @@ package model;
 
 import controller.Controller;
 import controller.ControllerImp;
-import controller.State;
+import controller.GameState;
 import model.loop.GameLoop;
 import model.loop.GameLoopImp;
 
@@ -23,7 +23,7 @@ public class ModelImp implements Model {
     }
 
     @Override
-    public void updateState(State gameState) {
+    public void updateState(GameState gameState) {
         // TODO Auto-generated method stub
         
     }
@@ -49,7 +49,8 @@ public class ModelImp implements Model {
     @Override
     public void startGame() {
         // TODO Auto-generated method stub
-        System.out.println("inizio creazione thread gameloop");
+       
+        this.gameLoop.setDaemon(true);
         this.gameLoop.start();
     }
 

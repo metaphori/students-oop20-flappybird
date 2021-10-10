@@ -13,7 +13,7 @@ public interface Controller {
     
    
     
-    void setState(State state);
+    void setState(GameState state);
 
     void start(String[] args, View view);
     

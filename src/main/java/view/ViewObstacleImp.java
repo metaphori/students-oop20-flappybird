@@ -23,6 +23,7 @@ public class ViewObstacleImp implements ViewObstacle{
     public void render(List<Column> list) {
         // TODO Auto-generated method stub
         checkNew(list);
+      
         pane.getChildren().addAll(object);
     }
 
@@ -30,7 +31,8 @@ public class ViewObstacleImp implements ViewObstacle{
         // TODO Auto-generated method stub
         pane.getChildren().removeAll(object);
         object.clear();
-        list.forEach(b->{
+        List<Column> l = List.copyOf(list);
+        l.forEach(b->{
            object.add(createObstacle(b)) ;
         });
         
@@ -44,7 +46,12 @@ public class ViewObstacleImp implements ViewObstacle{
         rectangle.setLayoutY(b.getPosition().getY());
         rectangle.setWidth(b.getWidth());
         rectangle.setHeight(b.getHeigth());
-        rectangle.setFill(new ImagePattern(new Image("column.png")));
+        if (rectangle.getLayoutY()==0) {
+            rectangle.setFill(new ImagePattern(new Image("upColumn.png")));
+        } else {
+            rectangle.setFill(new ImagePattern(new Image("column.png")));
+        }
+        
         return rectangle;
      
     }
