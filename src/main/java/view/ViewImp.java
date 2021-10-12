@@ -30,13 +30,37 @@ public class ViewImp extends Application implements View {
     ViewObstacle viewObstacle;
     FinishView finish;
     Pane p;
+    Stage stage;
             
     
     public ViewImp() {
-     controller = new ControllerImp();
-     p = new Pane();
-     viewObstacle = new ViewObstacleImp(p);
-     finish = new FinishView(p, controller);
+     
+    }
+    
+    public void initiate() {
+        controller = new ControllerImp();
+        p = new Pane();
+        viewObstacle = new ViewObstacleImp(p);
+        finish = new FinishView(p, controller, this);
+        
+        ImageView img = new ImageView();
+        img.setImage(new Image("background.png"));
+        img.setFitHeight(height);
+        img.setFitWidth(width);
+        
+        p.getChildren().add(img);
+        
+        stage.setMaxHeight(height);
+        stage.setMaxWidth(width);
+        stage.setScene(new Scene(p));
+        stage.show();
+        
+        
+        
+    }
+    
+    public void update(){
+        this.controller.update(this);
     }
 
 
@@ -51,32 +75,27 @@ public class ViewImp extends Application implements View {
     public void start(Stage primaryStage) throws Exception {
         // TODO Auto-generated method stub
         primaryStage.setTitle("ciao");
-       
-      
+        this.stage = primaryStage;
+        initiate();
         
      
         
-        ImageView img = new ImageView();
-        img.setImage(new Image("background.png"));
-        img.setFitHeight(height);
-        img.setFitWidth(width);
-        
-        p.getChildren().add(img);
+       
      
        
        
-         primaryStage.setMaxHeight(height);
-         primaryStage.setMaxWidth(width);
-        
-         primaryStage.setScene(new Scene(p));
+       
+         
+         
          
         
         
          
-         this.controller.update(this);
          
-         primaryStage.show();
          
+         
+         
+         update();
        
     }
     

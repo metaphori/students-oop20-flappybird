@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import controller.GameState;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,10 +12,12 @@ public class FinishView {
     
     Pane pane;
     Controller controller;
+    View view;
     
-    public FinishView(Pane p, Controller controller) {
+    public FinishView(Pane p, Controller controller, View viewImp) {
         controller = controller;
         pane = p;
+        view = viewImp;
     }
     
     
@@ -51,6 +54,12 @@ public class FinishView {
         button.setLayoutX(300);
         button.setLayoutY(400);
         button.setPrefHeight(40);
+        button.setOnAction(e->{
+          this.pane.getChildren().clear();
+          view.initiate();
+          view.update();
+         
+        });
           
         ImageView imageLeader = new ImageView();
         imageLeader.setImage(new Image("leaderboard.png"));

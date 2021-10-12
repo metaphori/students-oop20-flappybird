@@ -62,6 +62,7 @@ public class ControllerImp implements Controller{
     @Override
     public void setState(GameState state) {
         // TODO Auto-generated method stub
+        System.out.println("fino a qui tutto bene");
         gameState = state;
     }
     
@@ -85,7 +86,7 @@ public class ControllerImp implements Controller{
     @Override
     public void update(View viewd) {
         // TODO Auto-generated method stub
-     
+        System.out.println("fino a qui tutto bene");
         this.view = viewd;
         this.updateState();
         

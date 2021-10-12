@@ -17,6 +17,9 @@ public interface View {
 
     void gameOver();
 
+    void initiate();
+    void update();
+
     
 
 }
