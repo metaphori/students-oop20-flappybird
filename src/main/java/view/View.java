@@ -13,7 +13,7 @@ public interface View {
 
     // void set(Controller c, String[] args);
     
-     void  render(List<Column> list);
+     void  render(List<Column> list, Integer score);
 
     void gameOver();
 

@@ -19,7 +19,7 @@ public interface Controller {
     
    
 
-    void render(List<Column> list);
+    void render(List<Column> list, Integer score);
 
    
 

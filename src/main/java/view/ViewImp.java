@@ -10,12 +10,15 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import model.Column;
@@ -31,6 +34,7 @@ public class ViewImp extends Application implements View {
     FinishView finish;
     Pane p;
     Stage stage;
+    Label label;
             
     
     public ViewImp() {
@@ -48,7 +52,16 @@ public class ViewImp extends Application implements View {
         img.setFitHeight(height);
         img.setFitWidth(width);
         
+        label = new Label();
+        label.setLayoutX(400);
+        label.setLayoutY(50);
+        label.setText("0");
+        label.setFont(new Font("Arial", 60));
+        label.setTextFill(Color.ANTIQUEWHITE);
+        
+        
         p.getChildren().add(img);
+        p.getChildren().add(label);
         
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
@@ -103,7 +116,7 @@ public class ViewImp extends Application implements View {
         launch();
     }
     
-    public  void render(List<Column> columns) {
+    public  void render(List<Column> columns, Integer score) {
         // TODO Auto-generated method stub
      
             
@@ -115,8 +128,10 @@ public class ViewImp extends Application implements View {
           Platform.runLater(()->{
               
               viewObstacle.render(columns);
-
-            
+              p.getChildren().remove(label);
+              label.setText(Integer.toString(score));
+              p.getChildren().add(label);
+              
               }); 
           
        
@@ -135,7 +150,7 @@ public class ViewImp extends Application implements View {
         // TODO Auto-generated method stub
         Platform.runLater(()->{
             System.out.println("view game over");
-            finish.showFinishView();
+            finish.showFinishView(label);
 
           
             }); 

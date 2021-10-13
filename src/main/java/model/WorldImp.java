@@ -10,30 +10,26 @@ import model.generator.ObstacleGenerator;
 
 public class WorldImp implements World{
     
-    private List<ColumnImp> columList;
-    private ColumnImp column;
+    
+  
     private Generator generator;
+    private Score score;
     
     
     public WorldImp(double gameWorldWidth, double gameWorldHeight) {
-        this.columList= new ArrayList<>();
-        this.column = new BasicColumn(new Point(800,0));
+        
+        score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
     }
 
    
 
     @Override
-    public void addScore(Score score) {
-        // TODO Auto-generated method stub
-        
+    public Integer getScore() {
+        return this.score.getScore();
     }
 
-    @Override
-    public void updateScore() {
-        // TODO Auto-generated method stub
-        
-    }
+   
 
    
 
@@ -43,6 +39,7 @@ public class WorldImp implements World{
     public void update() {
     
         this.generator.update();
+        this.score.update();
     }
 
 

@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface World {
     
-    void addScore(Score score);
+    Integer getScore();
     
-    void updateScore();
+   
   
     
    List<Column> getColumns();

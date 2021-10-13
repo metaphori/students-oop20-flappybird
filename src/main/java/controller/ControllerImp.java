@@ -66,12 +66,12 @@ public class ControllerImp implements Controller{
         gameState = state;
     }
     
-    public void render(List<Column> list) {
+    public void render(List<Column> list, Integer score) {
        
   
        
       
-           this.view.render(list);
+           this.view.render(list,score);
      
    
        

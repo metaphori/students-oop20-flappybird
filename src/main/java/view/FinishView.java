@@ -4,25 +4,35 @@ import controller.Controller;
 import controller.GameState;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class FinishView {
     
     Pane pane;
     Controller controller;
     View view;
+    Label score;
     
     public FinishView(Pane p, Controller controller, View viewImp) {
         controller = controller;
         pane = p;
         view = viewImp;
+        score = new Label();
     }
     
     
-    void showFinishView(){
-        System.out.println("dentro showfinish");
+    void showFinishView(Label label){
+        
+        score.setText(label.getText());
+        score.setLayoutX(500);
+        score.setLayoutY(230);
+        score.setTextFill(Color.BLACK);
+        score.setFont(new Font("Ariel", 30));
         ImageView gameover = new ImageView();
         gameover.setImage(new Image("gameover.png"));
         gameover.setFitHeight(200);
@@ -75,6 +85,7 @@ public class FinishView {
         
         pane.getChildren().add(gameover);
         pane.getChildren().add(finish);
+        pane.getChildren().add(score);
         pane.getChildren().add(button);
         pane.getChildren().add(buttonLeader);
         
