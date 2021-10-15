@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javafx.stage.Stage;
+import model.Bird;
 import model.Column;
 import model.file.Gamer;
 import model.file.LeaderboardManager;
@@ -20,7 +21,7 @@ public interface Controller {
     
    
 
-    void render(List<Column> list, Integer score);
+    void render(List<Column> list, Integer score, Bird bird);
 
    
 

@@ -30,7 +30,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
-
+import model.Bird;
 import model.Column;
 
 public class ViewImp extends Application implements View {
@@ -45,6 +45,7 @@ public class ViewImp extends Application implements View {
     Pane p;
     Stage stage;
     Label label;
+    ViewBird viewBird;
 
             
     
@@ -56,7 +57,7 @@ public class ViewImp extends Application implements View {
         controller = new ControllerImp();
         p = new Pane();
         viewObstacle = new ViewObstacleImp(p);
-        
+        viewBird = new ViewBird(p);
         
         ImageView img = new ImageView();
         img.setImage(new Image("background.png"));
@@ -113,7 +114,7 @@ public class ViewImp extends Application implements View {
         launch();
     }
     
-    public  void render(List<Column> columns, Integer score) {
+    public  void render(List<Column> columns, Integer score, Bird bird) {
         // TODO Auto-generated method stub
      
             
@@ -124,10 +125,13 @@ public class ViewImp extends Application implements View {
       
           Platform.runLater(()->{
               
-              viewObstacle.render(columns);
-              p.getChildren().remove(label);
-              label.setText(Integer.toString(score));
-              p.getChildren().add(label);
+              
+             // viewObstacle.render(columns);
+            //  p.getChildren().remove(label);
+           //   label.setText(Integer.toString(score));
+             // p.getChildren().add(label);
+              
+              viewBird.render(bird);
               
               }); 
           

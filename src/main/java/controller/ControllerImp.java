@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Bird;
 import model.Column;
 import model.Model;
 import model.ModelImp;
@@ -68,12 +69,12 @@ public class ControllerImp implements Controller{
         gameState = state;
     }
     
-    public void render(List<Column> list, Integer score) {
+    public void render(List<Column> list, Integer score, Bird bird) {
        
   
        
       
-           this.view.render(list,score);
+           this.view.render(list,score,bird);
      
    
        
@@ -106,6 +107,8 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
        return this.model.getLeaderboard();
     }
+
+
 
    
 

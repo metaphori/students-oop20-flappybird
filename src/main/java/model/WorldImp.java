@@ -14,12 +14,13 @@ public class WorldImp implements World{
   
     private Generator generator;
     private Score score;
-    
+    private Bird bird;
     
     public WorldImp(double gameWorldWidth, double gameWorldHeight) {
         
         score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
+        bird = new BirdImp();
     }
 
    
@@ -50,6 +51,14 @@ public class WorldImp implements World{
      
         return this.generator.getWorldElements();
         
+    }
+
+
+
+    @Override
+    public Bird getBird() {
+        // TODO Auto-generated method stub
+        return this.bird;
     }
    
     

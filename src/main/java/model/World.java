@@ -7,7 +7,7 @@ public interface World {
     Integer getScore();
     
    
-  
+    Bird getBird();
     
    List<Column> getColumns();
 
