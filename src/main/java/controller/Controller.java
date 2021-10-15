@@ -4,7 +4,8 @@ import java.util.List;
 
 import javafx.stage.Stage;
 import model.Column;
-
+import model.file.Gamer;
+import model.file.LeaderboardManager;
 import view.View;
 import view.ViewImp;
 
@@ -28,6 +29,8 @@ public interface Controller {
   
 
     void update(View viewImp);
+
+    List<Gamer> getLeaderboard();
     
  
 

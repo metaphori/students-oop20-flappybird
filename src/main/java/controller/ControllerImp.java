@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 import model.Column;
 import model.Model;
 import model.ModelImp;
-
-
+import model.file.Gamer;
+import model.file.Leaderboard;
+import model.file.LeaderboardManager;
 import view.View;
 import view.ViewImp;
 
@@ -22,6 +23,7 @@ public class ControllerImp implements Controller{
     private GameState gameState;
     public Model model;
     public View view;
+    
     Pane pane;
  
     public ControllerImp() {
@@ -97,6 +99,12 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
     
         this.updateState();
+    }
+
+    @Override
+    public List<Gamer> getLeaderboard() {
+        // TODO Auto-generated method stub
+       return this.model.getLeaderboard();
     }
 
    

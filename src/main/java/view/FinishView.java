@@ -1,15 +1,27 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 import controller.Controller;
 import controller.GameState;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import model.file.Gamer;
+import model.file.Leaderboard;
 
 public class FinishView {
     
@@ -17,12 +29,14 @@ public class FinishView {
     Controller controller;
     View view;
     Label score;
+   
     
     public FinishView(Pane p, Controller controller, View viewImp) {
-        controller = controller;
+        this.controller = controller;
         pane = p;
         view = viewImp;
         score = new Label();
+     
     }
     
     
@@ -55,19 +69,18 @@ public class FinishView {
         imageOk.setPreserveRatio(true);
         
        
-        Button button = new Button();
-       /* button.setOnAction(e->{
-            controller.setState(GameState.INITIALIZE);
-            controller.updateState();
-        });*/
-        button.setGraphic(imageOk);
-        button.setLayoutX(300);
-        button.setLayoutY(400);
-        button.setPrefHeight(40);
-        button.setOnAction(e->{
+        Button buttonReset = new Button();
+    
+        buttonReset.setGraphic(imageOk);
+        buttonReset.setLayoutX(300);
+        buttonReset.setLayoutY(400);
+        buttonReset.setPrefHeight(40);
+        buttonReset.setOnAction(e->{
           this.pane.getChildren().clear();
           view.initiate();
           view.update();
+        //  this.controller.setState(GameState.INITIALIZE);
+          //this.controller.updateState();
          
         });
           
@@ -80,15 +93,46 @@ public class FinishView {
         buttonLeader.setLayoutX(450);
         buttonLeader.setLayoutY(400);
         buttonLeader.setPrefHeight(100);
+        buttonLeader.setOnAction(e->{
+           // this.controller.getLeaderboard().getLeaderboard().getG
+            pane.getChildren().clear();
+           Platform.runLater(()->{
+               showLeaderboard();
+           }); 
+           
+            
+        });
        
         
         
         pane.getChildren().add(gameover);
         pane.getChildren().add(finish);
         pane.getChildren().add(score);
-        pane.getChildren().add(button);
+        pane.getChildren().add(buttonReset);
         pane.getChildren().add(buttonLeader);
         
+    }
+
+
+    private void showLeaderboard() {
+        // TODO Auto-generated method stub
+        TableView<Gamer> table = new TableView<>();
+        List<Gamer> list= this.controller.getLeaderboard();
+        
+        final ObservableList<Gamer> data = FXCollections.observableArrayList(list);
+        table.setItems(data);
+        TableColumn<Gamer,String> name = new TableColumn<Gamer,String>("Name");
+        name.setCellValueFactory(new PropertyValueFactory("name"));
+        TableColumn<Gamer,String> score = new TableColumn<Gamer,String>("Score");
+        name.setCellValueFactory(new PropertyValueFactory("score"));
+        
+        table.getColumns().setAll(name,score);
+        
+        
+        table.setPrefSize(800, 600);
+        pane.getChildren().add(table);
+      
+        //
     }
 
 }

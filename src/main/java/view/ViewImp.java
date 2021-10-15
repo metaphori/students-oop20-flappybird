@@ -1,7 +1,16 @@
 package view;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 
 import controller.Controller;
 import controller.ControllerImp;
@@ -21,6 +30,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
+
 import model.Column;
 
 public class ViewImp extends Application implements View {
@@ -35,6 +45,7 @@ public class ViewImp extends Application implements View {
     Pane p;
     Stage stage;
     Label label;
+
             
     
     public ViewImp() {
@@ -45,7 +56,7 @@ public class ViewImp extends Application implements View {
         controller = new ControllerImp();
         p = new Pane();
         viewObstacle = new ViewObstacleImp(p);
-        finish = new FinishView(p, controller, this);
+        
         
         ImageView img = new ImageView();
         img.setImage(new Image("background.png"));
@@ -90,22 +101,8 @@ public class ViewImp extends Application implements View {
         primaryStage.setTitle("ciao");
         this.stage = primaryStage;
         initiate();
-        
      
-        
-       
-     
-       
-       
-       
-         
-         
-         
-        
-        
-         
-         
-         
+ 
          
          
          update();
@@ -148,6 +145,7 @@ public class ViewImp extends Application implements View {
     @Override
     public void gameOver() {
         // TODO Auto-generated method stub
+        finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
             System.out.println("view game over");
             finish.showFinishView(label);
@@ -182,20 +180,7 @@ public class ViewImp extends Application implements View {
 
 
    
-        
-
-       
-       
-           // lay.getChildren().addAll(list);
-            
-         
-    
-      
-        
-        
-        
-        //System.out.println("ciaoo");
-        
+  
      
     
 

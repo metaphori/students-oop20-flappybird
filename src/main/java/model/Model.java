@@ -1,6 +1,10 @@
 package model;
 
+import java.util.List;
+
 import controller.GameState;
+import model.file.Gamer;
+import model.file.LeaderboardManager;
 
 public interface Model {
 
@@ -13,5 +17,7 @@ public interface Model {
     void updateGame();
 
     void startGame();
+
+    List<Gamer> getLeaderboard();
 
 }
