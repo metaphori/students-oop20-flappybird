@@ -20,4 +20,6 @@ public interface Model {
 
     List<Gamer> getLeaderboard();
 
+    void gameOver();
+
 }

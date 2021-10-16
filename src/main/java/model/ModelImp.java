@@ -66,8 +66,17 @@ public class ModelImp implements Model {
         // TODO Auto-generated method stub
        
         
-       
+               leaderboardManager.read();
         return leaderboardManager.getLeaderboard();
+    }
+
+    @Override
+    public void gameOver() {
+        // TODO Auto-generated method stub
+        this.leaderboardManager.read();
+        this.leaderboardManager.addNewGamer("fra", "6");
+        this.leaderboardManager.write();
+        
     }
 
 }

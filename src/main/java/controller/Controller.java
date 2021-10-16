@@ -16,7 +16,7 @@ public interface Controller {
     
     void setState(GameState state);
 
-    void start(String[] args, View view);
+  //  void start(String[] args, View view);
     
    
 

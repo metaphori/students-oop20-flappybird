@@ -41,6 +41,7 @@ public class ControllerImp implements Controller{
         switch (gameState) {
         case GAME_OVER:
             System.out.println("controll game over");
+            this.model.gameOver();
           this.view.gameOver();
             break;
         case INITIALIZE:
@@ -94,12 +95,13 @@ public class ControllerImp implements Controller{
         
     }
 
-    @Override
+  /*  @Override
     public void start(String[] args, View view) {
         // TODO Auto-generated method stub
     
         this.updateState();
-    }
+    }*/
+    
 
     @Override
     public List<Gamer> getLeaderboard() {
