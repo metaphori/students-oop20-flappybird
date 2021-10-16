@@ -6,6 +6,7 @@ import controller.Controller;
 import controller.ControllerImp;
 import controller.GameState;
 import javafx.application.Platform;
+import model.Bird;
 import model.Column;
 import model.World;
 import model.WorldImp;
@@ -78,6 +79,7 @@ public class GameLoopImp  extends Thread implements GameLoop{
         return this.world.getColumns();
     }
 
+  
     
 
 }

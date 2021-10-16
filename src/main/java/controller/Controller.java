@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
@@ -21,7 +22,7 @@ public interface Controller {
     
    
 
-    void render(List<Column> list, Integer score, Bird bird);
+    void render(List<Column> list, Integer score, Bird circle);
 
    
 
