@@ -38,7 +38,7 @@ public class ViewBird {
         this.bird.setLayoutY(b.getCenterY());
         this.bird.setLayoutX(b.getCenterX());
         this.bird.setRadius(b.getRadius());
-        this.bird.setFill(new ImagePattern(new Image("bird.png")));
+        this.bird.setFill(new ImagePattern(new Image("player.png")));
     }
 
 }

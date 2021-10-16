@@ -12,13 +12,16 @@ public class ManagerBird implements Manager{
     private Bird bird;
     private double height;
     private ManagerCollision collision;
+    private ManagerJump jump;
+    private ManagerGravity gravity;
     
     public ManagerBird() {
         
        
         this.bird = new BirdImp();
-        height = this.bird.getCenterY();
-        this.collision= new ManagerCollision();
+        this.collision= new ManagerCollisionImp();
+        this.jump= new ManagerJumpImp();
+        this.gravity= new ManagerGravityImp();
         
     }
 
@@ -28,10 +31,15 @@ public class ManagerBird implements Manager{
         // TODO Auto-generated method stub
         if (this.collision.checkCollision(list,bird)) {
             
+            
+        }
+        else if (this.jump.checkInput()) {
+            
+        }
+        else {
+            this.gravity.setGravity();
         }
        
-        height = height + 1;
-        this.bird.updatePosition(height);
     }
     
     @Override
