@@ -17,6 +17,7 @@ import controller.ControllerImp;
 import controller.GameState;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -117,7 +118,8 @@ public class ViewImp extends Application implements View {
     
     public  void render(List<Column> columns, Integer score, Bird bird) {
         // TODO Auto-generated method stub
-     
+        
+      
             
 
         
@@ -127,12 +129,18 @@ public class ViewImp extends Application implements View {
           Platform.runLater(()->{
               
               
-             // viewObstacle.render(columns);
-            //  p.getChildren().remove(label);
-           //   label.setText(Integer.toString(score));
-             // p.getChildren().add(label);
+              viewObstacle.render(columns);
+              p.getChildren().remove(label);
+              label.setText(Integer.toString(score));
+              p.getChildren().add(label);
               
               viewBird.render(bird);
+              
+              p.getScene().setOnKeyPressed(e ->{
+                  {
+                     this.controller.setEvent(e);
+                 }
+             });
               
               }); 
           

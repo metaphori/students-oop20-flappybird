@@ -4,6 +4,7 @@ package controller;
 import java.util.List;
 
 import javafx.application.Platform;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -25,6 +26,7 @@ public class ControllerImp implements Controller{
     private GameState gameState;
     public Model model;
     public View view;
+    private KeyEvent event;
     
     Pane pane;
  
@@ -33,7 +35,7 @@ public class ControllerImp implements Controller{
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
-       
+      
     }
 
     @Override
@@ -107,6 +109,19 @@ public class ControllerImp implements Controller{
     public List<Gamer> getLeaderboard() {
         // TODO Auto-generated method stub
        return this.model.getLeaderboard();
+    }
+
+    @Override
+    public void setEvent(KeyEvent e) {
+        // TODO Auto-generated method stub
+        this.event= e;
+    }
+
+    @Override
+    public KeyEvent getEvent() {
+        // TODO Auto-generated method stub
+       
+        return this.event;
     }
 
  

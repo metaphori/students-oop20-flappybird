@@ -44,6 +44,8 @@ public class GameLoopImp  extends Thread implements GameLoop{
             
            this.controller.render(this.getColumn(), this.world.getScore(), this.world.getBird());
            
+           this.world.sendEvent(this.controller.getEvent());
+           
            if (finish -start > 50000) {
                stop=false;
             

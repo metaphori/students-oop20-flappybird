@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Bird;
@@ -33,7 +34,9 @@ public interface Controller {
     void update(View viewImp);
 
     List<Gamer> getLeaderboard();
+
+    void setEvent(KeyEvent e);
     
- 
+    KeyEvent getEvent();
 
 }

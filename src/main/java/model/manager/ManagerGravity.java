@@ -1,6 +1,8 @@
 package model.manager;
 
+import model.Bird;
+
 public interface ManagerGravity {
 
-    void setGravity();
+    double setGravity(Bird bird);
 }
