@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.BasicColumn;
 import model.Column;
+import model.DangerousColumn;
 import model.RandomColumn;
 
 public class ObstacleGenerator implements Generator{
@@ -93,6 +94,11 @@ public class ObstacleGenerator implements Generator{
        
             
             break;
+        case LEGEND:
+            OperationGenerate generateLegend = () -> new DangerousColumn(upPosition);
+            this.obstacles.add(generateLegend.getElement());
+          
+            break;    
             
         default:
             break;
@@ -154,16 +160,18 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
-     
-        if (countColumn<10) {
+        gameStep = GameStep.LEGEND;
+      /*  if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {
             gameStep = GameStep.EASY_UP;
         } else if (countColumn<30) {
             gameStep = GameStep.NORMAL;
-        }else {
+        }else if (countColumn<40) {
             gameStep = GameStep.DIFFICULT;
-        }
+        } else {
+            gameStep = GameStep.LEGEND;
+        }*/
     }
 
     private boolean checkDistance() {

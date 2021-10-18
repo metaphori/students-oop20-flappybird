@@ -8,7 +8,9 @@ public enum GameStep {
     
     NORMAL,
     
-    DIFFICULT;
+    DIFFICULT,
+    
+    LEGEND;
     
     
 

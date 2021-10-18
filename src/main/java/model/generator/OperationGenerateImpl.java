@@ -39,15 +39,16 @@ public class OperationGenerateImpl implements OperationGenerate{
     public Column getElement() {
         // TODO Auto-generated method stub
         
-        this.column = createColumn();
+      //  this.column = createColumn();
         counterColumn++;
-        System.out.println(counterColumn);
+       // System.out.println(counterColumn);
             return this.column;
       
     }
 
     private Column createColumn() {
         // TODO Auto-generated method stub
+        System.out.println("ciaoooo");
         double rand = random.nextDouble();
         if (counterColumn<10) {
             BasicColumn r = new BasicColumn(downPosition);
