@@ -22,6 +22,7 @@ public class ObstacleGenerator implements Generator{
     private static final double interspace = 150;
     private double basemantHeight;
     private double gameHeight;
+    private int count=0;
     
   
     
@@ -131,6 +132,7 @@ public class ObstacleGenerator implements Generator{
     @Override
     public void update() {
         // TODO Auto-generated method stub
+        
         removeElement();
         if(this.obstacles.isEmpty() || this.checkDistance()) {
             setStep();
@@ -152,6 +154,7 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
+     
         if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {

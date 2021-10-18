@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -116,14 +117,13 @@ public class ViewImp extends Application implements View {
     public  void render(List<Column> columns, Integer score) {
         // TODO Auto-generated method stub
      
-            
-
+       
         
      
-         
+        
       
           Platform.runLater(()->{
-              
+             
               viewObstacle.render(columns);
               p.getChildren().remove(label);
               label.setText(Integer.toString(score));
@@ -149,6 +149,7 @@ public class ViewImp extends Application implements View {
         Platform.runLater(()->{
             System.out.println("view game over");
             finish.showFinishView(label);
+         
 
           
             }); 
