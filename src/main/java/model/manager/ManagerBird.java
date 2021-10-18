@@ -43,11 +43,11 @@ public class ManagerBird implements Manager{
             
          this.bird.updatePosition(this.gravity.setGravity(bird));
         } */
-        if (this.jump.checkInput(e)) {
+       /* if (this.jump.checkInput()) {
             
             this.bird.updatePosition(this.jump.jump(bird));
         
-        }
+        }*/
     }
     
     @Override

@@ -20,6 +20,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,6 +49,7 @@ public class ViewImp extends Application implements View {
     Stage stage;
     Label label;
     ViewBird viewBird;
+    ViewMenu viewMenu;
 
             
     
@@ -55,11 +57,12 @@ public class ViewImp extends Application implements View {
      
     }
     
-    public void initiate() {
-        controller = new ControllerImp();
+ /*   public void initiate() {
+        //controller = new ControllerImp();
         p = new Pane();
-        viewObstacle = new ViewObstacleImp(p);
-        viewBird = new ViewBird(p);
+        //viewObstacle = new ViewObstacleImp(p);
+        //viewBird = new ViewBird(p);
+        viewMenu = new ViewMenu(p);
         
         ImageView img = new ImageView();
         img.setImage(new Image("background.png"));
@@ -76,6 +79,44 @@ public class ViewImp extends Application implements View {
         
         p.getChildren().add(img);
         p.getChildren().add(label);
+        
+        stage.setMaxHeight(height);
+        stage.setMaxWidth(width);
+        stage.setScene(new Scene(p));
+        stage.show();
+        
+        
+        
+    } */
+    
+    //prova
+    public void initiate() {
+        //controller = new ControllerImp();
+        p = new Pane();
+        //viewObstacle = new ViewObstacleImp(p);
+        //viewBird = new ViewBird(p);
+        viewMenu = new ViewMenu(p);
+        Button startButton= new Button();
+        startButton.setLayoutX(400);
+        startButton.setLayoutY(200);
+        
+        
+        ImageView img = new ImageView();
+        img.setImage(new Image("background.png"));
+        img.setFitHeight(height);
+        img.setFitWidth(width);
+        
+        label = new Label();
+        label.setLayoutX(400);
+        label.setLayoutY(50);
+        label.setText("0");
+        label.setFont(new Font("Arial", 60));
+        label.setTextFill(Color.ANTIQUEWHITE);
+        
+        
+        p.getChildren().add(img);
+        p.getChildren().add(label);
+        p.getChildren().add(startButton);
         
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
@@ -108,7 +149,7 @@ public class ViewImp extends Application implements View {
  
          
          
-         update();
+         //update();
        
     }
     
