@@ -36,8 +36,8 @@ import model.Column;
 
 public class ViewImp extends Application implements View {
     
-    private static final int width = 800;
-    private static final int height = 600;
+    private double width;
+    private double height;
   
     Rectangle rec;
     Controller controller;
@@ -54,7 +54,10 @@ public class ViewImp extends Application implements View {
     }
     
     public void initiate() {
+        
         controller = new ControllerImp();
+        width = controller.getGameWidth();
+        height = controller.getGameHeight();
         p = new Pane();
         viewObstacle = new ViewObstacleImp(p);
         

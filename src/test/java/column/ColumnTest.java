@@ -107,7 +107,7 @@ public class ColumnTest {
     
     @Test
     public void testRandom() {
-        Generator<Column> generator = new ObstacleGenerator(GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
+        Generator generator = new ObstacleGenerator(GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
         basemantHeight = GAME_WORLD_HEIGHT-basemant;
         this.downPosition = new Point();
         downPosition.setLocation(GAME_WORLD_WIDTH, basemantHeight);

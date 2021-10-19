@@ -31,31 +31,30 @@ public class ModelImp implements Model {
 
     @Override
     public void updateState(GameState gameState) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub 
     }
 
     @Override
     public double getGameHeight() {
-        // TODO Auto-generated method stub
+ 
         return GAME_WORLD_HEIGHT;
     }
 
     @Override
     public double getGameWeidth() {
-        // TODO Auto-generated method stub
+      
         return GAME_WORLD_WIDTH;
     }
 
     @Override
     public void updateGame() {
-        // TODO Auto-generated method stub
+       
         
     }
 
     @Override
     public void startGame() {
-        // TODO Auto-generated method stub
+     
        
         this.gameLoop.setDaemon(true);
         this.gameLoop.start();
@@ -63,7 +62,7 @@ public class ModelImp implements Model {
 
     @Override
     public List<Gamer> getLeaderboard() {
-        // TODO Auto-generated method stub
+     
        
         
                leaderboardManager.read();
@@ -72,7 +71,7 @@ public class ModelImp implements Model {
 
     @Override
     public void gameOver() {
-        // TODO Auto-generated method stub
+      
         this.leaderboardManager.read();
         this.leaderboardManager.addNewGamer("fra", "6");
         this.leaderboardManager.write();

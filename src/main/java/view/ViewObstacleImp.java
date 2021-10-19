@@ -47,9 +47,9 @@ public class ViewObstacleImp implements ViewObstacle{
         rectangle.setWidth(b.getWidth());
         rectangle.setHeight(b.getHeigth());
         if (rectangle.getLayoutY()==0) {
-            rectangle.setFill(new ImagePattern(new Image("upColumn.png")));
+            rectangle.setFill(new ImagePattern(new Image("column_down.png")));
         } else {
-            rectangle.setFill(new ImagePattern(new Image("laser.png")));
+            rectangle.setFill(new ImagePattern(new Image("col_up.png")));
         }
         
         return rectangle;

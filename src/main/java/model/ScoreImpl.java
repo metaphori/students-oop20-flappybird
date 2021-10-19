@@ -6,17 +6,18 @@ import java.util.List;
 
 public class ScoreImpl implements Score {
     
-    World world;
+    private World world;
     private Integer score;
     private final double flyPosX;
-    private List<Column> list;
+    private List<Column> columnList;
     
     
     public ScoreImpl(World worldImp) {
-        flyPosX = 400;
-        list = new ArrayList<>();
-        score = 0;
-        world = worldImp;
+        
+        this.flyPosX = 400;
+        this.columnList = new ArrayList<>();
+        this.score = 0;
+        this.world = worldImp;
         
     }
     
@@ -28,10 +29,10 @@ public class ScoreImpl implements Score {
     public void update() {
         // TODO Auto-generated method stub
       
-        if (!world.getColumns().isEmpty()) {
-           world.getColumns().forEach(a->{
-               if (!list.contains(a) && a.getPosition().getX()<flyPosX) {
-                   list.add(a);
+        if (!this.world.getColumns().isEmpty()) {
+           this.world.getColumns().forEach(a->{
+               if (!columnList.contains(a) && a.getPosition().getX()<flyPosX) {
+                   columnList.add(a);
                    score++;
                    System.out.println(score);
                }

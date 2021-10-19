@@ -11,16 +11,18 @@ import model.RandomColumn;
 
 public class ObstacleGenerator implements Generator{
     
-    private List<Column> obstacles;
-    //private OperationGenerate generate;
+    
     private static final double SPACECOLUMN = 200;
+    private static final double INTERSPACE = 150;
+    private static final double BASEMANT = 250;
+    private List<Column> obstacles;
     private double startNext;
     private GameStep gameStep;
     private Point upPosition;
     private double countColumn;
     private Point downPosition;
-    private static double basemant = 250;
-    private static final double interspace = 150;
+    
+    
     private double basemantHeight;
     private double gameHeight;
     private int count=0;
@@ -32,7 +34,8 @@ public class ObstacleGenerator implements Generator{
 
     
     public ObstacleGenerator(double gameWorldWidth, double gameWorldHeight) {
-        basemantHeight = gameWorldHeight-basemant;
+        
+        basemantHeight = gameWorldHeight-BASEMANT;
         gameHeight = gameWorldHeight;
         countColumn = 0;
         gameStep = GameStep.DIFFICULT;
@@ -120,8 +123,8 @@ public class ObstacleGenerator implements Generator{
         
         double y = generateNormalUp.getElement().getHeigth();
         Point p = new Point();
-        p.setLocation(downPosition.getX(), y+interspace);
-        double height = gameHeight - 50 - interspace-y;
+        p.setLocation(downPosition.getX(), y+INTERSPACE);
+        double height = gameHeight - 50 - INTERSPACE-y;
        
         RandomColumn r = new RandomColumn(p,height);
         r.setHeight();
@@ -141,7 +144,7 @@ public class ObstacleGenerator implements Generator{
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
+      
         
         removeElement();
         if(this.obstacles.isEmpty() || this.checkDistance()) {
@@ -164,8 +167,8 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
-        gameStep = GameStep.LEGEND;
-      /*  if (countColumn<10) {
+        //gameStep = GameStep.LEGEND;
+        if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {
             gameStep = GameStep.EASY_UP;
@@ -175,7 +178,7 @@ public class ObstacleGenerator implements Generator{
             gameStep = GameStep.DIFFICULT;
         } else {
             gameStep = GameStep.LEGEND;
-        }*/
+        }
     }
 
     private boolean checkDistance() {

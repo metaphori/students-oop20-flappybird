@@ -11,11 +11,7 @@ public class BirdImp implements Bird{
         this.posy = 300;
     }
     
-    @Override
-    public void setView(String view) {
-        // TODO Auto-generated method stub
-        
-    }
+   
 
     @Override
     public void updatePosition(double posY) {

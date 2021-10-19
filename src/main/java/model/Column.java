@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Rectangle;
 
-public interface Column extends GameObject, ViewObject  {
+public interface Column extends GameObject {
     
    
    void setHeight();

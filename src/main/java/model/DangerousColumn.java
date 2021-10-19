@@ -5,36 +5,37 @@ import java.util.Random;
 
 public class DangerousColumn extends ColumnImp{
     
-    private final Random random;
-    private static final double minHeight = 50;
-    private static final double maxHeight = 350;
     
+    private static final double MIN_HEIGHT = 50;
+    private static final double MAX_HEIGHT = 350;
+    private final Random random;
     private boolean upDown;
     private boolean typeUp;
+    
     public DangerousColumn(Point position) {
         
         super(position);
-        // TODO Auto-generated constructor stub
+     
         if (position.getY()==0) {
-            typeUp=true;
+            this.typeUp=true;
         } else {
-            typeUp=false;
+            this.typeUp=false;
         }
             
         
         this.upDown = false;
-        random = new Random();
+        this.random = new Random();
     }
     
     @Override
     public void updatePosition(Point position) {
-        // TODO Auto-generated method stub
+      
         Point point = new Point();
-        if (random.nextDouble()<0.01) {
+        if (this.random.nextDouble()<0.01) {
             
             setHeight();    
         }
-        if (!typeUp) {
+        if (!this.typeUp) {
             
             point.setLocation(position.getX(), 600-50-getHeigth());
         } else {
@@ -46,13 +47,13 @@ public class DangerousColumn extends ColumnImp{
 
     @Override
     public double updateHeight() {
-        // TODO Auto-generated method stub
-        if (upDown) {
-            upDown = false;
-            return minHeight;
+       
+        if (this.upDown) {
+            this.upDown = false;
+            return MIN_HEIGHT;
         }
-        upDown = true;
-        return maxHeight ;
+        this.upDown = true;
+        return MAX_HEIGHT ;
     }
     
     

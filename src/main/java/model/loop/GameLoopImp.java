@@ -12,12 +12,13 @@ import model.WorldImp;
 
 public class GameLoopImp  extends Thread implements GameLoop{
     
-    private World world;
     private static final long PERIOD = 20;
+    private World world;
+    
     private Controller controller;
     
     public GameLoopImp(Controller controllerImp, double gameWorldWidth, double gameWorldHeight) {
-        // TODO Auto-generated constructor stub
+    
         this.world = new WorldImp(gameWorldWidth,gameWorldHeight);
         this.controller = controllerImp;
     }
@@ -42,7 +43,7 @@ public class GameLoopImp  extends Thread implements GameLoop{
             
            this.controller.render(this.getColumn(), this.world.getScore());
            
-           if (finish -start > 100000) {
+           if (finish -start > 5000) {
                stop=false;
             
                this.controller.setState(GameState.GAME_OVER);

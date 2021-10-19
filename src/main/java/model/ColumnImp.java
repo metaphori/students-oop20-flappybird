@@ -11,7 +11,7 @@ public  abstract class ColumnImp implements Column{
     private double height;
     private static final double WEIGHT = 50;
  
-    private String viewObject;
+
     
     
     
@@ -34,11 +34,7 @@ public  abstract class ColumnImp implements Column{
         return this.column.getLocation();
     }
 
-    @Override
-    public void setView(String view) {
-        // TODO Auto-generated method stub
-        this.viewObject = view;
-    }
+ 
 
 
     @Override

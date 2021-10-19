@@ -32,6 +32,10 @@ public interface Controller {
 
     List<Gamer> getLeaderboard();
     
+    public double getGameHeight();
+    
+    public double getGameWidth();
+    
  
 
 }

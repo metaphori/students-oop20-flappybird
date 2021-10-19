@@ -21,13 +21,13 @@ public class ControllerImp implements Controller{
     
 
     private GameState gameState;
-    public Model model;
-    public View view;
+    private Model model;
+    private View view;
     
     Pane pane;
  
     public ControllerImp() {
-        
+     
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
@@ -37,7 +37,7 @@ public class ControllerImp implements Controller{
     @Override
     public void updateState() {
        
-        System.out.println(gameState);
+  
         switch (gameState) {
         case GAME_OVER:
             System.out.println("controll game over");
@@ -64,22 +64,16 @@ public class ControllerImp implements Controller{
 
     @Override
     public void setState(GameState state) {
-        // TODO Auto-generated method stub
-        System.out.println("fino a qui tutto bene");
+        
+      
         gameState = state;
     }
     
     public void render(List<Column> list, Integer score) {
-       
-  
-       
-      
+
            this.view.render(list,score);
      
-   
-       
-   
-       
+
         
     }
 
@@ -108,6 +102,20 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
        return this.model.getLeaderboard();
     }
+
+    @Override
+    public double getGameHeight() {
+        // TODO Auto-generated method stub
+        return this.model.getGameHeight();
+    }
+
+    @Override
+    public double getGameWidth() {
+        // TODO Auto-generated method stub
+        return this.model.getGameWeidth();
+    }
+    
+   
 
    
 
