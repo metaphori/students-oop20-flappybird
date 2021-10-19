@@ -22,7 +22,7 @@ public class ManagerCollisionImp implements ManagerCollision{
    
 
     @Override
-    public boolean checkCollision(List<Column> list, Bird bird) {
+    public boolean checkColumnCollision(List<Column> list, Bird bird) {
         // TODO Auto-generated method stub
       
        for(int i=0; i < list.size(); i++) {
@@ -36,6 +36,19 @@ public class ManagerCollisionImp implements ManagerCollision{
         // TODO Auto-generated method stub
        
         return false;
+    }
+
+
+    @Override
+    public boolean checkFloorCollision(Bird bird) {
+        // TODO Auto-generated method stub
+        if (bird.getCenterY() > 750) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        
     }
 
 }

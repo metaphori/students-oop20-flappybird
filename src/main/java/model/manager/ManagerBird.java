@@ -31,9 +31,15 @@ public class ManagerBird implements Manager{
     @Override
     public void updateColumns(List<Column> list) {
         // TODO Auto-generated method stub
-       /* if (this.collision.checkCollision(list,bird)) {
+       /* if (this.collision.checkColumnCollision(list,bird)) {
+        * 
+            //game over
             
-            
+        }
+        else if (this.collision.checkFloorCollision(bird)) {
+        
+            //game over
+        
         }
         else if (this.jump.checkInput(e)) {
            
@@ -43,11 +49,9 @@ public class ManagerBird implements Manager{
             
          this.bird.updatePosition(this.gravity.setGravity(bird));
         } */
-       /* if (this.jump.checkInput()) {
-            
-            this.bird.updatePosition(this.jump.jump(bird));
+     
         
-        }*/
+        
     }
     
     @Override

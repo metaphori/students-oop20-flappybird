@@ -12,7 +12,7 @@ public interface World {
    
     Bird getBird();
     
-   List<Column> getColumns();
+    List<Column> getColumns();
 
     void update();
 

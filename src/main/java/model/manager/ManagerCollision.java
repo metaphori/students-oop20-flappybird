@@ -9,5 +9,7 @@ public interface ManagerCollision {
 
     
 
-    boolean checkCollision(List<Column> list, Bird bird);
+    boolean checkColumnCollision(List<Column> list, Bird bird);
+
+    boolean checkFloorCollision(Bird bird);
 }

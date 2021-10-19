@@ -18,6 +18,7 @@ import controller.GameState;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,6 +32,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import model.Bird;
@@ -91,14 +93,43 @@ public class ViewImp extends Application implements View {
     
     //prova
     public void initiate() {
-        //controller = new ControllerImp();
+       // the start button
         p = new Pane();
-        //viewObstacle = new ViewObstacleImp(p);
-        //viewBird = new ViewBird(p);
         viewMenu = new ViewMenu(p);
         Button startButton= new Button();
         startButton.setLayoutX(400);
         startButton.setLayoutY(200);
+        startButton.setTextAlignment(TextAlignment.CENTER);
+        startButton.setAlignment(Pos.CENTER);
+        startButton.setText("START");
+        startButton.setFont(new Font("Arial", 12));
+        
+        Button scoreButton= new Button();
+        scoreButton.setLayoutX(400);
+        scoreButton.setLayoutY(250);
+        scoreButton.setAlignment(Pos.CENTER);
+        scoreButton.setTextAlignment(TextAlignment.CENTER);
+        scoreButton.setText("SCORE");
+        scoreButton.setFont(new Font("Arial", 12));
+        
+        Button exitButton= new Button();
+        exitButton.setLayoutX(400);
+        exitButton.setLayoutY(300);
+        exitButton.setAlignment(Pos.CENTER);
+        exitButton.setTextAlignment(TextAlignment.CENTER);
+        exitButton.setText("EXIT");
+        exitButton.setFont(new Font("Arial", 12));
+        
+        Button playerButton= new Button();
+        playerButton.setLayoutX(400);
+        playerButton.setLayoutY(350);
+        playerButton.setAlignment(Pos.CENTER);
+        playerButton.setTextAlignment(TextAlignment.CENTER);
+        playerButton.setText("SCEGLI IL PERSONAGGIO");
+        playerButton.setFont(new Font("Arial", 12));
+        
+        
+       
         
         
         ImageView img = new ImageView();
@@ -117,6 +148,9 @@ public class ViewImp extends Application implements View {
         p.getChildren().add(img);
         p.getChildren().add(label);
         p.getChildren().add(startButton);
+        p.getChildren().add(scoreButton);
+        p.getChildren().add(playerButton);
+        p.getChildren().add(exitButton);
         
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
