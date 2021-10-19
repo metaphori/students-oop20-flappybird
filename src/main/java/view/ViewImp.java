@@ -40,6 +40,7 @@ public class ViewImp extends Application implements View {
     Pane p;
     Stage stage;
     Label label;
+   
 
             
     
@@ -75,6 +76,8 @@ public class ViewImp extends Application implements View {
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
         stage.setScene(new Scene(p));
+        stage.requestFocus();
+        stage.setResizable(false);
         stage.show();
         
         
@@ -133,21 +136,15 @@ public class ViewImp extends Application implements View {
 
 
 
-
-
-
-
-
-
     @Override
     public void gameOver() {
-        // TODO Auto-generated method stub
+     
+        
         finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
-            System.out.println("view game over");
+            NameView.show(stage,controller);
+        
             finish.showFinishView(label);
-         
-
           
             }); 
     }

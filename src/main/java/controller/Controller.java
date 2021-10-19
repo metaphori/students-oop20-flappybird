@@ -35,6 +35,8 @@ public interface Controller {
     public double getGameHeight();
     
     public double getGameWidth();
+
+    void savePlayer(String text);
     
  
 

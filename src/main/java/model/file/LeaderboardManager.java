@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface LeaderboardManager {
     
-    void addNewGamer(String name, String score);
+    void addNewGamer(Gamer gamer);
     
     void read();
     

@@ -23,6 +23,7 @@ public class ControllerImp implements Controller{
     private GameState gameState;
     private Model model;
     private View view;
+    private Integer score;
     
     Pane pane;
  
@@ -41,7 +42,7 @@ public class ControllerImp implements Controller{
         switch (gameState) {
         case GAME_OVER:
             System.out.println("controll game over");
-            this.model.gameOver();
+            this.model.gameOver(this.score);
           this.view.gameOver();
             break;
         case INITIALIZE:
@@ -70,7 +71,7 @@ public class ControllerImp implements Controller{
     }
     
     public void render(List<Column> list, Integer score) {
-
+           this.score = score;
            this.view.render(list,score);
      
 
@@ -113,6 +114,12 @@ public class ControllerImp implements Controller{
     public double getGameWidth() {
         // TODO Auto-generated method stub
         return this.model.getGameWeidth();
+    }
+
+    @Override
+    public void savePlayer(String text) {
+        // TODO Auto-generated method stub
+        this.model.addPlayer(text);
     }
     
    

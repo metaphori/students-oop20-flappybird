@@ -64,12 +64,11 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
     }
 
     @Override
-    public void addNewGamer(String name, String score) {
+    public void addNewGamer(Gamer gamer) {
         // TODO Auto-generated method stub
         
-        if (checkTop10(score)) {
-            Gamer gamer = new Gamer(name);
-            gamer.setScore(score);
+        if (checkTop10(gamer.getScore())) {
+            
             leaderboard.addGamer(gamer);
            
         }

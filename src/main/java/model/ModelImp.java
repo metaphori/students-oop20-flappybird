@@ -19,7 +19,7 @@ public class ModelImp implements Model {
    
     private GameLoopImp gameLoop;
     private LeaderboardManager leaderboardManager;
-    
+    private Gamer gamer;
     
     
     
@@ -70,12 +70,19 @@ public class ModelImp implements Model {
     }
 
     @Override
-    public void gameOver() {
+    public void gameOver(Integer score) {
       
         this.leaderboardManager.read();
-        this.leaderboardManager.addNewGamer("fra", "6");
+        this.gamer.setScore(Integer.toString(score));
+        this.leaderboardManager.addNewGamer(this.gamer);
         this.leaderboardManager.write();
         
+    }
+
+    @Override
+    public void addPlayer(String text) {
+        
+        gamer = new Gamer(text);
     }
 
 }
