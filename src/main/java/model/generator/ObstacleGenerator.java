@@ -157,7 +157,7 @@ public class ObstacleGenerator implements Generator{
         this.obstacles.forEach(a->{
             Point c = new Point();
             c.setLocation(a.getPosition());
-            c.translate(-1, 0);
+            c.translate(-2, 0);
             a.updatePosition(c);
         });
         
@@ -167,8 +167,8 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
-        //gameStep = GameStep.LEGEND;
-        if (countColumn<10) {
+        gameStep = GameStep.LEGEND;
+      /*  if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {
             gameStep = GameStep.EASY_UP;
@@ -178,7 +178,7 @@ public class ObstacleGenerator implements Generator{
             gameStep = GameStep.DIFFICULT;
         } else {
             gameStep = GameStep.LEGEND;
-        }
+        }*/
     }
 
     private boolean checkDistance() {

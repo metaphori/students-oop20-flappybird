@@ -1,15 +1,8 @@
 package view;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 
 import controller.Controller;
@@ -33,6 +26,7 @@ import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 
 import model.Column;
+import view.ImageID;
 
 public class ViewImp extends Application implements View {
     
@@ -63,7 +57,7 @@ public class ViewImp extends Application implements View {
         
         
         ImageView img = new ImageView();
-        img.setImage(new Image("background.png"));
+        img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
         img.setFitHeight(height);
         img.setFitWidth(width);
         

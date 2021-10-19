@@ -13,10 +13,16 @@ public class ViewObstacleImp implements ViewObstacle{
     
     private List<Rectangle> object;
     private Pane pane;
+    private ImagePattern upImagePattern;
+    private ImagePattern downImagePattern;
+
     
     public ViewObstacleImp(Pane p) {
         object = new ArrayList<>();
         pane = p;
+
+        this.upImagePattern = new ImagePattern(new Image(ImageID.UP_COLUMN.getPath()));
+        this.downImagePattern = new ImagePattern(new Image(ImageID.LASER.getPath()));
     }
 
     @Override
@@ -47,9 +53,9 @@ public class ViewObstacleImp implements ViewObstacle{
         rectangle.setWidth(b.getWidth());
         rectangle.setHeight(b.getHeigth());
         if (rectangle.getLayoutY()==0) {
-            rectangle.setFill(new ImagePattern(new Image("column_down.png")));
+            rectangle.setFill(this.upImagePattern);
         } else {
-            rectangle.setFill(new ImagePattern(new Image("col_up.png")));
+            rectangle.setFill(this.downImagePattern);
         }
         
         return rectangle;
