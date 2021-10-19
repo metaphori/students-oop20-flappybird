@@ -95,8 +95,12 @@ public class ObstacleGenerator implements Generator{
             
             break;
         case LEGEND:
-            OperationGenerate generateLegend = () -> new DangerousColumn(upPosition);
-            this.obstacles.add(generateLegend.getElement());
+           // OperationGenerate generateLegend = () -> new DangerousColumn(upPosition);
+            //this.obstacles.add(generateLegend.getElement());
+            
+            OperationGenerate generateLegendd = () -> new DangerousColumn(downPosition);
+            
+            this.obstacles.add(generateLegendd.getElement());
           
             break;    
             
@@ -150,7 +154,7 @@ public class ObstacleGenerator implements Generator{
         this.obstacles.forEach(a->{
             Point c = new Point();
             c.setLocation(a.getPosition());
-            c.translate(-2, 0);
+            c.translate(-1, 0);
             a.updatePosition(c);
         });
         
