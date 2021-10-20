@@ -1,6 +1,7 @@
 package view;
 
 import java.util.List;
+import java.util.Optional;
 
 import controller.Controller;
 import controller.ControllerImp;
@@ -15,7 +16,7 @@ public interface View {
     
      void  render(List<Column> list, Integer score);
 
-    void gameOver();
+    void gameOver(Optional<Integer> optional);
 
     void initiate();
     void update();

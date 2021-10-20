@@ -26,6 +26,7 @@ public class ObstacleGenerator implements Generator{
     private double basemantHeight;
     private double gameHeight;
     private int count=0;
+    private boolean legendStep;
     
   
     
@@ -39,6 +40,7 @@ public class ObstacleGenerator implements Generator{
         gameHeight = gameWorldHeight;
         countColumn = 0;
         gameStep = GameStep.DIFFICULT;
+        legendStep = false;
         this.obstacles = new ArrayList<>();
      //   this.generate = new OperationGenerateImpl(gameWorldWidth,gameWorldHeight);
         this.startNext = gameWorldWidth - SPACECOLUMN;
@@ -66,23 +68,23 @@ public class ObstacleGenerator implements Generator{
        
         switch (gameStep) {
         case EASY_UP:
-            OperationGenerate generateUp = () -> new BasicColumn(upPosition);
+            OperationGenerate generateUp = () -> new BasicColumn(upPosition,false);
             this.obstacles.add(generateUp.getElement());
             break;
         case EASY_DOWN:
       
-            OperationGenerate generateDown = () -> new BasicColumn(downPosition);
+            OperationGenerate generateDown = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDown.getElement());
             break;
         case NORMAL:
-            OperationGenerate generateUpNormal = () -> new BasicColumn(upPosition);
+            OperationGenerate generateUpNormal = () -> new BasicColumn(upPosition,false);
             this.obstacles.add(generateUpNormal.getElement());
-            OperationGenerate generateDownNormal = () -> new BasicColumn(downPosition);
+            OperationGenerate generateDownNormal = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDownNormal.getElement());
             break;
         case DIFFICULT:
             
-            RandomColumn r = new RandomColumn(upPosition,0);
+            RandomColumn r = new RandomColumn(upPosition,false,0);
             r.setHeight();
             OperationGenerate generateNormalUp = () -> r;
             
@@ -98,12 +100,19 @@ public class ObstacleGenerator implements Generator{
             
             break;
         case LEGEND:
-           // OperationGenerate generateLegend = () -> new DangerousColumn(upPosition);
-            //this.obstacles.add(generateLegend.getElement());
+            if(legendStep) {
+                OperationGenerate generateLegend = () -> new DangerousColumn(upPosition,true);
+                this.obstacles.add(generateLegend.getElement());
+                legendStep = false;
+            } else {
+                OperationGenerate generateLegendd = () -> new DangerousColumn(downPosition,true);
+                
+                this.obstacles.add(generateLegendd.getElement());
+                legendStep=true;
+            }
             
-            OperationGenerate generateLegendd = () -> new DangerousColumn(downPosition);
             
-            this.obstacles.add(generateLegendd.getElement());
+            
           
             break;    
             
@@ -126,7 +135,7 @@ public class ObstacleGenerator implements Generator{
         p.setLocation(downPosition.getX(), y+INTERSPACE);
         double height = gameHeight - 50 - INTERSPACE-y;
        
-        RandomColumn r = new RandomColumn(p,height);
+        RandomColumn r = new RandomColumn(p,false,height);
         r.setHeight();
      
         return ()-> r;
@@ -167,8 +176,8 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
-        gameStep = GameStep.LEGEND;
-      /*  if (countColumn<10) {
+      //  gameStep = GameStep.LEGEND;
+        if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {
             gameStep = GameStep.EASY_UP;
@@ -178,7 +187,7 @@ public class ObstacleGenerator implements Generator{
             gameStep = GameStep.DIFFICULT;
         } else {
             gameStep = GameStep.LEGEND;
-        }*/
+        }
     }
 
     private boolean checkDistance() {

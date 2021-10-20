@@ -42,6 +42,7 @@ public class NameView {
         button.setPrefWidth(60);
         button.setOnAction(e->{
            controller.savePlayer(textField.getText());
+           stage.close();
         });
         
         

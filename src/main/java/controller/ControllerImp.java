@@ -2,6 +2,8 @@ package controller;
 
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
@@ -43,7 +45,7 @@ public class ControllerImp implements Controller{
         case GAME_OVER:
             System.out.println("controll game over");
             this.model.gameOver(this.score);
-          this.view.gameOver();
+          this.view.gameOver(topScorer());
             break;
         case INITIALIZE:
        //     System.out.println("ciaoo2");
@@ -61,6 +63,14 @@ public class ControllerImp implements Controller{
         default:
             break;
         }
+    }
+
+    private Optional<Integer> topScorer() {
+        // TODO Auto-generated method stub
+        Optional<Integer> topScor =this.model.getLeaderboard().stream().map(a->a.getScore()).map(a-> Integer.parseInt(a)).max((a,b)->a-b);
+        
+        
+        return topScor;
     }
 
     @Override

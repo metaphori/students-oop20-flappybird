@@ -12,9 +12,9 @@ public class RandomColumn extends ColumnImp{
     private double newHeight;
     
 
-    public RandomColumn(Point position, double height) {
+    public RandomColumn(Point position, boolean type,double height) {
         
-        super(position);
+        super(position,type);
         
         newHeight= height;
         

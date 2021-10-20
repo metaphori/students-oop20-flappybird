@@ -2,8 +2,7 @@ package view;
 
 
 import java.util.List;
-
-
+import java.util.Optional;
 
 import controller.Controller;
 import controller.ControllerImp;
@@ -137,14 +136,14 @@ public class ViewImp extends Application implements View {
 
 
     @Override
-    public void gameOver() {
+    public void gameOver(Optional<Integer> topScore) {
      
         
         finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
             NameView.show(stage,controller);
         
-            finish.showFinishView(label);
+            finish.showFinishView(label,topScore);
           
             }); 
     }

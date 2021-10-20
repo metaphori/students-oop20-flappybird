@@ -51,28 +51,28 @@ public class OperationGenerateImpl implements OperationGenerate{
         System.out.println("ciaoooo");
         double rand = random.nextDouble();
         if (counterColumn<10) {
-            BasicColumn r = new BasicColumn(downPosition);
+            BasicColumn r = new BasicColumn(downPosition,false);
             return r;
         } else if (counterColumn<20) {
-            BasicColumn r = new BasicColumn(upPosition);
+            BasicColumn r = new BasicColumn(upPosition,false);
             return r;
         } else if (counterColumn<40) {
             if (variable) {
                 variable = false;
-                BasicColumn r = new BasicColumn(upPosition);
+                BasicColumn r = new BasicColumn(upPosition,false);
                 r.setHeight();
                 return r;
             } 
             variable = true;
             
-            BasicColumn r = new BasicColumn(downPosition);
+            BasicColumn r = new BasicColumn(downPosition,false);
             
            
             return r;
         }
         variable = true;
         
-        BasicColumn r = new BasicColumn(downPosition);
+        BasicColumn r = new BasicColumn(downPosition,false);
         
        
         return r;

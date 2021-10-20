@@ -20,6 +20,8 @@ public class ModelImp implements Model {
     private GameLoopImp gameLoop;
     private LeaderboardManager leaderboardManager;
     private Gamer gamer;
+    private String score;
+    
     
     
     
@@ -73,9 +75,8 @@ public class ModelImp implements Model {
     public void gameOver(Integer score) {
       
         this.leaderboardManager.read();
-        this.gamer.setScore(Integer.toString(score));
-        this.leaderboardManager.addNewGamer(this.gamer);
-        this.leaderboardManager.write();
+        this.score = Integer.toString(score);
+       
         
     }
 
@@ -83,6 +84,9 @@ public class ModelImp implements Model {
     public void addPlayer(String text) {
         
         gamer = new Gamer(text);
+        gamer.setScore(score);
+        this.leaderboardManager.addNewGamer(gamer);
+        this.leaderboardManager.write();
     }
 
 }

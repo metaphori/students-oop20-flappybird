@@ -10,16 +10,22 @@ public  abstract class ColumnImp implements Column{
     private Rectangle column;
     private double height;
     private static final double WEIGHT = 50;
- 
+    private Boolean laserType;
 
     
     
     
-    public ColumnImp(Point position) {
-        
+    public ColumnImp(Point position, Boolean type) {
+        this.laserType = type;
         this.height = 200;
         this.column = new Rectangle();
         this.column.setRect(position.getX(), position.getY(), WEIGHT, this.height );
+    }
+    
+    @Override
+    public boolean isLaserType() {
+        // TODO Auto-generated method stub
+        return this.laserType;
     }
 
     @Override

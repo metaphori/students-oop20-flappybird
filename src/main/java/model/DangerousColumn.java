@@ -9,12 +9,12 @@ public class DangerousColumn extends ColumnImp{
     private static final double MIN_HEIGHT = 50;
     private static final double MAX_HEIGHT = 350;
     private final Random random;
-    private boolean upDown;
+    private boolean upDownSwitch;
     private boolean typeUp;
     
-    public DangerousColumn(Point position) {
+    public DangerousColumn(Point position, boolean type) {
         
-        super(position);
+        super(position,type);
      
         if (position.getY()==0) {
             this.typeUp=true;
@@ -23,7 +23,7 @@ public class DangerousColumn extends ColumnImp{
         }
             
         
-        this.upDown = false;
+        this.upDownSwitch = false;
         this.random = new Random();
     }
     
@@ -48,11 +48,11 @@ public class DangerousColumn extends ColumnImp{
     @Override
     public double updateHeight() {
        
-        if (this.upDown) {
-            this.upDown = false;
+        if (this.upDownSwitch) {
+            this.upDownSwitch = false;
             return MIN_HEIGHT;
         }
-        this.upDown = true;
+        this.upDownSwitch = true;
         return MAX_HEIGHT ;
     }
     

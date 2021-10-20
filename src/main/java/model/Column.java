@@ -13,6 +13,8 @@ public interface Column extends GameObject {
     
     Rectangle getColumn();
     
+    boolean isLaserType();
+    
     
     
 

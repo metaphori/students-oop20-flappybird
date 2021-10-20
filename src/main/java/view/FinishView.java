@@ -3,6 +3,7 @@ package view;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import controller.Controller;
@@ -31,6 +32,7 @@ public class FinishView {
     Controller controller;
     View view;
     Label score;
+    Label topScore;
    
     
     public FinishView(Pane p, Controller controller, View viewImp) {
@@ -38,17 +40,28 @@ public class FinishView {
         pane = p;
         view = viewImp;
         score = new Label();
+        topScore = new Label("0");
      
     }
     
     
-    void showFinishView(Label label){
+    void showFinishView(Label label, Optional<Integer> topScore){
         
         score.setText(label.getText());
         score.setLayoutX(500);
         score.setLayoutY(230);
         score.setTextFill(Color.BLACK);
         score.setFont(new Font("Ariel", 30));
+        
+        if (!topScore.isEmpty()) {
+            this.topScore.setText(Integer.toString(topScore.get()));
+        }
+       
+        this.topScore.setLayoutX(500);
+        this.topScore.setLayoutY(300);
+        this.topScore.setTextFill(Color.BLACK);
+        this.topScore.setFont(new Font("Ariel", 30));
+        
         ImageView gameover = new ImageView();
         gameover.setImage(new Image("gameover.png"));
         gameover.setFitHeight(200);
@@ -110,6 +123,8 @@ public class FinishView {
         pane.getChildren().add(gameover);
         pane.getChildren().add(finish);
         pane.getChildren().add(score);
+        pane.getChildren().add(this.topScore);
+        
         pane.getChildren().add(buttonReset);
         pane.getChildren().add(buttonLeader);
         
