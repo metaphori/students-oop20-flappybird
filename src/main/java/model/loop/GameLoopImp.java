@@ -6,6 +6,7 @@ import controller.Controller;
 import controller.ControllerImp;
 import controller.GameState;
 import javafx.application.Platform;
+import model.Bird;
 import model.Column;
 import model.World;
 import model.WorldImp;
@@ -41,9 +42,11 @@ public class GameLoopImp  extends Thread implements GameLoop{
        
             this.world.update();
             
-           this.controller.render(this.getColumn(), this.world.getScore());
+           this.controller.render(this.getColumn(), this.world.getScore(), this.world.getBird());
            
-           if (finish -start > 5000) {
+           this.world.sendEvent(this.controller.getEvent());
+           
+           if (finish -start > 50000) {
                stop=false;
             
                this.controller.setState(GameState.GAME_OVER);
@@ -78,6 +81,7 @@ public class GameLoopImp  extends Thread implements GameLoop{
         return this.world.getColumns();
     }
 
+  
     
 
 }

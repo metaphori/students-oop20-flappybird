@@ -17,8 +17,11 @@ import controller.ControllerImp;
 import controller.GameState;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,11 +29,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
-
+import model.Bird;
 import model.Column;
 
 public class ViewImp extends Application implements View {
@@ -45,6 +50,8 @@ public class ViewImp extends Application implements View {
     Pane p;
     Stage stage;
     Label label;
+    ViewBird viewBird;
+    ViewMenu viewMenu;
 
             
     
@@ -52,11 +59,12 @@ public class ViewImp extends Application implements View {
      
     }
     
-    public void initiate() {
-        controller = new ControllerImp();
+ /*   public void initiate() {
+        //controller = new ControllerImp();
         p = new Pane();
-        viewObstacle = new ViewObstacleImp(p);
-        
+        //viewObstacle = new ViewObstacleImp(p);
+        //viewBird = new ViewBird(p);
+        viewMenu = new ViewMenu(p);
         
         ImageView img = new ImageView();
         img.setImage(new Image("background.png"));
@@ -74,6 +82,22 @@ public class ViewImp extends Application implements View {
         p.getChildren().add(img);
         p.getChildren().add(label);
         
+        stage.setMaxHeight(height);
+        stage.setMaxWidth(width);
+        stage.setScene(new Scene(p));
+        stage.show();
+        
+        
+        
+    } */
+    
+    //prova
+    public void initiate() {
+       // the start button
+        p = new Pane();
+        viewMenu = new ViewMenu(p);
+        viewMenu.render();
+
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
         stage.setScene(new Scene(p));
@@ -105,7 +129,7 @@ public class ViewImp extends Application implements View {
  
          
          
-         update();
+         //update();
        
     }
     
@@ -113,9 +137,10 @@ public class ViewImp extends Application implements View {
         launch();
     }
     
-    public  void render(List<Column> columns, Integer score) {
+    public  void render(List<Column> columns, Integer score, Bird bird) {
         // TODO Auto-generated method stub
-     
+        
+      
             
 
         
@@ -124,10 +149,19 @@ public class ViewImp extends Application implements View {
       
           Platform.runLater(()->{
               
+              
               viewObstacle.render(columns);
               p.getChildren().remove(label);
               label.setText(Integer.toString(score));
               p.getChildren().add(label);
+              
+              viewBird.render(bird);
+              
+              p.getScene().setOnKeyPressed(e ->{
+                  {
+                     this.controller.setEvent(e);
+                 }
+             });
               
               }); 
           

@@ -5,21 +5,28 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Circle;
 import model.generator.Generator;
 import model.generator.ObstacleGenerator;
+import model.manager.Manager;
+import model.manager.ManagerBird;
 
 public class WorldImp implements World{
     
     
-  
+    private Manager manager;
     private Generator generator;
     private Score score;
     
+   
     
     public WorldImp(double gameWorldWidth, double gameWorldHeight) {
         
         score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
+        
+        this.manager = new ManagerBird();
     }
 
    
@@ -40,6 +47,7 @@ public class WorldImp implements World{
     
         this.generator.update();
         this.score.update();
+        this.manager.updateColumns(getColumns());
     }
 
 
@@ -50,6 +58,22 @@ public class WorldImp implements World{
      
         return this.generator.getWorldElements();
         
+    }
+
+
+
+    @Override
+    public Bird getBird() {
+        // TODO Auto-generated method stub
+        return this.manager.getBird();
+    }
+
+
+
+    @Override
+    public void sendEvent(KeyEvent event) {
+        // TODO Auto-generated method stub
+        this.manager.updateEvent(event);
     }
    
     

@@ -4,8 +4,11 @@ package controller;
 import java.util.List;
 
 import javafx.application.Platform;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import model.Bird;
 import model.Column;
 import model.Model;
 import model.ModelImp;
@@ -23,6 +26,7 @@ public class ControllerImp implements Controller{
     private GameState gameState;
     public Model model;
     public View view;
+    private KeyEvent event;
     
     Pane pane;
  
@@ -31,7 +35,7 @@ public class ControllerImp implements Controller{
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
-       
+      
     }
 
     @Override
@@ -68,12 +72,12 @@ public class ControllerImp implements Controller{
         gameState = state;
     }
     
-    public void render(List<Column> list, Integer score) {
+    public void render(List<Column> list, Integer score, Bird bird) {
        
   
        
       
-           this.view.render(list,score);
+           this.view.render(list,score,bird);
      
    
        
@@ -106,6 +110,23 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
        return this.model.getLeaderboard();
     }
+
+    @Override
+    public void setEvent(KeyEvent e) {
+        // TODO Auto-generated method stub
+        this.event= e;
+    }
+
+    @Override
+    public KeyEvent getEvent() {
+        // TODO Auto-generated method stub
+       
+        return this.event;
+    }
+
+ 
+
+
 
    
 

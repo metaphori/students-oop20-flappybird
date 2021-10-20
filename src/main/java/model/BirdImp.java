@@ -8,7 +8,7 @@ public class BirdImp implements Bird{
     
     public BirdImp() {
         
-        this.posy = 300;
+        this.posy = 250;
     }
     
     @Override
