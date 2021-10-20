@@ -8,59 +8,63 @@ import java.awt.geom.Rectangle2D;
 public  abstract class ColumnImp implements Column{
     
     private Rectangle column;
-    private double height= 200;
+    private double height;
     private static final double WEIGHT = 50;
- 
-    private String viewObject;
+    private Boolean laserType;
+
     
     
     
-    public ColumnImp(Point position) {
-        
-       
+    public ColumnImp(Point position, Boolean type) {
+        this.laserType = type;
+        this.height = 200;
         this.column = new Rectangle();
-        
-        this.column.setRect(position.getX(), position.getY(), height, WEIGHT);
+        this.column.setRect(position.getX(), position.getY(), WEIGHT, this.height );
+    }
+    
+    @Override
+    public boolean isLaserType() {
+        // TODO Auto-generated method stub
+        return this.laserType;
     }
 
     @Override
     public void updatePosition(Point position) {
-        // TODO Auto-generated method stub
+        
         this.column.setLocation(position);
     }
 
     @Override
     public Point getPosition() {
-        // TODO Auto-generated method stub
+       
         return this.column.getLocation();
     }
 
-    @Override
-    public void setView(String view) {
-        // TODO Auto-generated method stub
-        this.viewObject = view;
-    }
+ 
 
 
     @Override
     public double getHeigth() {
-        // TODO Auto-generated method stub
+      
         return this.height;
     }
 
     @Override
     public double getWidth() {
-        // TODO Auto-generated method stub
-        return this.WEIGHT;
+      
+        return ColumnImp.WEIGHT;
     }
     
     //This is a themplate method
+    @Override
     public void setHeight() {
+        
         this.height = this.updateHeight();
         
         
     }
     
+    @Override
     public Rectangle getColumn() {
         return this.column;
     }

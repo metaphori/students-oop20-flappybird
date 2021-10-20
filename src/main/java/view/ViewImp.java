@@ -1,16 +1,8 @@
 package view;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
+
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
+import java.util.Optional;
 
 import controller.Controller;
 import controller.ControllerImp;
@@ -25,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -37,11 +30,12 @@ import javafx.scene.transform.Transform;
 import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
+import view.ImageID;
 
 public class ViewImp extends Application implements View {
     
-    private static final int width = 800;
-    private static final int height = 600;
+    private double width;
+    private double height;
   
     Rectangle rec;
     Controller controller;
@@ -53,21 +47,26 @@ public class ViewImp extends Application implements View {
     ViewBird viewBird;
     ViewMenu viewMenu;
 
+
             
     
     public ViewImp() {
      
     }
     
+
  /*   public void initiate() {
-        //controller = new ControllerImp();
+        
+        controller = new ControllerImp();
+        width = controller.getGameWidth();
+        height = controller.getGameHeight();
         p = new Pane();
         //viewObstacle = new ViewObstacleImp(p);
         //viewBird = new ViewBird(p);
         viewMenu = new ViewMenu(p);
         
         ImageView img = new ImageView();
-        img.setImage(new Image("background.png"));
+        img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
         img.setFitHeight(height);
         img.setFitWidth(width);
         
@@ -85,6 +84,8 @@ public class ViewImp extends Application implements View {
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
         stage.setScene(new Scene(p));
+        stage.requestFocus();
+        stage.setResizable(false);
         stage.show();
         
         
@@ -139,17 +140,13 @@ public class ViewImp extends Application implements View {
     
     public  void render(List<Column> columns, Integer score, Bird bird) {
         // TODO Auto-generated method stub
-        
-      
-            
 
         
      
-         
+        
       
           Platform.runLater(()->{
-              
-              
+
               viewObstacle.render(columns);
               p.getChildren().remove(label);
               label.setText(Integer.toString(score));
@@ -157,11 +154,7 @@ public class ViewImp extends Application implements View {
               
               viewBird.render(bird);
               
-              p.getScene().setOnKeyPressed(e ->{
-                  {
-                     this.controller.setEvent(e);
-                 }
-             });
+        
               
               }); 
           
@@ -170,20 +163,15 @@ public class ViewImp extends Application implements View {
 
 
 
-
-
-
-
-
-
     @Override
-    public void gameOver() {
-        // TODO Auto-generated method stub
+    public void gameOver(Optional<Integer> topScore) {
+     
+        
         finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
-            System.out.println("view game over");
-            finish.showFinishView(label);
-
+            NameView.show(stage,controller);
+        
+            finish.showFinishView(label,topScore);
           
             }); 
     }

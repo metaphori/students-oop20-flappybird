@@ -6,22 +6,27 @@ import java.util.List;
 
 import model.BasicColumn;
 import model.Column;
+import model.DangerousColumn;
 import model.RandomColumn;
 
 public class ObstacleGenerator implements Generator{
     
-    private List<Column> obstacles;
-    //private OperationGenerate generate;
+    
     private static final double SPACECOLUMN = 200;
+    private static final double INTERSPACE = 150;
+    private static final double BASEMANT = 250;
+    private List<Column> obstacles;
     private double startNext;
     private GameStep gameStep;
     private Point upPosition;
     private double countColumn;
     private Point downPosition;
-    private static double basemant = 250;
-    private static final double interspace = 150;
+    
+    
     private double basemantHeight;
     private double gameHeight;
+    private int count=0;
+    private boolean legendStep;
     
   
     
@@ -30,10 +35,12 @@ public class ObstacleGenerator implements Generator{
 
     
     public ObstacleGenerator(double gameWorldWidth, double gameWorldHeight) {
-        basemantHeight = gameWorldHeight-basemant;
+        
+        basemantHeight = gameWorldHeight-BASEMANT;
         gameHeight = gameWorldHeight;
         countColumn = 0;
         gameStep = GameStep.DIFFICULT;
+        legendStep = false;
         this.obstacles = new ArrayList<>();
      //   this.generate = new OperationGenerateImpl(gameWorldWidth,gameWorldHeight);
         this.startNext = gameWorldWidth - SPACECOLUMN;
@@ -61,23 +68,23 @@ public class ObstacleGenerator implements Generator{
        
         switch (gameStep) {
         case EASY_UP:
-            OperationGenerate generateUp = () -> new BasicColumn(upPosition);
+            OperationGenerate generateUp = () -> new BasicColumn(upPosition,false);
             this.obstacles.add(generateUp.getElement());
             break;
         case EASY_DOWN:
       
-            OperationGenerate generateDown = () -> new BasicColumn(downPosition);
+            OperationGenerate generateDown = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDown.getElement());
             break;
         case NORMAL:
-            OperationGenerate generateUpNormal = () -> new BasicColumn(upPosition);
+            OperationGenerate generateUpNormal = () -> new BasicColumn(upPosition,false);
             this.obstacles.add(generateUpNormal.getElement());
-            OperationGenerate generateDownNormal = () -> new BasicColumn(downPosition);
+            OperationGenerate generateDownNormal = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDownNormal.getElement());
             break;
         case DIFFICULT:
             
-            RandomColumn r = new RandomColumn(upPosition,0);
+            RandomColumn r = new RandomColumn(upPosition,false,0);
             r.setHeight();
             OperationGenerate generateNormalUp = () -> r;
             
@@ -92,6 +99,22 @@ public class ObstacleGenerator implements Generator{
        
             
             break;
+        case LEGEND:
+            if(legendStep) {
+                OperationGenerate generateLegend = () -> new DangerousColumn(upPosition,true);
+                this.obstacles.add(generateLegend.getElement());
+                legendStep = false;
+            } else {
+                OperationGenerate generateLegendd = () -> new DangerousColumn(downPosition,true);
+                
+                this.obstacles.add(generateLegendd.getElement());
+                legendStep=true;
+            }
+            
+            
+            
+          
+            break;    
             
         default:
             break;
@@ -109,10 +132,10 @@ public class ObstacleGenerator implements Generator{
         
         double y = generateNormalUp.getElement().getHeigth();
         Point p = new Point();
-        p.setLocation(downPosition.getX(), y+interspace);
-        double height = gameHeight - 50 - interspace-y;
+        p.setLocation(downPosition.getX(), y+INTERSPACE);
+        double height = gameHeight - 50 - INTERSPACE-y;
        
-        RandomColumn r = new RandomColumn(p,height);
+        RandomColumn r = new RandomColumn(p,false,height);
         r.setHeight();
      
         return ()-> r;
@@ -130,7 +153,8 @@ public class ObstacleGenerator implements Generator{
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
+      
+        
         removeElement();
         if(this.obstacles.isEmpty() || this.checkDistance()) {
             setStep();
@@ -152,14 +176,17 @@ public class ObstacleGenerator implements Generator{
     
     private void setStep() {
         // TODO Auto-generated method stub
+      //  gameStep = GameStep.LEGEND;
         if (countColumn<10) {
             gameStep = GameStep.EASY_DOWN;
         } else if (countColumn<20) {
             gameStep = GameStep.EASY_UP;
         } else if (countColumn<30) {
             gameStep = GameStep.NORMAL;
-        }else {
+        }else if (countColumn<40) {
             gameStep = GameStep.DIFFICULT;
+        } else {
+            gameStep = GameStep.LEGEND;
         }
     }
 

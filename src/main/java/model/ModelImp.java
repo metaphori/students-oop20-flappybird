@@ -19,6 +19,8 @@ public class ModelImp implements Model {
    
     private GameLoopImp gameLoop;
     private LeaderboardManager leaderboardManager;
+    private Gamer gamer;
+    private String score;
     
     
     
@@ -31,31 +33,30 @@ public class ModelImp implements Model {
 
     @Override
     public void updateState(GameState gameState) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub 
     }
 
     @Override
     public double getGameHeight() {
-        // TODO Auto-generated method stub
+ 
         return GAME_WORLD_HEIGHT;
     }
 
     @Override
     public double getGameWeidth() {
-        // TODO Auto-generated method stub
+      
         return GAME_WORLD_WIDTH;
     }
 
     @Override
     public void updateGame() {
-        // TODO Auto-generated method stub
+       
         
     }
 
     @Override
     public void startGame() {
-        // TODO Auto-generated method stub
+     
        
         this.gameLoop.setDaemon(true);
         this.gameLoop.start();
@@ -63,11 +64,29 @@ public class ModelImp implements Model {
 
     @Override
     public List<Gamer> getLeaderboard() {
-        // TODO Auto-generated method stub
+     
        
         
-       
+               leaderboardManager.read();
         return leaderboardManager.getLeaderboard();
+    }
+
+    @Override
+    public void gameOver(Integer score) {
+      
+        this.leaderboardManager.read();
+        this.score = Integer.toString(score);
+       
+        
+    }
+
+    @Override
+    public void addPlayer(String text) {
+        
+        gamer = new Gamer(text);
+        gamer.setScore(score);
+        this.leaderboardManager.addNewGamer(gamer);
+        this.leaderboardManager.write();
     }
 
 }

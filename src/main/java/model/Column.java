@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Rectangle;
 
-public interface Column extends GameObject, ViewObject  {
+public interface Column extends GameObject {
     
    
    void setHeight();
@@ -12,6 +12,8 @@ public interface Column extends GameObject, ViewObject  {
     double getWidth();
     
     Rectangle getColumn();
+    
+    boolean isLaserType();
     
     
     

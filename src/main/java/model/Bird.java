@@ -1,6 +1,6 @@
 package model;
 
-public interface Bird extends ViewObject{
+public interface Bird {
 
    void updatePosition(double posY);
    

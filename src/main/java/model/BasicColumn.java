@@ -4,14 +4,14 @@ import java.awt.Point;
 
 public class BasicColumn extends ColumnImp{
 
-    public BasicColumn(Point position) {
-        super(position);
-        // TODO Auto-generated constructor stub
+    public BasicColumn(Point position, boolean type) {
+        super(position, type);
+      
     }
 
     @Override
     public double updateHeight() {
-        // TODO Auto-generated method stub
+      
         return 0;
     }
 

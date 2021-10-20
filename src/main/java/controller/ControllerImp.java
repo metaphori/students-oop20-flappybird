@@ -2,6 +2,8 @@ package controller;
 
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javafx.application.Platform;
 import javafx.scene.input.KeyEvent;
@@ -24,14 +26,16 @@ public class ControllerImp implements Controller{
     
 
     private GameState gameState;
-    public Model model;
-    public View view;
-    private KeyEvent event;
+
+    private Model model;
+    private View view;
+    private Integer score;
+
     
     Pane pane;
  
     public ControllerImp() {
-        
+     
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
@@ -41,11 +45,12 @@ public class ControllerImp implements Controller{
     @Override
     public void updateState() {
        
-        System.out.println(gameState);
+  
         switch (gameState) {
         case GAME_OVER:
             System.out.println("controll game over");
-          this.view.gameOver();
+            this.model.gameOver(this.score);
+          this.view.gameOver(topScorer());
             break;
         case INITIALIZE:
        //     System.out.println("ciaoo2");
@@ -65,24 +70,31 @@ public class ControllerImp implements Controller{
         }
     }
 
+    private Optional<Integer> topScorer() {
+        // TODO Auto-generated method stub
+        Optional<Integer> topScor =this.model.getLeaderboard().stream().map(a->a.getScore()).map(a-> Integer.parseInt(a)).max((a,b)->a-b);
+        
+        
+        return topScor;
+    }
+
     @Override
     public void setState(GameState state) {
-        // TODO Auto-generated method stub
-        System.out.println("fino a qui tutto bene");
+        
+      
         gameState = state;
     }
     
+
     public void render(List<Column> list, Integer score, Bird bird) {
        
-  
+           this.score = score;
        
       
            this.view.render(list,score,bird);
+
      
-   
-       
-   
-       
+
         
     }
 
@@ -98,12 +110,13 @@ public class ControllerImp implements Controller{
         
     }
 
-    @Override
+  /*  @Override
     public void start(String[] args, View view) {
         // TODO Auto-generated method stub
     
         this.updateState();
-    }
+    }*/
+    
 
     @Override
     public List<Gamer> getLeaderboard() {
@@ -112,20 +125,25 @@ public class ControllerImp implements Controller{
     }
 
     @Override
-    public void setEvent(KeyEvent e) {
+
+    public double getGameHeight() {
         // TODO Auto-generated method stub
-        this.event= e;
+        return this.model.getGameHeight();
     }
 
     @Override
-    public KeyEvent getEvent() {
+    public double getGameWidth() {
         // TODO Auto-generated method stub
-       
-        return this.event;
+        return this.model.getGameWeidth();
     }
 
- 
-
+    @Override
+    public void savePlayer(String text) {
+        // TODO Auto-generated method stub
+        this.model.addPlayer(text);
+    }
+    
+   
 
 
    

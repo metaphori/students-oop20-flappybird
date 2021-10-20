@@ -39,39 +39,40 @@ public class OperationGenerateImpl implements OperationGenerate{
     public Column getElement() {
         // TODO Auto-generated method stub
         
-        this.column = createColumn();
+      //  this.column = createColumn();
         counterColumn++;
-        System.out.println(counterColumn);
+       // System.out.println(counterColumn);
             return this.column;
       
     }
 
     private Column createColumn() {
         // TODO Auto-generated method stub
+        System.out.println("ciaoooo");
         double rand = random.nextDouble();
         if (counterColumn<10) {
-            BasicColumn r = new BasicColumn(downPosition);
+            BasicColumn r = new BasicColumn(downPosition,false);
             return r;
         } else if (counterColumn<20) {
-            BasicColumn r = new BasicColumn(upPosition);
+            BasicColumn r = new BasicColumn(upPosition,false);
             return r;
         } else if (counterColumn<40) {
             if (variable) {
                 variable = false;
-                BasicColumn r = new BasicColumn(upPosition);
+                BasicColumn r = new BasicColumn(upPosition,false);
                 r.setHeight();
                 return r;
             } 
             variable = true;
             
-            BasicColumn r = new BasicColumn(downPosition);
+            BasicColumn r = new BasicColumn(downPosition,false);
             
            
             return r;
         }
         variable = true;
         
-        BasicColumn r = new BasicColumn(downPosition);
+        BasicColumn r = new BasicColumn(downPosition,false);
         
        
         return r;

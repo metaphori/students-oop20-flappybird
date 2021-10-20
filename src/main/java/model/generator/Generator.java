@@ -2,11 +2,13 @@ package model.generator;
 
 import java.util.List;
 
+import model.Column;
 
 
-public interface Generator<E> {
+
+public interface Generator {
     
-    List<E> getWorldElements();
+    List<Column> getWorldElements();
     
     void update();
     

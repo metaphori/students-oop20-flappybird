@@ -19,7 +19,7 @@ public interface Controller {
     
     void setState(GameState state);
 
-    void start(String[] args, View view);
+  //  void start(String[] args, View view);
     
    
 
@@ -35,8 +35,14 @@ public interface Controller {
 
     List<Gamer> getLeaderboard();
 
-    void setEvent(KeyEvent e);
     
-    KeyEvent getEvent();
+
+    public double getGameHeight();
+    
+    public double getGameWidth();
+
+    void savePlayer(String text);
+    
+
 
 }
