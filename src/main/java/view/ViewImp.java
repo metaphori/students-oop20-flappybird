@@ -43,9 +43,10 @@ public class ViewImp extends Application implements View {
     FinishView finish;
     Pane p;
     Stage stage;
-    Label label;
+    
     ViewBird viewBird;
     ViewMenu viewMenu;
+    PlayView playView;
 
 
             
@@ -55,48 +56,14 @@ public class ViewImp extends Application implements View {
     }
     
 
- /*   public void initiate() {
+ 
+    public void initiate() {
+      
         
         controller = new ControllerImp();
-        width = controller.getGameWidth();
-        height = controller.getGameHeight();
         p = new Pane();
-        //viewObstacle = new ViewObstacleImp(p);
-        //viewBird = new ViewBird(p);
-        viewMenu = new ViewMenu(p);
-        
-        ImageView img = new ImageView();
-        img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
-        img.setFitHeight(height);
-        img.setFitWidth(width);
-        
-        label = new Label();
-        label.setLayoutX(400);
-        label.setLayoutY(50);
-        label.setText("0");
-        label.setFont(new Font("Arial", 60));
-        label.setTextFill(Color.ANTIQUEWHITE);
-        
-        
-        p.getChildren().add(img);
-        p.getChildren().add(label);
-        
-        stage.setMaxHeight(height);
-        stage.setMaxWidth(width);
-        stage.setScene(new Scene(p));
-        stage.requestFocus();
-        stage.setResizable(false);
-        stage.show();
-        
-        
-        
-    } */
-    
-    //prova
-    public void initiate() {
-       // the start button
-        p = new Pane();
-        viewMenu = new ViewMenu(p);
+      //  viewMenu = new ViewMenu(p);
+        viewMenu = new ViewMenu(this,p);
         viewMenu.render();
 
         stage.setMaxHeight(height);
@@ -108,7 +75,19 @@ public class ViewImp extends Application implements View {
         
     }
     
-    public void update(){
+    public void playGame(){
+        System.out.println("ciaoo");
+        
+        
+        
+        viewObstacle = new ViewObstacleImp(p);
+        viewBird = new ViewBird(p);
+        playView = new PlayView(p);
+        playView.display(this, controller);
+        
+        
+        
+        
         this.controller.update(this);
     }
 
@@ -130,7 +109,7 @@ public class ViewImp extends Application implements View {
  
          
          
-         //update();
+      
        
     }
     
@@ -148,9 +127,8 @@ public class ViewImp extends Application implements View {
           Platform.runLater(()->{
 
               viewObstacle.render(columns);
-              p.getChildren().remove(label);
-              label.setText(Integer.toString(score));
-              p.getChildren().add(label);
+              playView.updateScore(score);
+              
               
               viewBird.render(bird);
               
@@ -170,8 +148,8 @@ public class ViewImp extends Application implements View {
         finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
             NameView.show(stage,controller);
-        
-            finish.showFinishView(label,topScore);
+           
+            finish.showFinishView(playView.getScore(),topScore);
           
             }); 
     }

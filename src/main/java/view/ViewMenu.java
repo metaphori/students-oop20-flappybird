@@ -12,9 +12,11 @@ import javafx.scene.text.TextAlignment;
 public class ViewMenu {
 
     Pane pane;
+    View view;
     
-    public ViewMenu(Pane p) {
+    public ViewMenu(View viewImp, Pane p) {
         // TODO Auto-generated constructor stub
+        this.view = viewImp;
         pane= p;
     }
 
@@ -27,6 +29,10 @@ public class ViewMenu {
      
         startButton.setText("START");
         startButton.setFont(new Font("Arial", 12));
+        startButton.setOnAction(e->{
+            pane.getChildren().clear();
+            this.view.playGame();
+        });
         
         Button scoreButton= new Button();
         scoreButton.setLayoutX(400);
@@ -54,7 +60,7 @@ public class ViewMenu {
         
         
         ImageView img = new ImageView();
-        img.setImage(new Image("background.png"));
+        img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
         img.setFitHeight(600);
         img.setFitWidth(800);
         
