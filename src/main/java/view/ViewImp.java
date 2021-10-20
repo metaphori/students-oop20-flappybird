@@ -96,62 +96,8 @@ public class ViewImp extends Application implements View {
        // the start button
         p = new Pane();
         viewMenu = new ViewMenu(p);
-        Button startButton= new Button();
-        startButton.setLayoutX(400);
-        startButton.setLayoutY(200);
-        startButton.setTextAlignment(TextAlignment.CENTER);
-        startButton.setAlignment(Pos.CENTER);
-        startButton.setText("START");
-        startButton.setFont(new Font("Arial", 12));
-        
-        Button scoreButton= new Button();
-        scoreButton.setLayoutX(400);
-        scoreButton.setLayoutY(250);
-        scoreButton.setAlignment(Pos.CENTER);
-        scoreButton.setTextAlignment(TextAlignment.CENTER);
-        scoreButton.setText("SCORE");
-        scoreButton.setFont(new Font("Arial", 12));
-        
-        Button exitButton= new Button();
-        exitButton.setLayoutX(400);
-        exitButton.setLayoutY(300);
-        exitButton.setAlignment(Pos.CENTER);
-        exitButton.setTextAlignment(TextAlignment.CENTER);
-        exitButton.setText("EXIT");
-        exitButton.setFont(new Font("Arial", 12));
-        
-        Button playerButton= new Button();
-        playerButton.setLayoutX(400);
-        playerButton.setLayoutY(350);
-        playerButton.setAlignment(Pos.CENTER);
-        playerButton.setTextAlignment(TextAlignment.CENTER);
-        playerButton.setText("SCEGLI IL PERSONAGGIO");
-        playerButton.setFont(new Font("Arial", 12));
-        
-        
-       
-        
-        
-        ImageView img = new ImageView();
-        img.setImage(new Image("background.png"));
-        img.setFitHeight(height);
-        img.setFitWidth(width);
-        
-        label = new Label();
-        label.setLayoutX(400);
-        label.setLayoutY(50);
-        label.setText("0");
-        label.setFont(new Font("Arial", 60));
-        label.setTextFill(Color.ANTIQUEWHITE);
-        
-        
-        p.getChildren().add(img);
-        p.getChildren().add(label);
-        p.getChildren().add(startButton);
-        p.getChildren().add(scoreButton);
-        p.getChildren().add(playerButton);
-        p.getChildren().add(exitButton);
-        
+        viewMenu.render();
+
         stage.setMaxHeight(height);
         stage.setMaxWidth(width);
         stage.setScene(new Scene(p));
