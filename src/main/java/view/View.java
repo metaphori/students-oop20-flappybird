@@ -21,7 +21,7 @@ public interface View {
     void gameOver(Optional<Integer> optional);
 
     void initiate();
-    void update();
+    void playGame();
 
     
 

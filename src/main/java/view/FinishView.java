@@ -93,7 +93,7 @@ public class FinishView {
         buttonReset.setOnAction(e->{
           this.pane.getChildren().clear();
           view.initiate();
-          view.update();
+         // view.update();
         //  this.controller.setState(GameState.INITIALIZE);
           //this.controller.updateState();
          
@@ -158,7 +158,7 @@ public class FinishView {
         button.setOnAction(e->{
             this.pane.getChildren().clear();
             view.initiate();
-            view.update();
+           // view.update();
         });
         
         
