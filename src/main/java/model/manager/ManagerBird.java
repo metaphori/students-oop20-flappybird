@@ -12,6 +12,7 @@ public class ManagerBird implements Manager{
 
     private Bird bird;
     private double height;
+    boolean input;
     private ManagerCollision collision;
     private ManagerJump jump;
     private ManagerGravity gravity;
@@ -19,7 +20,7 @@ public class ManagerBird implements Manager{
     
     public ManagerBird() {
         
-       
+        input= false;
         this.bird = new BirdImp();
         this.collision= new ManagerCollisionImp();
         this.jump= new ManagerJumpImp();
@@ -41,7 +42,7 @@ public class ManagerBird implements Manager{
             //game over
         
         }
-        else if (this.jump.checkInput(e)) {
+        else if (input) {
            
             this.bird.updatePosition(this.jump.jump(bird));
         }
@@ -51,7 +52,13 @@ public class ManagerBird implements Manager{
         } */
      
         
+       if (input) {
+            
+            this.bird.updatePosition(this.jump.jump(bird));
+            System.out.println("salta");
+        }
         
+        this.bird.updatePosition(this.gravity.setGravity(bird));
     }
     
     @Override
@@ -62,8 +69,10 @@ public class ManagerBird implements Manager{
 
 
     @Override
-    public void updateEvent(KeyEvent event) {
+    public void checkEvent(boolean input) {
         // TODO Auto-generated method stub
-        this.eventJump = event;
+       this.input= input;
     }
+
+
 }

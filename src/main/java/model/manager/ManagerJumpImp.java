@@ -22,29 +22,9 @@ public class ManagerJumpImp implements ManagerJump{
      public double jump(Bird b) {
          // TODO Auto-generated method stub
          
-         this.height= b.getCenterY()- 1;
+         this.height= b.getCenterY()- 50;
          return this.height;
      }
-    
-    private boolean pressButton(KeyEvent event) {
-        
-        
-  //     this.codeString = event.getCode().toString();
-        
-        if (event.getCode() == KeyCode.SPACE) {
-           
-            return true;
-        }
-        return false; 
-    }
 
-   
-    
-    @Override
-    public boolean checkInput(KeyEvent event) {
-        // TODO Auto-generated method stub
-      
-        
-        return pressButton(event);
-    }
+
 }

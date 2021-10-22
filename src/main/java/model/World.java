@@ -14,10 +14,9 @@ public interface World {
     
     List<Column> getColumns();
 
-    void update();
+    void update(boolean b);
 
 
-    void sendEvent(KeyEvent event);
    
     
     

@@ -5,7 +5,7 @@ import model.Bird;
 
 public interface ManagerJump {
 
-    boolean checkInput(KeyEvent e);
+  
 
     double jump(Bird b);
     

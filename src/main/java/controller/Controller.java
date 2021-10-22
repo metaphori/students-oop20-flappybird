@@ -42,6 +42,8 @@ public interface Controller {
     public double getGameWidth();
 
     void savePlayer(String text);
+
+    boolean checkInput();
     
 
 

@@ -36,6 +36,7 @@ public class ViewImp extends Application implements View {
     
     private double width;
     private double height;
+    boolean b;
   
     Rectangle rec;
     Controller controller;
@@ -59,7 +60,7 @@ public class ViewImp extends Application implements View {
  
     public void initiate() {
       
-        
+        b = false;
         controller = new ControllerImp();
         p = new Pane();
         //viewMenu = new ViewMenu(p);
@@ -153,6 +154,25 @@ public class ViewImp extends Application implements View {
             finish.showFinishView(playView.getScore(),topScore);
           
             }); 
+    }
+
+
+
+    @Override
+    public boolean checkInput() {
+        // TODO Auto-generated method stub
+        Platform.runLater(()->{
+            b = false;
+            p.getScene().setOnKeyPressed(e->{
+                if (e.getCode() == KeyCode.SPACE) {
+                    
+                    b = true;
+                }
+               
+            });
+        });
+       
+        return b;
     }
 
 

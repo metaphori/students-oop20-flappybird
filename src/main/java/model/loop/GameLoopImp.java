@@ -40,12 +40,12 @@ public class GameLoopImp  extends Thread implements GameLoop{
             final int elapsed = (int) (current - lastTime);
             lastTime = current;
          
-            this.world.update();
+            this.world.update(this.controller.checkInput());
             
            this.controller.render(this.getColumn(), this.world.getScore(), this.world.getBird());
            
 
-           if (finish -start > 20000) {
+           if (finish -start > 100000) {
 
                stop=false;
             

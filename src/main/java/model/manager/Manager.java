@@ -13,5 +13,6 @@ public interface Manager {
 
     void updateColumns(List<Column> list);
 
-    void updateEvent(KeyEvent event);
+    void checkEvent(boolean input);
+
 }

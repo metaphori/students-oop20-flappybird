@@ -43,10 +43,11 @@ public class WorldImp implements World{
   
 
     @Override
-    public void update() {
+    public void update(boolean input) {
     
         this.generator.update();
         this.score.update();
+        this.manager.checkEvent(input);
         this.manager.updateColumns(getColumns());
     }
 
@@ -69,12 +70,6 @@ public class WorldImp implements World{
     }
 
 
-
-    @Override
-    public void sendEvent(KeyEvent event) {
-        // TODO Auto-generated method stub
-        this.manager.updateEvent(event);
-    }
    
     
 

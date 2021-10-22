@@ -142,6 +142,13 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
         this.model.addPlayer(text);
     }
+
+    @Override
+    public boolean checkInput() {
+        
+        // TODO Auto-generated method stub
+        return this.view.checkInput();
+    }
     
    
 
