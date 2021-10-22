@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -12,6 +13,7 @@ public class ViewBird {
     private Pane pane;
     private Circle bird;
     private double h = 200;
+    //private Object image;
   
     
     public ViewBird(Pane p) {
@@ -38,7 +40,12 @@ public class ViewBird {
         this.bird.setLayoutY(b.getCenterY());
         this.bird.setLayoutX(b.getCenterX());
         this.bird.setRadius(b.getRadius());
-        this.bird.setFill(new ImagePattern(new Image("player.png")));
+       // this.bird.setFill(new ImagePattern(new Image("player.png")));
+    }
+    
+    public void setImage(Image img){
+       
+        this.bird.setFill(new ImagePattern(img));
     }
 
 }

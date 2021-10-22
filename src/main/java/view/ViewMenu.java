@@ -16,10 +16,15 @@ public class ViewMenu {
 
     Pane pane;
     View view;
+    ViewBird viewBird;
+    Stage stage;
     
-    public ViewMenu(View viewImp, Pane p) {
+    
+    public ViewMenu(View viewImp, Pane p, ViewBird viewBird, Stage parentStage) {
         // TODO Auto-generated constructor stub
         this.view = viewImp;
+        this.viewBird = viewBird;
+        this.stage = parentStage;
         pane= p;
     }
 
@@ -60,7 +65,9 @@ public class ViewMenu {
         playerButton.setTextAlignment(TextAlignment.CENTER);
         playerButton.setText("SCEGLI IL PERSONAGGIO");
         playerButton.setFont(new Font("Arial", 12));
-        
+        playerButton.setOnAction(e-> {
+            PlayerView.show(viewBird,stage);
+        });
         
         ImageView img = new ImageView();
         img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
@@ -76,21 +83,11 @@ public class ViewMenu {
         
     }
     
-    public static void show(Stage parentStage, Controller controller) {
-        Stage stage= new Stage();
-        Label label= new Label("Choose player");
-        Button chooseButton= new Button("Select");
-        label.setStyle("-fx-font-size: 20;");
-        label.setLayoutX(75);
-        label.setLayoutY(20);
-        chooseButton.setLayoutX(120);
-        chooseButton.setLayoutY(120);
-        chooseButton.setPrefWidth(60);
-        
+ 
                 
                 
         
     }
 
   
-}
+

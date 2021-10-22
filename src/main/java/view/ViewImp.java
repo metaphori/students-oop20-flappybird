@@ -62,12 +62,13 @@ public class ViewImp extends Application implements View {
         
         controller = new ControllerImp();
         p = new Pane();
-      //  viewMenu = new ViewMenu(p);
-        viewMenu = new ViewMenu(this,p);
+        //viewMenu = new ViewMenu(p);
+        viewBird = new ViewBird(p);
+        viewMenu = new ViewMenu(this,p,viewBird,stage);
         viewMenu.render();
 
-        stage.setMaxHeight(height);
-        stage.setMaxWidth(width);
+        stage.setMaxHeight(600);
+        stage.setMaxWidth(800);
         stage.setScene(new Scene(p));
         stage.show();
         
@@ -81,7 +82,7 @@ public class ViewImp extends Application implements View {
         
         
         viewObstacle = new ViewObstacleImp(p);
-        viewBird = new ViewBird(p);
+        
         playView = new PlayView(p);
         playView.display(this, controller);
         
@@ -106,7 +107,7 @@ public class ViewImp extends Application implements View {
         this.stage = primaryStage;
         initiate();
      
- 
+      
          
          
       
