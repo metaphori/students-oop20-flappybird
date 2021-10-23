@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Point;
 
-public class BasicColumn extends ColumnImp{
+public class BasicColumn extends AbstractColumn{
 
     public BasicColumn(Point position, boolean type) {
         super(position, type);

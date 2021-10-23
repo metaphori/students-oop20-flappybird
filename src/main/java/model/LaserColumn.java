@@ -3,7 +3,7 @@ package model;
 import java.awt.Point;
 import java.util.Random;
 
-public class DangerousColumn extends ColumnImp{
+public class LaserColumn extends AbstractColumn{
     
     
     private static final double MIN_HEIGHT = 50;
@@ -12,7 +12,7 @@ public class DangerousColumn extends ColumnImp{
     private boolean upDownSwitch;
     private boolean typeUp;
     
-    public DangerousColumn(Point position, boolean type) {
+    public LaserColumn(Point position, boolean type) {
         
         super(position,type);
      

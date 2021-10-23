@@ -60,16 +60,18 @@ public class ViewImp extends Application implements View {
     public void initiate() {
       
         
-        controller = new ControllerImp();
+        controller = new ControllerImp(this);
         p = new Pane();
       //  viewMenu = new ViewMenu(p);
         viewMenu = new ViewMenu(this,p);
         viewMenu.render();
 
-        stage.setMaxHeight(height);
-        stage.setMaxWidth(width);
+        stage.setMaxHeight(600);
+        stage.setMaxWidth(800);
         stage.setScene(new Scene(p));
         stage.show();
+        stage.setResizable(false);
+        
         
         
         
@@ -88,7 +90,7 @@ public class ViewImp extends Application implements View {
         
         
         
-        this.controller.update(this);
+        this.controller.updateState();
     }
 
 
