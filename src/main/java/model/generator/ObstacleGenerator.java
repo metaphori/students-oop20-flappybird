@@ -6,7 +6,7 @@ import java.util.List;
 
 import model.BasicColumn;
 import model.Column;
-import model.DangerousColumn;
+import model.LaserColumn;
 import model.RandomColumn;
 
 public class ObstacleGenerator implements Generator{
@@ -101,11 +101,11 @@ public class ObstacleGenerator implements Generator{
             break;
         case LEGEND:
             if(legendStep) {
-                OperationGenerate generateLegend = () -> new DangerousColumn(upPosition,true);
+                OperationGenerate generateLegend = () -> new LaserColumn(upPosition,true);
                 this.obstacles.add(generateLegend.getElement());
                 legendStep = false;
             } else {
-                OperationGenerate generateLegendd = () -> new DangerousColumn(downPosition,true);
+                OperationGenerate generateLegendd = () -> new LaserColumn(downPosition,true);
                 
                 this.obstacles.add(generateLegendd.getElement());
                 legendStep=true;

@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public  abstract class ColumnImp implements Column{
+public  abstract class AbstractColumn implements Column{
     
     private Rectangle column;
     private double height;
@@ -15,7 +15,7 @@ public  abstract class ColumnImp implements Column{
     
     
     
-    public ColumnImp(Point position, Boolean type) {
+    public AbstractColumn(Point position, Boolean type) {
         this.laserType = type;
         this.height = 200;
         this.column = new Rectangle();
@@ -52,7 +52,7 @@ public  abstract class ColumnImp implements Column{
     @Override
     public double getWidth() {
       
-        return ColumnImp.WEIGHT;
+        return AbstractColumn.WEIGHT;
     }
     
     //This is a themplate method
@@ -69,7 +69,7 @@ public  abstract class ColumnImp implements Column{
         return this.column;
     }
     
-    public abstract double updateHeight();
+    protected abstract double updateHeight();
     
     
    

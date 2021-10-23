@@ -29,6 +29,7 @@ public class ManagerCollisionImp implements ManagerCollision{
     @Override
     public boolean checkColumnCollision(List<Column> list, Bird bird) {
         // TODO Auto-generated method stub
+
            
            list.forEach(l->{
               if(intersect(bird, l)) {
@@ -39,6 +40,7 @@ public class ManagerCollisionImp implements ManagerCollision{
        
           return result;
      
+
     }
 
 
