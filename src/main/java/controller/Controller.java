@@ -43,7 +43,13 @@ public interface Controller {
 
     void savePlayer(String text);
 
-    boolean checkInput();
+    void checkInput();
+
+    GameState getState();
+
+    boolean jump();
+
+    void setJump(boolean input);
     
 
 

@@ -48,6 +48,7 @@ public class ViewImp extends Application implements View {
     ViewBird viewBird;
     ViewMenu viewMenu;
     PlayView playView;
+    ViewObserver observer;
 
 
             
@@ -64,7 +65,7 @@ public class ViewImp extends Application implements View {
         controller = new ControllerImp();
         p = new Pane();
         //viewMenu = new ViewMenu(p);
-        viewBird = new ViewBird(p);
+        viewBird = new ViewBirdImp(p);
         viewMenu = new ViewMenu(this,p,viewBird,stage);
         viewMenu.render();
 
@@ -81,7 +82,7 @@ public class ViewImp extends Application implements View {
         System.out.println("ciaoo");
         
         
-        
+        observer = new ViewObserverImpl(controller);
         viewObstacle = new ViewObstacleImp(p);
         
         playView = new PlayView(p);
@@ -158,7 +159,7 @@ public class ViewImp extends Application implements View {
 
 
 
-    @Override
+  /*  @Override
     public boolean checkInput() {
         // TODO Auto-generated method stub
         Platform.runLater(()->{
@@ -173,6 +174,22 @@ public class ViewImp extends Application implements View {
         });
        
         return b;
+    }*/
+    
+    public void checkInput() {
+        // TODO Auto-generated method stub
+        Platform.runLater(()->{
+            b = false;
+            p.getScene().setOnKeyPressed(e->{
+                if (e.getCode() == KeyCode.SPACE) {
+                    
+                    this.observer.pressSpace();
+                }
+               
+            });
+        });
+       
+        
     }
 
 

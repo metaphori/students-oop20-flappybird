@@ -30,6 +30,7 @@ public class ControllerImp implements Controller{
     private Model model;
     private View view;
     private Integer score;
+    private boolean jump;
 
     
     Pane pane;
@@ -39,6 +40,7 @@ public class ControllerImp implements Controller{
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
+        this.jump = false;
       
     }
 
@@ -144,10 +146,29 @@ public class ControllerImp implements Controller{
     }
 
     @Override
-    public boolean checkInput() {
+    public void checkInput() {
         
         // TODO Auto-generated method stub
-        return this.view.checkInput();
+        this.view.checkInput();
+    }
+
+    @Override
+    public GameState getState() {
+        // TODO Auto-generated method stub
+        return this.gameState;
+    }
+
+    @Override
+    public boolean jump() {
+        // TODO Auto-generated method stub
+        
+        return this.jump;
+    }
+
+    @Override
+    public void setJump(boolean input) {
+        // TODO Auto-generated method stub
+        this.jump = input;
     }
     
    

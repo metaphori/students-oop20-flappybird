@@ -23,7 +23,7 @@ public interface View {
     void initiate();
     void playGame();
 
-    boolean checkInput();
+    void checkInput();
 
     
 

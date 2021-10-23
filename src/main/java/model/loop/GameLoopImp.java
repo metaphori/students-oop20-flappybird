@@ -39,17 +39,18 @@ public class GameLoopImp  extends Thread implements GameLoop{
             final long finish = System.currentTimeMillis();
             final int elapsed = (int) (current - lastTime);
             lastTime = current;
-         
-            this.world.update(this.controller.checkInput());
+            
+            this.controller.checkInput();
+            this.world.update(this.controller.jump(),controller);
+            this.controller.setJump(false);
             
            this.controller.render(this.getColumn(), this.world.getScore(), this.world.getBird());
            
 
-           if (finish -start > 100000) {
-
+           if (this.controller.getState() == GameState.GAME_OVER) {
+               
+               
                stop=false;
-            
-               this.controller.setState(GameState.GAME_OVER);
               
                
            }

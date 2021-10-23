@@ -1,8 +1,12 @@
 package model.manager;
 
 import java.util.Iterator;
+import java.awt.Point;
 import java.util.List;
 
+
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import model.Bird;
@@ -14,6 +18,7 @@ public class ManagerCollisionImp implements ManagerCollision{
     private Column listColumn;
     private List<Rectangle> object;
     private boolean result;
+    private double posy;
     
     public ManagerCollisionImp() {
         
@@ -24,17 +29,29 @@ public class ManagerCollisionImp implements ManagerCollision{
     @Override
     public boolean checkColumnCollision(List<Column> list, Bird bird) {
         // TODO Auto-generated method stub
-      
-       for(int i=0; i < list.size(); i++) {
-          this.result= intersect(bird,list.get(i));
-       }
-        return false;
+           
+           list.forEach(l->{
+              if(intersect(bird, l)) {
+                  result = true;
+              };
+               
+           });
+       
+          return result;
+     
     }
 
 
-    private boolean intersect(Bird bird2, Column column) {
+    private boolean intersect(Bird circleBird, Column column) {
         // TODO Auto-generated method stub
-       
+        Point position = column.getPosition();
+        if (circleBird.getCenterX() > position.getX() && circleBird.getCenterX() < position.getX() + column.getWidth() && 
+            circleBird.getCenterY() > position.getY() && circleBird.getCenterY() < position.getY() + column.getHeigth()) {
+            System.out.println("return true");
+            return true;
+            
+        }
+        
         return false;
     }
 
@@ -42,7 +59,9 @@ public class ManagerCollisionImp implements ManagerCollision{
     @Override
     public boolean checkFloorCollision(Bird bird) {
         // TODO Auto-generated method stub
-        if (bird.getCenterY() > 750) {
+        this.posy = bird.getCenterY();
+        System.out.println(posy);
+        if (posy >= 550) {
             return true;
         }
         else {

@@ -5,28 +5,32 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.Controller;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
 import model.generator.Generator;
 import model.generator.ObstacleGenerator;
-import model.manager.Manager;
 import model.manager.ManagerBird;
+import model.manager.ManagerBirdImp;
 
 public class WorldImp implements World{
     
-    
-    private Manager manager;
+    private static final double HEIGHT_FLOOR = 50;
+    private ManagerBird manager;
     private Generator generator;
     private Score score;
+    private double floorPosition;
+    
     
    
     
     public WorldImp(double gameWorldWidth, double gameWorldHeight) {
         
+        this.floorPosition = gameWorldHeight - HEIGHT_FLOOR;
         score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
         
-        this.manager = new ManagerBird();
+        this.manager = new ManagerBirdImp(floorPosition);
     }
 
    
@@ -43,12 +47,12 @@ public class WorldImp implements World{
   
 
     @Override
-    public void update(boolean input) {
+    public void update(boolean input, Controller controller) {
     
         this.generator.update();
         this.score.update();
         this.manager.checkEvent(input);
-        this.manager.updateColumns(getColumns());
+        this.manager.checkCollision(this.getColumns(),controller);
     }
 
 

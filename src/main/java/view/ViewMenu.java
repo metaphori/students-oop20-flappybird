@@ -20,10 +20,10 @@ public class ViewMenu {
     Stage stage;
     
     
-    public ViewMenu(View viewImp, Pane p, ViewBird viewBird, Stage parentStage) {
+    public ViewMenu(View viewImp, Pane p, ViewBird viewBirdImp, Stage parentStage) {
         // TODO Auto-generated constructor stub
         this.view = viewImp;
-        this.viewBird = viewBird;
+        this.viewBird = viewBirdImp;
         this.stage = parentStage;
         pane= p;
     }

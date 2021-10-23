@@ -6,12 +6,15 @@ import model.BirdImp;
 public class ManagerGravityImp implements ManagerGravity{
 
     private Bird bird;
-    private double y;
+    private double yBird;
     private int ticks;
+    private double floorPosition;
+    private int yMotion;
     
-    public ManagerGravityImp() {
+    public ManagerGravityImp(double floorPosition) {
         
-       
+       this.floorPosition = floorPosition;
+       this.yMotion = 1;
        
     }
 
@@ -21,9 +24,9 @@ public class ManagerGravityImp implements ManagerGravity{
     @Override
     public double setGravity(Bird b) {
         // TODO Auto-generated method stub
-        y= b.getCenterY();
+        this.yBird= b.getCenterY();
         fallBird();
-        return y;
+        return this.yBird;
         
     
     }
@@ -31,15 +34,14 @@ public class ManagerGravityImp implements ManagerGravity{
 
     private double fallBird() {
         // TODO Auto-generated method stub
-      /*  if (y == 790) {
-            y= y -1;
+        if (yBird > 0 && yBird < floorPosition) {
+            this.yBird= yBird +1;
         }
         else {
-            y= y + 1; 
+            this.yBird= yBird; 
         }
         
-        return y; */
-        y= y + 1;   
-        return y;
+        return this.yBird; 
+     
     }
 }
