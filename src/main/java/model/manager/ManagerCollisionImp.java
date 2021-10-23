@@ -19,10 +19,12 @@ public class ManagerCollisionImp implements ManagerCollision{
     private List<Rectangle> object;
     private boolean result;
     private double posy;
+    private double floorPosition;
     
-    public ManagerCollisionImp() {
+    public ManagerCollisionImp(double floorPosition) {
         
         this.result= false;
+        this.floorPosition = floorPosition;
     }
    
 
@@ -59,9 +61,9 @@ public class ManagerCollisionImp implements ManagerCollision{
     @Override
     public boolean checkFloorCollision(Bird bird) {
         // TODO Auto-generated method stub
-        this.posy = bird.getCenterY();
+        this.posy = bird.getCenterY() + bird.getRadius();
         System.out.println(posy);
-        if (posy >= 550) {
+        if (posy >= floorPosition) {
             return true;
         }
         else {

@@ -25,7 +25,7 @@ public class ManagerBirdImp implements ManagerBird{
         
         input= false;
         this.bird = new BirdImp();
-        this.collision= new ManagerCollisionImp();
+        this.collision= new ManagerCollisionImp(floorPosition);
         this.jump= new ManagerJumpImp();
         this.gravity= new ManagerGravityImp(floorPosition);
         

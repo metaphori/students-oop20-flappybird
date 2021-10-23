@@ -31,8 +31,9 @@ public class ViewMenu {
     public void render() {
         
         Button startButton= new Button();
-        startButton.setLayoutX(400);
+        startButton.setLayoutX(325);
         startButton.setLayoutY(200);
+        startButton.setPrefWidth(150);
         startButton.setTextAlignment(TextAlignment.CENTER);
      
         startButton.setText("START");
@@ -43,27 +44,27 @@ public class ViewMenu {
         });
         
         Button scoreButton= new Button();
-        scoreButton.setLayoutX(400);
+        scoreButton.setLayoutX(325);
         scoreButton.setLayoutY(250);
-       
+        scoreButton.setPrefWidth(150);
         scoreButton.setTextAlignment(TextAlignment.CENTER);
         scoreButton.setText("SCORE");
         scoreButton.setFont(new Font("Arial", 12));
         
         Button exitButton= new Button();
-        exitButton.setLayoutX(400);
+        exitButton.setLayoutX(325);
         exitButton.setLayoutY(300);
-        
+        exitButton.setPrefWidth(150);
         exitButton.setTextAlignment(TextAlignment.CENTER);
         exitButton.setText("EXIT");
         exitButton.setFont(new Font("Arial", 12));
         
         Button playerButton= new Button();
-        playerButton.setLayoutX(400);
+        playerButton.setLayoutX(325);
         playerButton.setLayoutY(350);
-       
+        playerButton.setPrefWidth(150);
         playerButton.setTextAlignment(TextAlignment.CENTER);
-        playerButton.setText("SCEGLI IL PERSONAGGIO");
+        playerButton.setText("SELECT PLAYER");
         playerButton.setFont(new Font("Arial", 12));
         playerButton.setOnAction(e-> {
             PlayerView.show(viewBird,stage);
@@ -74,10 +75,18 @@ public class ViewMenu {
         img.setFitHeight(600);
         img.setFitWidth(800);
         
+        ImageView title= new ImageView();
+        title.setImage(new Image("title.png"));
+        title.setFitHeight(200);
+        title.setFitWidth(600);
+        title.setLayoutX(100);
+        
+        
         pane.getChildren().add(img);
+        pane.getChildren().add(title);
         pane.getChildren().add(startButton);
-        pane.getChildren().add(scoreButton);
         pane.getChildren().add(playerButton);
+        pane.getChildren().add(scoreButton);
         pane.getChildren().add(exitButton);
         
         

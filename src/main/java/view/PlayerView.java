@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -18,13 +19,14 @@ public class PlayerView {
     public static void show(ViewBird viewBird, Stage parentStage) {
         Stage stage= new Stage();
         Pane pane = new Pane();
-        Label label= new Label("Choose player");
+        Label label= new Label("Select player");
         Button firstButton= new Button();
         Button secondButton= new Button();
         Button thirdButton= new Button();
         label.setStyle("-fx-font-size: 20;");
-        label.setLayoutX(75);
+        label.setLayoutX(115);
         label.setLayoutY(20);
+        label.setTextAlignment(TextAlignment.CENTER);
         
         
         ImageView firstBird= new ImageView();
@@ -42,7 +44,7 @@ public class PlayerView {
         thirdBird.setFitHeight(40);
         thirdBird.setPreserveRatio(true);
         
-        firstButton.setLayoutX(100);
+        firstButton.setLayoutX(42);
         firstButton.setLayoutY(100);
         firstButton.setPrefWidth(60);
         firstButton.setGraphic(firstBird);
@@ -52,7 +54,7 @@ public class PlayerView {
         });
         
         
-        secondButton.setLayoutX(200);
+        secondButton.setLayoutX(144);
         secondButton.setLayoutY(100);
         secondButton.setPrefWidth(60);
         secondButton.setGraphic(secondBird);
@@ -61,7 +63,7 @@ public class PlayerView {
             stage.close();
         });
         
-        thirdButton.setLayoutX(300);
+        thirdButton.setLayoutX(248);
         thirdButton.setLayoutY(100);
         thirdButton.setPrefWidth(60);
         thirdButton.setGraphic(thirdBird);
@@ -77,8 +79,8 @@ public class PlayerView {
         stage.setTitle("PLAYER");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(parentStage);
-        stage.setHeight(300);
-        stage.setWidth(400);
+        stage.setHeight(250);
+        stage.setWidth(350);
         stage.setScene(new Scene(pane));
         stage.requestFocus();
         stage.setResizable(false);

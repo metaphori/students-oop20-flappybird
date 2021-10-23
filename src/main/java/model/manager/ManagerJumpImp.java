@@ -8,6 +8,7 @@ import model.BirdImp;
 public class ManagerJumpImp implements ManagerJump{
 
     private double height;
+    private double yJump;
     private String codeString;
     
     
@@ -15,6 +16,7 @@ public class ManagerJumpImp implements ManagerJump{
      public ManagerJumpImp() {
         // TODO Auto-generated constructor stub
         // this.height = 0;
+         this.yJump = 50;
       
     }
 
@@ -22,7 +24,7 @@ public class ManagerJumpImp implements ManagerJump{
      public double jump(Bird b) {
          // TODO Auto-generated method stub
          
-         this.height= b.getCenterY()- 50;
+         this.height= b.getCenterY()- yJump;
          return this.height;
      }
 
