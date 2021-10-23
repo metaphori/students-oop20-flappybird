@@ -59,8 +59,8 @@ public class ViewImp extends Application implements View {
  
     public void initiate() {
       
+        controller = new ControllerImp();
         
-        controller = new ControllerImp(this);
         p = new Pane();
       //  viewMenu = new ViewMenu(p);
         viewMenu = new ViewMenu(this,p);

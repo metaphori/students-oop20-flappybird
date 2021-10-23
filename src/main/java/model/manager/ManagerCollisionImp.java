@@ -24,7 +24,9 @@ public class ManagerCollisionImp implements ManagerCollision{
     @Override
     public boolean checkColumnCollision(List<Column> list, Bird bird) {
         // TODO Auto-generated method stub
-      
+      list.forEach(i->{
+         
+      });
        for(int i=0; i < list.size(); i++) {
           this.result= intersect(bird,list.get(i));
        }
