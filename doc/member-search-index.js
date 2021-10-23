@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"model.manager","c":"ManagerBird","l":"checkCollision(List<Column>, Controller)","url":"checkCollision(java.util.List,controller.Controller)"},{"p":"model.manager","c":"ManagerBird","l":"checkEvent(boolean)"},{"p":"model.manager","c":"ManagerBird","l":"getBird()"}]
