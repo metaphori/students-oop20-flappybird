@@ -47,8 +47,8 @@ public class ManagerCollisionImp implements ManagerCollision{
     private boolean intersect(Bird circleBird, Column column) {
         // TODO Auto-generated method stub
         Point position = column.getPosition();
-        if (circleBird.getCenterX() > position.getX() && circleBird.getCenterX() < position.getX() + column.getWidth() && 
-            circleBird.getCenterY() > position.getY() && circleBird.getCenterY() < position.getY() + column.getHeigth()) {
+        if (circleBird.getCenterX() + circleBird.getRadius() > position.getX() && circleBird.getCenterX() + circleBird.getRadius() < position.getX() + column.getWidth() && 
+            circleBird.getCenterY() + circleBird.getRadius() > position.getY() && circleBird.getCenterY() + circleBird.getRadius() < position.getY() + column.getHeigth()) {
             System.out.println("return true");
             return true;
             

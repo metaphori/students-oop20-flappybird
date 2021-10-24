@@ -32,6 +32,10 @@ public class ViewBirdImp implements ViewBird{
       
     }
 
+    /**
+     * Update circle's position.
+     * @param b Bird.
+     */
     private void updatePosition(Bird b) {
         // TODO Auto-generated method stub
         

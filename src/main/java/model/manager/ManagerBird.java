@@ -10,8 +10,17 @@ import model.Column;
 
 public interface ManagerBird {
 
+    /**
+     * Get Bird.
+     * @return bird defined.
+     */
     Bird getBird();
 
+    /**
+     * Bird collision control.
+     * @param list List of the column.
+     * @param controller Controller.
+     */
     void checkCollision(List<Column> list, Controller controller);
 
     void checkEvent(boolean input);

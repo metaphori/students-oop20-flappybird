@@ -14,7 +14,11 @@ import javafx.stage.Stage;
 public class PlayerView {
 
     
-    
+    /**
+     * Shows the new stage where you can choose the player.
+     * @param parentStage is the owner window.
+     * @param viewBird.
+     */
     
     public static void show(ViewBird viewBird, Stage parentStage) {
         Stage stage= new Stage();
@@ -30,17 +34,17 @@ public class PlayerView {
         
         
         ImageView firstBird= new ImageView();
-        firstBird.setImage(new Image("player.png"));
+        firstBird.setImage(new Image(ImageID.PLAYER_ONE_BUTTON.getPath()));
         firstBird.setFitHeight(40);
         firstBird.setPreserveRatio(true);
         
         ImageView secondBird= new ImageView();
-        secondBird.setImage(new Image("player2.png"));
+        secondBird.setImage(new Image(ImageID.PLAYER_TWO_BUTTON.getPath()));
         secondBird.setFitHeight(40);
         secondBird.setPreserveRatio(true);
         
         ImageView thirdBird= new ImageView();
-        thirdBird.setImage(new Image("player3.png"));
+        thirdBird.setImage(new Image(ImageID.PLAYER_THREE_BUTTON.getPath()));
         thirdBird.setFitHeight(40);
         thirdBird.setPreserveRatio(true);
         

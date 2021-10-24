@@ -40,9 +40,7 @@ public class ManagerBirdImp implements ManagerBird{
             controller.setState(GameState.GAME_OVER);
             
         }
-        
-     
-        
+   
        if (input) {
             
             this.bird.updatePosition(this.jump.jump(bird));
@@ -52,7 +50,6 @@ public class ManagerBirdImp implements ManagerBird{
            
            controller.setState(GameState.GAME_OVER);
            
-       
        }
         
         this.bird.updatePosition(this.gravity.setGravity(bird));

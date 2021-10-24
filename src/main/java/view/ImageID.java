@@ -10,7 +10,13 @@ public enum ImageID {
     LASER("laser.png"),
     LEADERBOARD_BACKGROUND("leaderboard_background.png"),
     LEADERBOARD_BUTTON("leaderboard.png"),
-    PLAY_BUTTON("play.png");
+    PLAY_BUTTON("play.png"),
+    MENU_BACKGROUND("background_menu.png"),
+    PLAYER_ONE_BUTTON("player.png"),
+    PLAYER_TWO_BUTTON("player2.png"),
+    PLAYER_THREE_BUTTON("player3.png");
+    
+    
     
 
     private final String path;
