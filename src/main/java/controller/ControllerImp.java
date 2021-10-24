@@ -35,8 +35,9 @@ public class ControllerImp implements Controller{
     
     Pane pane;
  
-    public ControllerImp() {
+    public ControllerImp(ViewImp view) {
      
+        this.view = view;
         this.model = new ModelImp(this);
       //  this.view = new ViewImp();
         this.gameState = GameState.INITIALIZE;
@@ -102,22 +103,7 @@ public class ControllerImp implements Controller{
 
   
 
-   
-    @Override
-    public void update(View viewd) {
-        // TODO Auto-generated method stub
-        System.out.println("fino a qui tutto bene");
-        this.view = viewd;
-        this.updateState();
-        
-    }
-
-  /*  @Override
-    public void start(String[] args, View view) {
-        // TODO Auto-generated method stub
-    
-        this.updateState();
-    }*/
+ 
     
 
     @Override
@@ -145,6 +131,7 @@ public class ControllerImp implements Controller{
         this.model.addPlayer(text);
     }
 
+
     @Override
     public void checkInput() {
         
@@ -170,6 +157,7 @@ public class ControllerImp implements Controller{
         // TODO Auto-generated method stub
         this.jump = input;
     }
+
     
    
 

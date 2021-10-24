@@ -3,7 +3,7 @@ package model;
 import java.awt.Point;
 import java.util.Random;
 
-public class RandomColumn extends ColumnImp{
+public class RandomColumn extends AbstractColumn{
     
     
     private static final double MIN_HEIGHT = 50;

@@ -31,7 +31,7 @@ public interface Controller {
 
   
 
-    void update(View viewImp);
+  
 
     List<Gamer> getLeaderboard();
 
