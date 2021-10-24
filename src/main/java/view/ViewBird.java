@@ -15,7 +15,7 @@ public interface ViewBird {
     void render(Bird b);
     
     /**
-     * Set rectangle's image.
+     * Set circle's image.
      * @param img bird image
      */
     void setImage(Image img);

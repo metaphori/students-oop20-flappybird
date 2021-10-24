@@ -7,10 +7,10 @@ import controller.Controller;
 import controller.GameState;
 import javafx.scene.input.KeyEvent;
 import model.Bird;
-import model.BirdImp;
+import model.BirdImpl;
 import model.Column;
 
-public class ManagerBirdImp implements ManagerBird{
+public class ManagerBirdImpl implements ManagerBird{
 
     private Bird bird;
     private double height;
@@ -20,14 +20,17 @@ public class ManagerBirdImp implements ManagerBird{
     private ManagerGravity gravity;
     KeyEvent eventJump;
     
-    
-    public ManagerBirdImp(double floorPosition) {
+    /**
+     * This is the constructor method .
+     * 
+     */
+    public ManagerBirdImpl(double floorPosition) {
         
         input= false;
-        this.bird = new BirdImp();
-        this.collision= new ManagerCollisionImp(floorPosition);
-        this.jump= new ManagerJumpImp();
-        this.gravity= new ManagerGravityImp(floorPosition);
+        this.bird = new BirdImpl();
+        this.collision= new ManagerCollisionImpl(floorPosition);
+        this.jump= new ManagerJumpImpl();
+        this.gravity= new ManagerGravityImpl(floorPosition);
         
     }
 
@@ -36,7 +39,7 @@ public class ManagerBirdImp implements ManagerBird{
     public void checkCollision(List<Column> list,Controller controller) {
         // TODO Auto-generated method stub
       if (this.collision.checkColumnCollision(list,bird)) {
-          System.out.println("state");
+          
             controller.setState(GameState.GAME_OVER);
             
         }
@@ -46,6 +49,7 @@ public class ManagerBirdImp implements ManagerBird{
             this.bird.updatePosition(this.jump.jump(bird));
             
         }
+       
         if (this.collision.checkFloorCollision(bird)) {
            
            controller.setState(GameState.GAME_OVER);
