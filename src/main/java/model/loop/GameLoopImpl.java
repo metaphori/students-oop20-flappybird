@@ -59,11 +59,8 @@ public class GameLoopImpl  extends Thread implements GameLoop{
            
 
            if (this.controller.getState() == GameState.GAME_OVER) {
-               
-               
-               stop=false;
-              
-               
+
+               stop=false;                             
            }
            waitNextFrame(current);
             

@@ -25,8 +25,9 @@ public class ManagerJumpImpl implements ManagerJump{
      @Override
      public double jump(Bird b) {
          // TODO Auto-generated method stub
-         this.height= b.getCenterY()- yJump;
-         
+         if (!(b.getCenterY()- yJump<0)) {
+             this.height= b.getCenterY()- yJump;
+         }
          return this.height;
      }
 

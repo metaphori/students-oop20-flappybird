@@ -35,49 +35,39 @@ import view.ImageID;
  */
 public class ViewImpl extends Application implements View {
     
-    Rectangle rec;
-    Controller controller;
-    ViewObstacle viewObstacle;
-    FinishView finish;
-    Pane p;
-    Stage stage;
-    
-    ViewBird viewBird;
-    ViewMenu viewMenu;
-    PlayView playView;
-    ViewObserver observer;
+    private Rectangle rec;
+    private Controller controller;
+    private ViewObstacle viewObstacle;
+    private FinishView finish;
+    private Pane pane;
+    private Stage stage;
+    private ViewBird viewBird;
+    private ViewMenu viewMenu;
+    private PlayView playView;
+    private ViewObserver observer;
 
-
-            
-    
-    public ViewImpl() {
-     
+    public ViewImpl() {    
     }
-    
-
- 
     /**
      * {@inheritDoc}
      */
-    public void initiate() {
-      
-        controller = new ControllerImpl(this);
+    public void initiate() {     
+        this.controller = new ControllerImpl(this);
      
-        p = new Pane();
-<<<<<<< HEAD:src/main/java/view/ViewImp.java
-        //viewMenu = new ViewMenu(p);
-        viewBird = new ViewBirdImpl(p);
-=======
-        viewBird = new ViewBirdImp(p);
->>>>>>> 2082fb847cfdaa4af2b638ac830dfcc2571f9827:src/main/java/view/ViewImpl.java
-        viewMenu = new ViewMenu(this,p,viewBird,stage);
-        viewMenu.render();
 
-        stage.setMaxHeight(this.controller.getGameHeight());
-        stage.setMaxWidth(this.controller.getGameWidth());
-        stage.setScene(new Scene(p));
-        stage.show();
-        stage.setResizable(false);
+      
+    
+        this.pane = new Pane();
+        this.viewBird = new ViewBirdImpl(pane);
+        this.viewMenu = new ViewMenu(this,pane,viewBird,stage);
+        this.viewMenu.render();
+
+        this.stage.setMaxHeight(this.controller.getGameHeight());
+        this.stage.setMaxWidth(this.controller.getGameWidth());
+        this.stage.setScene(new Scene(pane));
+        this.stage.show();
+        this.stage.setResizable(false);
+
  
     }
     
@@ -86,10 +76,10 @@ public class ViewImpl extends Application implements View {
      */
     public void playGame(){
         
-        observer = new ViewObserverImpl(controller);
-        viewObstacle = new ViewObstacleImpl(p);       
-        playView = new PlayView(p);
-        playView.display(this, controller); 
+        this.observer = new ViewObserverImpl(controller);
+        this.viewObstacle = new ViewObstacleImpl(pane);       
+        this.playView = new PlayView(pane);
+        this.playView.display(controller); 
         this.controller.updateState();
     }
 
@@ -114,11 +104,9 @@ public class ViewImpl extends Application implements View {
     public  void render(List<Column> columns, Integer score, Bird bird) {
    
           Platform.runLater(()->{
-
-              viewObstacle.render(columns);
-              playView.updateScore(score);
-              viewBird.render(bird);
-              
+              this.viewObstacle.render(columns);
+              this.playView.updateScore(score);
+              this.viewBird.render(bird);              
               }); 
 
     }
@@ -129,11 +117,11 @@ public class ViewImpl extends Application implements View {
     @Override
     public void gameOver(Optional<Integer> topScore) {
 
-        finish = new FinishView(p, controller, this);
+        this.finish = new FinishView(pane, controller.getLeaderBoardController(), this);
         Platform.runLater(()->{
-            NameView.show(stage,controller);
+            NameView.show(stage,controller.getLeaderBoardController());
            
-            finish.showFinishView(playView.getScore(),topScore);
+            this.finish.showFinishView(playView.getScore(),topScore);
           
             }); 
     }
@@ -146,7 +134,7 @@ public class ViewImpl extends Application implements View {
      
         Platform.runLater(()->{
         
-            p.getScene().setOnKeyPressed(e->{
+            pane.getScene().setOnKeyPressed(e->{
                 if (e.getCode() == KeyCode.SPACE) {
                     
                     this.observer.pressSpace();
@@ -154,8 +142,7 @@ public class ViewImpl extends Application implements View {
                
             });
         });
-       
-        
+              
     }
 
 

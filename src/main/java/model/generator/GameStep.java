@@ -8,28 +8,39 @@ public enum GameStep {
     /**
      * level of difficult
      */
-    EASY_DOWN,
+    EASY_DOWN(0),
     
     /**
      * level of difficult
      */
-    EASY_UP,
+    EASY_UP(10),
     
     /**
      * level of difficult
      */
-    NORMAL,
+    NORMAL(20),
     
     /**
      * level of difficult
      */
-    DIFFICULT,
+    DIFFICULT(30),
     
     /**
      * level of difficult
      */
-    LEGEND;
+    LEGEND(40);
     
+    private final int numb;
+
+    GameStep(int numb) {
+        
+        this.numb = numb;
+    }
+    
+    public int getNumb() {
+        
+        return this.numb;
+    }
     
 
 }
