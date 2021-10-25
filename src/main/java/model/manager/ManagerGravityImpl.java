@@ -1,16 +1,16 @@
 package model.manager;
 
 import model.Bird;
-import model.BirdImp;
+import model.BirdImpl;
 
-public class ManagerGravityImp implements ManagerGravity{
+public class ManagerGravityImpl implements ManagerGravity{
 
     private Bird bird;
     private double yBird;
     private double floorPosition;
     private int yMotion;
     
-    public ManagerGravityImp(double floorPosition) {
+    public ManagerGravityImpl(double floorPosition) {
         
        this.floorPosition = floorPosition;
        this.yMotion = 2;
@@ -28,7 +28,10 @@ public class ManagerGravityImp implements ManagerGravity{
     
     }
 
-
+    /**
+     * Control the coordinate y of the bird to apply gravity.
+     * @return yBird of the bird
+     */
     private double fallBird() {
         // TODO Auto-generated method stub
         if (yBird > 0 && yBird < floorPosition) {

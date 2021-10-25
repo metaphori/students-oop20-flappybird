@@ -3,19 +3,21 @@ package model.manager;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.Bird;
-import model.BirdImp;
+import model.BirdImpl;
 
-public class ManagerJumpImp implements ManagerJump{
+public class ManagerJumpImpl implements ManagerJump{
 
     private double height;
     private double yJump;
     private String codeString;
     
     
-    
-     public ManagerJumpImp() {
+    /**
+     * This is the constructor method that initialize bird's height property and y coordinate of the jump.
+     */
+     public ManagerJumpImpl() {
         // TODO Auto-generated constructor stub
-        // this.height = 0;
+         this.height = 0;
          this.yJump = 50;
       
     }
@@ -23,8 +25,8 @@ public class ManagerJumpImp implements ManagerJump{
      @Override
      public double jump(Bird b) {
          // TODO Auto-generated method stub
-         
          this.height= b.getCenterY()- yJump;
+         
          return this.height;
      }
 

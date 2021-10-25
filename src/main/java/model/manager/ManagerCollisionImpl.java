@@ -12,7 +12,7 @@ import javafx.scene.shape.Shape;
 import model.Bird;
 import model.Column;
 
-public class ManagerCollisionImp implements ManagerCollision{
+public class ManagerCollisionImpl implements ManagerCollision{
 
     private Bird bird;
     private Column listColumn;
@@ -21,7 +21,7 @@ public class ManagerCollisionImp implements ManagerCollision{
     private double posy;
     private double floorPosition;
     
-    public ManagerCollisionImp(double floorPosition) {
+    public ManagerCollisionImpl(double floorPosition) {
         
         this.result= false;
         this.floorPosition = floorPosition;
@@ -45,13 +45,17 @@ public class ManagerCollisionImp implements ManagerCollision{
 
     }
 
-
+    /**
+     * Control the intersection between bird and columns.
+     * @param bird Bird
+     * @param column Column
+     */
     private boolean intersect(Bird circleBird, Column column) {
         // TODO Auto-generated method stub
         Point position = column.getPosition();
         if (circleBird.getCenterX() + circleBird.getRadius() > position.getX() && circleBird.getCenterX() + circleBird.getRadius() < position.getX() + column.getWidth() && 
             circleBird.getCenterY() + circleBird.getRadius() > position.getY() && circleBird.getCenterY() + circleBird.getRadius() < position.getY() + column.getHeigth()) {
-            System.out.println("return true");
+
             return true;
             
         }
@@ -64,7 +68,7 @@ public class ManagerCollisionImp implements ManagerCollision{
     public boolean checkFloorCollision(Bird bird) {
         // TODO Auto-generated method stub
         this.posy = bird.getCenterY() + bird.getRadius();
-        System.out.println(posy);
+       
         if (posy >= floorPosition) {
             return true;
         }

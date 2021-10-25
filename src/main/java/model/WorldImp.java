@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
 import model.generator.Generator;
 import model.generator.ObstacleGenerator;
 import model.manager.ManagerBird;
-import model.manager.ManagerBirdImp;
+import model.manager.ManagerBirdImpl;
 
 public class WorldImp implements World{
     
@@ -30,7 +30,7 @@ public class WorldImp implements World{
         score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
         
-        this.manager = new ManagerBirdImp(floorPosition);
+        this.manager = new ManagerBirdImpl(floorPosition);
     }
 
    

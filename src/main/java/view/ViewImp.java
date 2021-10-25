@@ -68,7 +68,7 @@ public class ViewImp extends Application implements View {
         
         p = new Pane();
         //viewMenu = new ViewMenu(p);
-        viewBird = new ViewBirdImp(p);
+        viewBird = new ViewBirdImpl(p);
         viewMenu = new ViewMenu(this,p,viewBird,stage);
         viewMenu.render();
 

@@ -1,12 +1,12 @@
 package model;
 
-public class BirdImp implements Bird{
+public class BirdImpl implements Bird{
 
-    private final static double POS_X = 50;
+    private final static double POS_X = 300;
     private double posy;
     private final static double RADIUS= 25;
     
-    public BirdImp() {
+    public BirdImpl() {
         
         this.posy = 250;
     }
