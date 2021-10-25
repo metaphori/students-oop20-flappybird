@@ -54,8 +54,6 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
      */
     @Override
     public void write() {
-      
-      
         try (final FileWriter writer = new FileWriter(FILE_NAME)) {
             gson.toJson(leaderBoard, writer);
         } catch (IOException e) {

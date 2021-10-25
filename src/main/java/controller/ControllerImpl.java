@@ -104,6 +104,9 @@ public class ControllerImpl implements Controller{
     }
    
  
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void checkInput() {
         
@@ -120,7 +123,9 @@ public class ControllerImpl implements Controller{
         return this.gameState;
     }
 
-   
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean jump() {
         // TODO Auto-generated method stub
@@ -128,6 +133,9 @@ public class ControllerImpl implements Controller{
         return this.jump;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setJump(boolean input) {
         // TODO Auto-generated method stub

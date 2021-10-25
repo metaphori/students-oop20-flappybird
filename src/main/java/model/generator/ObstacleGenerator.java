@@ -13,12 +13,12 @@ import model.RandomColumn;
  * Generator class of the columns
  */
 public class ObstacleGenerator implements Generator{
-    
-    
+     
     private static final double SPACECOLUMN = 200;
     private static final double INTERSPACE = 150;
     private static final double FLOOR = 50;
     private static final double BASEMANT = 250;
+    private static final int STEPMOVE = -2;
     private List<Column> obstacles;
     private double startNext;
     private GameStep gameStep;
@@ -133,7 +133,7 @@ public class ObstacleGenerator implements Generator{
         this.obstacles.forEach(a->{
             Point c = new Point();
             c.setLocation(a.getPosition());
-            c.translate(-2, 0);
+            c.translate(STEPMOVE, 0);
             a.updatePosition(c);
         });       
     }
@@ -154,8 +154,7 @@ public class ObstacleGenerator implements Generator{
 
     private boolean checkDistance() {
                Column col= this.obstacles.get(this.obstacles.size()-1);  
-                return col.getPosition().getX() < startNext;
-        
+                return col.getPosition().getX() < startNext;       
     }
 
    

@@ -55,7 +55,9 @@ public interface Controller {
     public double getGameWidth();
 
 
-
+    /**
+     * Check if riceve input
+     */
     void checkInput();
 
     /**
@@ -65,6 +67,9 @@ public interface Controller {
 
     boolean jump();
 
+    /**
+     * Set if jump
+     */
     void setJump(boolean input);
     
     /**
