@@ -41,7 +41,7 @@ public class FinishView {
     private static final int TOP_SCORE_POS_X = 500;
     private static final int TOP_SCORE_POS_Y = 300;
     private static final String TITLE = "Flappy Bird LeaderBoard";
-    private static final String TOP_SCORE = "Top 10 Score";
+    private static final String TOP_SCORE = "Top Score";
     private Pane pane;
     private ControllerLeaderBoard controller;
     private View view;
