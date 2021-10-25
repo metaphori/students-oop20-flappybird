@@ -24,13 +24,12 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
     final String SEP = File.separator ;
     final String FILE_NAME = System.getProperty("user.home") + 
             SEP + "game.json";
-    
+  
     /**
      * Create a new LeaderBoard Manager
      */
     public LeaderboardManagerImpl() {
-        leaderBoard = new LeaderBoard();
-        
+        leaderBoard = new LeaderBoard();       
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
@@ -38,23 +37,16 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
      * {@inheritDoc}
      */
     @Override
-    public void read() {
-        // TODO Auto-generated method stub
+    public void read() {   
         File f = new File(FILE_NAME);
         if (f.exists()) {
             try (Reader reader = new FileReader(FILE_NAME)) {
-
                 // Convert JSON File to Java Object
-                leaderBoard = gson.fromJson(reader, LeaderBoard.class);
-                            
-           
-
+                leaderBoard = gson.fromJson(reader, LeaderBoard.class);                  
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        
-     
     }
 
     /**
@@ -76,19 +68,11 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
      */
     @Override
     public void addNewGamer(Gamer gamer) {
-        // TODO Auto-generated method stub
-        
-        if (checkTop10(gamer.getScore())) {
-            
-            leaderBoard.addGamer(gamer);
-           
+        if (checkTop10(gamer.getScore())) {          
+            leaderBoard.addGamer(gamer);         
         }
-        
-       
-     
     }
-    
-  
+     
     private boolean checkTop10(String score) {
         // TODO Auto-generated method stub
         if (leaderBoard.getLeaderBoard().size()<10) {
@@ -96,12 +80,8 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
         }
         
         return Integer.parseInt(score) > leaderBoard.getLeaderBoard().stream()
-                .map(i->Integer.parseInt(i.getScore()))
+                .map( i -> Integer.parseInt(i.getScore()))
                 .sorted().collect(Collectors.toList()).get(0);
-        
-      
-        
-       
     }
 
     /**

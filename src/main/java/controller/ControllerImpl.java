@@ -22,108 +22,88 @@ import view.ViewImpl;
 
 public class ControllerImpl implements Controller{
     
-    
-    
-
     private GameState gameState;
-
     private Model model;
     private View view;
     private Integer score;
     private boolean jump;
-
-    
-    Pane pane;
+    private Pane pane;
+    private ControllerLeaderBoard clb;
  
     public ControllerImpl(ViewImpl view) {
      
         this.view = view;
         this.model = new ModelImp(this);
-     
+        this.clb = new ControllerLeaderBoardImpl(model);
         this.gameState = GameState.INITIALIZE;
         this.jump = false;
       
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateState() {
-       
-  
         switch (gameState) {
-        case GAME_OVER:
-         
+        case GAME_OVER: 
           this.model.gameOver(this.score);
           this.view.gameOver(topScorer());
             break;
         case INITIALIZE:
             this.model.startGame();
-   
             break;
-     
         default:
             break;
         }
     }
+    
+ 
 
     private Optional<Integer> topScorer() {
         // TODO Auto-generated method stub
-        Optional<Integer> topScor =this.model.getLeaderboard().stream().map(a->a.getScore()).map(a-> Integer.parseInt(a)).max((a,b)->a-b);
-        
-        
+        Optional<Integer> topScor =this.model.getLeaderboard().stream()
+                .map(a->a.getScore()).map(a-> Integer.parseInt(a)).max((a,b)->a-b);
         return topScor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setState(GameState state) {
-        
-      
-        gameState = state;
+
+        this.gameState = state;
     }
     
-
-    public void render(List<Column> list, Integer score, Bird bird) {
-       
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void render(List<Column> list, Integer score, Bird bird) {       
            this.score = score;
-       
-      
            this.view.render(list,score,bird);
-
-     
-
-        
     }
 
-  
-
- 
-    
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Gamer> getLeaderboard() {
-        // TODO Auto-generated method stub
-       return this.model.getLeaderboard();
-    }
-
-    @Override
-
     public double getGameHeight() {
         // TODO Auto-generated method stub
         return this.model.getGameHeight();
     }
-
+    
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double getGameWidth() {
         // TODO Auto-generated method stub
         return this.model.getGameWeidth();
     }
-
-    @Override
-    public void savePlayer(String text) {
-        // TODO Auto-generated method stub
-        this.model.addPlayer(text);
-    }
-
-
+   
+ 
     @Override
     public void checkInput() {
         
@@ -131,12 +111,16 @@ public class ControllerImpl implements Controller{
         this.view.checkInput();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameState getState() {
         // TODO Auto-generated method stub
         return this.gameState;
     }
 
+   
     @Override
     public boolean jump() {
         // TODO Auto-generated method stub
@@ -150,24 +134,15 @@ public class ControllerImpl implements Controller{
         this.jump = input;
     }
 
-    
-   
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ControllerLeaderBoard getLeaderBoardController() {
+        // TODO Auto-generated method stub
+        return this.clb;
+    }
 
-
-   
-
-
-  
-   
-    
-  
-    
-
- 
-          
-               
-             
-   
  }
 
 

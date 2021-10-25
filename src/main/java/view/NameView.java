@@ -1,6 +1,7 @@
 package view;
 
-import controller.Controller;
+
+import controller.ControllerLeaderBoard;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,21 +15,22 @@ import javafx.stage.Stage;
  */
 public class NameView {
     
+    private final static String LABEL_NAME = "Insert your name";
+    private final static String BUTTON_NAME = "Save";
     /**
      * Show the view
      * 
      * @param parentStage
      *                   the parentStage
      *  
-     * @param controller
+     * @param controllerLeaderBoard
      *                   the controller                  
      */
-    public static void show(Stage parentStage, Controller controller) {
-        // TODO Auto-generated method stub
+    public static void show(Stage parentStage, ControllerLeaderBoard controllerLeaderBoard) {
         Stage stage = new Stage();
         Pane pane = new Pane();
-        Label label = new Label("Insert your name");
-        Button button = new Button("Save");
+        Label label = new Label(LABEL_NAME);
+        Button button = new Button(BUTTON_NAME);
         TextField textField = new TextField();
         label.setStyle("-fx-font-size: 20;");
         label.setLayoutX(75);
@@ -39,11 +41,9 @@ public class NameView {
         button.setLayoutY(120);
         button.setPrefWidth(60);
         button.setOnAction(e->{
-           controller.savePlayer(textField.getText());
+           controllerLeaderBoard.savePlayer(textField.getText());
            stage.close();
         });
-        
-        
         pane.getChildren().add(label);
         pane.getChildren().add(textField);
         pane.getChildren().add(button);

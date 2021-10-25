@@ -84,7 +84,7 @@ public class ViewImpl extends Application implements View {
         observer = new ViewObserverImpl(controller);
         viewObstacle = new ViewObstacleImpl(p);       
         playView = new PlayView(p);
-        playView.display(this, controller); 
+        playView.display(controller); 
         this.controller.updateState();
     }
 
@@ -124,9 +124,9 @@ public class ViewImpl extends Application implements View {
     @Override
     public void gameOver(Optional<Integer> topScore) {
 
-        finish = new FinishView(p, controller, this);
+        finish = new FinishView(p, controller.getLeaderBoardController(), this);
         Platform.runLater(()->{
-            NameView.show(stage,controller);
+            NameView.show(stage,controller.getLeaderBoardController());
            
             finish.showFinishView(playView.getScore(),topScore);
           

@@ -2,7 +2,7 @@ package model;
 
 public class BirdImp implements Bird{
 
-    private final static double POS_X = 300;
+    private final static double POS_X = 350;
     private double posy;
     private final static double RADIUS= 25;
     

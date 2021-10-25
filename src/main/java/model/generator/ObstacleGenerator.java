@@ -17,6 +17,7 @@ public class ObstacleGenerator implements Generator{
     
     private static final double SPACECOLUMN = 200;
     private static final double INTERSPACE = 150;
+    private static final double FLOOR = 50;
     private static final double BASEMANT = 250;
     private List<Column> obstacles;
     private double startNext;
@@ -26,10 +27,8 @@ public class ObstacleGenerator implements Generator{
     private Point downPosition;
     private double basemantHeight;
     private double gameHeight;
-    private int count=0;
     private boolean legendStep;
     
-
     /**
      * Create the obstacle generator
      * 
@@ -39,20 +38,18 @@ public class ObstacleGenerator implements Generator{
      * @param gameWorldHeight
      *                        world height 
      */
-    public ObstacleGenerator(double gameWorldWidth, double gameWorldHeight) {
-        
-        basemantHeight = gameWorldHeight-BASEMANT;
-        gameHeight = gameWorldHeight;
-        countColumn = 0;
-        gameStep = GameStep.DIFFICULT;
-        legendStep = false;
+    public ObstacleGenerator(double gameWorldWidth, double gameWorldHeight) {       
+        this.basemantHeight = gameWorldHeight-BASEMANT;
+        this.gameHeight = gameWorldHeight;
+        this.countColumn = 0;
+        this.gameStep = GameStep.EASY_DOWN;
+        this.legendStep = false;
         this.obstacles = new ArrayList<>();
         this.startNext = gameWorldWidth - SPACECOLUMN;       
         this.upPosition = new Point();
-        upPosition.setLocation(gameWorldWidth,0);        
+        this.upPosition.setLocation(gameWorldWidth,0);        
         this.downPosition = new Point();
-        downPosition.setLocation(gameWorldWidth, basemantHeight);
-        
+        this.downPosition.setLocation(gameWorldWidth, basemantHeight);       
     }
 
     /**
@@ -64,16 +61,13 @@ public class ObstacleGenerator implements Generator{
         return this.obstacles;
     }
 
-
-    private void addElement() {
-       
+    private void addElement() { 
         switch (gameStep) {
         case EASY_UP:
             OperationGenerate generateUp = () -> new BasicColumn(upPosition,false);
             this.obstacles.add(generateUp.getElement());
             break;
-        case EASY_DOWN:
-      
+        case EASY_DOWN:     
             OperationGenerate generateDown = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDown.getElement());
             break;
@@ -83,22 +77,13 @@ public class ObstacleGenerator implements Generator{
             OperationGenerate generateDownNormal = () -> new BasicColumn(downPosition,false);
             this.obstacles.add(generateDownNormal.getElement());
             break;
-        case DIFFICULT:
-            
+        case DIFFICULT:            
             RandomColumn r = new RandomColumn(upPosition,false,0);
             r.setHeight();
-            OperationGenerate generateNormalUp = () -> r;
-            
-            
+            OperationGenerate generateNormalUp = () -> r;           
             OperationGenerate generateNormalDown = generateDown(generateNormalUp);
-          
-            
-          
-            this.obstacles.add(generateNormalUp.getElement());
-          
-            this.obstacles.add(generateNormalDown.getElement());
-       
-            
+            this.obstacles.add(generateNormalUp.getElement());         
+            this.obstacles.add(generateNormalDown.getElement());            
             break;
         case LEGEND:
             if(legendStep) {
@@ -111,44 +96,27 @@ public class ObstacleGenerator implements Generator{
                 this.obstacles.add(generateLegendd.getElement());
                 legendStep=true;
             }
-            
-            
-            
-          
-            break;    
-            
+            break;                
         default:
             break;
-        }
-        
-        countColumn++;
-        
+        }        
+        this.countColumn++;        
     }
-   
-
-    
-    private OperationGenerate generateDown(OperationGenerate generateNormalUp) {
-        // TODO Auto-generated method stub
-        
+       
+    private OperationGenerate generateDown(OperationGenerate generateNormalUp) { 
         double y = generateNormalUp.getElement().getHeigth();
         Point p = new Point();
-        p.setLocation(downPosition.getX(), y+INTERSPACE);
-        double height = gameHeight - 50 - INTERSPACE-y;
-       
-        RandomColumn r = new RandomColumn(p,false,height);
-        r.setHeight();
-     
-        return ()-> r;
+        p.setLocation(downPosition.getX(), y + INTERSPACE);
+        double height = gameHeight - FLOOR - INTERSPACE - y;       
+        RandomColumn r = new RandomColumn(p, false, height);
+        r.setHeight();     
+        return () -> r;
     }
 
     private void removeElement() {
-        // TODO Auto-generated method stub
-        if(!this.obstacles.isEmpty() && this.obstacles.get(0).getPosition().x<0) {
-          
-                this.obstacles.remove(0);
-           
-        }
-     
+        if(!this.obstacles.isEmpty() && this.obstacles.get(0).getPosition().x < 0 ) {
+                this.obstacles.remove(0);       
+        } 
     }
 
     /**
@@ -156,47 +124,36 @@ public class ObstacleGenerator implements Generator{
      */
     @Override
     public void update() {
-      
-        
-        removeElement();
+        removeElement();       
         if(this.obstacles.isEmpty() || this.checkDistance()) {
             setStep();
             addElement();     
         } 
-      
-        
-       
+
         this.obstacles.forEach(a->{
             Point c = new Point();
             c.setLocation(a.getPosition());
             c.translate(-2, 0);
             a.updatePosition(c);
-        });
-        
-   
-        
+        });       
     }
     
     private void setStep() {
-        // TODO Auto-generated method stub
-      //  gameStep = GameStep.LEGEND;
-        if (countColumn<10) {
-            gameStep = GameStep.EASY_DOWN;
-        } else if (countColumn<20) {
-            gameStep = GameStep.EASY_UP;
-        } else if (countColumn<30) {
-            gameStep = GameStep.NORMAL;
-        }else if (countColumn<40) {
-            gameStep = GameStep.DIFFICULT;
-        } else {
+        if (countColumn>GameStep.LEGEND.getNumb()) {
             gameStep = GameStep.LEGEND;
+        } else if (countColumn>GameStep.DIFFICULT.getNumb()) {
+            gameStep = GameStep.DIFFICULT;
+        } else if (countColumn>GameStep.NORMAL.getNumb()) {
+            gameStep = GameStep.NORMAL;
+        }else if (countColumn>GameStep.EASY_UP.getNumb()) {
+            gameStep = GameStep.EASY_UP;
+        } else if (countColumn>GameStep.EASY_DOWN.getNumb()) {
+            gameStep = GameStep.EASY_DOWN;
         }
     }
 
     private boolean checkDistance() {
-
-               Column col= this.obstacles.get(this.obstacles.size()-1);
-   
+               Column col= this.obstacles.get(this.obstacles.size()-1);  
                 return col.getPosition().getX() < startNext;
         
     }

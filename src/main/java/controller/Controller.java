@@ -26,38 +26,51 @@ public interface Controller {
     void setState(GameState state);
 
     /**
+     * Call the view to render the updating
      * 
-     * 
-     * @param state
-     *              the next state
+     * @param list
+     *              the Column list
+     *              
+     * @param score
+     *              the score
+     *              
+     *@param bird
+     *            the bird                           
      */
     void render(List<Column> list, Integer score, Bird circle);
 
-   
-
+    /**
+     * Update the state
+     */
     void updateState();
 
-  
-
-  
-
-    List<Gamer> getLeaderboard();
-
-    
-
+    /**
+     * @return the gameHeight
+     */
     public double getGameHeight();
     
+    /**
+     * @return the gameWidth
+     */
     public double getGameWidth();
 
-    void savePlayer(String text);
+
 
     void checkInput();
 
+    /**
+     * @return the gameState
+     */
     GameState getState();
 
     boolean jump();
 
     void setJump(boolean input);
+    
+    /**
+     * @return the Controller LeaderBoard
+     */
+    ControllerLeaderBoard getLeaderBoardController();
     
 
 

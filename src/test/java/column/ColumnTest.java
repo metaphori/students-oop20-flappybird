@@ -65,7 +65,7 @@ public class ColumnTest {
         basemantHeight = GAME_WORLD_HEIGHT-basemant;
         this.downPosition = new Point();
         downPosition.setLocation(GAME_WORLD_WIDTH, basemantHeight);
-        Column basicDown = new BasicColumn(downPosition);
+        Column basicDown = new BasicColumn(downPosition, false);
         for (int i=0; i<10 ; i++) {
             update(generator);
             Column typeColumn = (Column) generator.getWorldElements().
@@ -86,7 +86,7 @@ public class ColumnTest {
         Generator generator = new ObstacleGenerator(GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
         this.upPosition = new Point();
         upPosition.setLocation(GAME_WORLD_WIDTH,0);
-        Column basicUp = new BasicColumn(upPosition);
+        Column basicUp = new BasicColumn(upPosition, false);
         for (int i=0; i<10 ; i++) {
             update(generator);
           
@@ -105,31 +105,11 @@ public class ColumnTest {
         
     }
     
-    @Test
-    public void testRandom() {
-        Generator generator = new ObstacleGenerator(GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
-        basemantHeight = GAME_WORLD_HEIGHT-basemant;
-        this.downPosition = new Point();
-        downPosition.setLocation(GAME_WORLD_WIDTH, basemantHeight);
-        Column basicDown = new BasicColumn(downPosition);
-        this.upPosition = new Point();
-        upPosition.setLocation(GAME_WORLD_WIDTH,0);
-        Column basicUp = new BasicColumn(upPosition);
-        for (int i=0; i<40 ; i++) {
-            update(generator);
-          
-        }
-        for (int i=0; i<20 ; i++) {
-            update(generator);
-            Column typeColumn = (Column) generator.getWorldElements().
-                    get(generator.getWorldElements().size()-1);
-            assertNotEquals(basicUp.getPosition().getY(),typeColumn.getPosition().getY());
-            assertNotEquals(basicDown.getPosition().getY(),typeColumn.getPosition().getY());
-        }
+  
        
         
         
-    }
+  
    
     
 }
