@@ -1,11 +1,9 @@
 package view;
 
-
 import java.util.List;
 import java.util.Optional;
-
 import controller.Controller;
-import controller.ControllerImp;
+import controller.ControllerImpl;
 import controller.GameState;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -32,12 +30,11 @@ import model.Bird;
 import model.Column;
 import view.ImageID;
 
-public class ViewImp extends Application implements View {
+/**
+ * Rappresent the view class entry
+ */
+public class ViewImpl extends Application implements View {
     
-    private double width;
-    private double height;
-    boolean b;
-  
     Rectangle rec;
     Controller controller;
     ViewObstacle viewObstacle;
@@ -53,106 +50,80 @@ public class ViewImp extends Application implements View {
 
             
     
-    public ViewImp() {
+    public ViewImpl() {
      
     }
     
 
  
+    /**
+     * {@inheritDoc}
+     */
     public void initiate() {
       
-
-        b = false;
-
-        controller = new ControllerImp(this);
-        
+        controller = new ControllerImpl(this);
+     
         p = new Pane();
-        //viewMenu = new ViewMenu(p);
         viewBird = new ViewBirdImp(p);
         viewMenu = new ViewMenu(this,p,viewBird,stage);
         viewMenu.render();
 
-        stage.setMaxHeight(600);
-        stage.setMaxWidth(800);
+        stage.setMaxHeight(this.controller.getGameHeight());
+        stage.setMaxWidth(this.controller.getGameWidth());
         stage.setScene(new Scene(p));
         stage.show();
         stage.setResizable(false);
-        
-        
-        
-        
+ 
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void playGame(){
-        System.out.println("ciaoo");
-        
         
         observer = new ViewObserverImpl(controller);
-        viewObstacle = new ViewObstacleImp(p);
-        
+        viewObstacle = new ViewObstacleImpl(p);       
         playView = new PlayView(p);
-        playView.display(this, controller);
-        
-        
-        
-        
+        playView.display(this, controller); 
         this.controller.updateState();
     }
 
-
-
-
-
-   
-  
-
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         // TODO Auto-generated method stub
         primaryStage.setTitle("ciao");
         this.stage = primaryStage;
         initiate();
-     
-      
-         
-         
-      
-       
     }
     
     public static void run(final String[] args) {
         launch();
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public  void render(List<Column> columns, Integer score, Bird bird) {
-        // TODO Auto-generated method stub
-
-        
-     
-        
-      
+   
           Platform.runLater(()->{
 
               viewObstacle.render(columns);
               playView.updateScore(score);
-              
-              
               viewBird.render(bird);
               
-        
-              
               }); 
-          
-       
+
     }
 
-
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void gameOver(Optional<Integer> topScore) {
-     
-        
+
         finish = new FinishView(p, controller, this);
         Platform.runLater(()->{
             NameView.show(stage,controller);
@@ -162,29 +133,14 @@ public class ViewImp extends Application implements View {
             }); 
     }
 
-
-
-  /*  @Override
-    public boolean checkInput() {
-        // TODO Auto-generated method stub
-        Platform.runLater(()->{
-            b = false;
-            p.getScene().setOnKeyPressed(e->{
-                if (e.getCode() == KeyCode.SPACE) {
-                    
-                    b = true;
-                }
-               
-            });
-        });
-       
-        return b;
-    }*/
-    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void checkInput() {
-        // TODO Auto-generated method stub
+     
         Platform.runLater(()->{
-            b = false;
+        
             p.getScene().setOnKeyPressed(e->{
                 if (e.getCode() == KeyCode.SPACE) {
                     

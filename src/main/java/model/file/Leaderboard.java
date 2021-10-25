@@ -7,16 +7,26 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-
-
-public class Leaderboard {
+/**
+ * Rapresent the leaderboard of the scores
+ */
+public class LeaderBoard {
     
     private List<Gamer> list;
     
-    public Leaderboard() {
+    /**
+     * Create a new list which rappresent the leaderboard
+     */
+    public LeaderBoard() {
         this.list = new ArrayList<>();
     }
     
+    /**
+     * Add a new game to the list
+     * 
+     * @param gamer
+     *              the gamer to add
+     */
     void addGamer(Gamer gamer) {
         this.list.add(gamer);
         this.list =List.copyOf(list.stream()
@@ -24,11 +34,14 @@ public class Leaderboard {
                 .collect(Collectors.toList()));
     }
     
-    void removeGamer(Gamer gamer) {
-        this.list.remove(gamer);
-    }
-    
-    List<Gamer> getLeadbord(){
+    /**
+     * Get the 
+     * 
+     * @param gamer
+     *              the gamer to add
+     *              
+     */
+    List<Gamer> getLeaderBoard(){
         return Collections.unmodifiableList(list);
     }
     

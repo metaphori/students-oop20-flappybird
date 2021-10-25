@@ -3,33 +3,44 @@ package model.loop;
 import java.util.List;
 
 import controller.Controller;
-import controller.ControllerImp;
+import controller.ControllerImpl;
 import controller.GameState;
 import javafx.application.Platform;
 import model.Bird;
 import model.Column;
 import model.World;
-import model.WorldImp;
+import model.WorldImpl;
 
-public class GameLoopImp  extends Thread implements GameLoop{
+/**
+ * Rappresent the GameLoop
+ */
+public class GameLoopImpl  extends Thread implements GameLoop{
     
     private static final long PERIOD = 20;
-    private World world;
-    
+    private World world; 
     private Controller controller;
     
-    public GameLoopImp(Controller controllerImp, double gameWorldWidth, double gameWorldHeight) {
+    /**
+     * Create the gameloop
+     * 
+     * @param controller
+     *                  the controller
+     *
+     * @param gameWorldWidth
+     *                       the gameWorldWidth
+     *
+     * @param gameWorldHeight
+     *                        gameWorldHeight                              
+     */
+    public GameLoopImpl(Controller controller, double gameWorldWidth, double gameWorldHeight) {
     
-        this.world = new WorldImp(gameWorldWidth,gameWorldHeight);
-        this.controller = controllerImp;
+        this.world = new WorldImpl(gameWorldWidth,gameWorldHeight);
+        this.controller = controller;
     }
 
-    @Override
-    public void initiate() {
-        // TODO Auto-generated method stub
-        
-    }
-    
+    /**
+     * {@inheritDoc}
+     */
     public void run() {
         long lastTime = System.currentTimeMillis();
         long start = System.currentTimeMillis();
@@ -44,7 +55,7 @@ public class GameLoopImp  extends Thread implements GameLoop{
             this.world.update(this.controller.jump(),controller);
             this.controller.setJump(false);
             
-           this.controller.render(this.getColumn(), this.world.getScore(), this.world.getBird());
+           this.controller.render(this.getColumns(), this.world.getScore(), this.world.getBird());
            
 
            if (this.controller.getState() == GameState.GAME_OVER) {
@@ -76,9 +87,11 @@ public class GameLoopImp  extends Thread implements GameLoop{
     
 
    
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public List<Column> getColumn() {
+    public List<Column> getColumns() {
         // TODO Auto-generated method stub
         return this.world.getColumns();
     }

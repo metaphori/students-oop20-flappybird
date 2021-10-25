@@ -23,9 +23,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.file.Gamer;
-import model.file.Leaderboard;
+import model.file.LeaderBoard;
 
-
+/**
+ * The view opened when is gameOver
+ */
 public class FinishView {
     
     Pane pane;
@@ -34,17 +36,32 @@ public class FinishView {
     Label score;
     Label topScore;
    
-    
-    public FinishView(Pane p, Controller controller, View viewImp) {
+    /**
+     * Create the view
+     * 
+     * @param pane
+     *             the pane of the game
+     * 
+     * @param controller
+     *                   the controller of the game
+     *
+     * @param view
+     *             the view class                              
+     */
+  
+    public FinishView(Pane pane, Controller controller, View view) {
         this.controller = controller;
-        pane = p;
-        view = viewImp;
+        this.pane = pane;
+        this.view = view;
         score = new Label();
         topScore = new Label("0");
      
     }
     
-    
+    /**
+     * Show the view when the game is over
+     */
+   
     void showFinishView(Label label, Optional<Integer> topScore){
         
         score.setText(label.getText());

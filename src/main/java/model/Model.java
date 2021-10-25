@@ -4,24 +4,48 @@ import java.util.List;
 
 import controller.GameState;
 import model.file.Gamer;
-import model.file.LeaderboardManager;
+import model.file.LeaderBoardManager;
 
+/**
+ * The interface of the Score
+ */
 public interface Model {
 
-    void updateState(GameState gameState);
-    
+    /**
+     * return the height of the world
+     */
     double getGameHeight();
     
+    /**
+     * return the weidth of the world
+     */
     double getGameWeidth();
 
-    void updateGame();
-
+    /**
+     * Start a new Game
+     */
     void startGame();
 
+    /**
+     * @return the leaderboard
+     */
     List<Gamer> getLeaderboard();
 
+    /**
+     * Set when is game over
+     * 
+     * @param score
+     *              the final score of the player
+     *           
+     */
     void gameOver(Integer score);
 
-    void addPlayer(String text);
+    /**
+     * Add a new Player to the leaderBoard
+     * 
+     * @param name
+     *             the string name of the player
+     */
+    void addPlayer(String name);
 
 }

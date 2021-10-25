@@ -4,6 +4,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ */
 public class ScoreImpl implements Score {
     
     private World world;
@@ -11,20 +14,24 @@ public class ScoreImpl implements Score {
     private final double flyPosX;
     private List<Column> columnList;
     
-    
-    public ScoreImpl(World worldImp) {
+    /**
+     * Create a new Score
+     * 
+     * @param world
+     *              the world which contains the game objects 
+     */
+    public ScoreImpl(World world) {
         
         this.flyPosX = 400;
         this.columnList = new ArrayList<>();
         this.score = 0;
-        this.world = worldImp;
+        this.world = world;
         
     }
     
-    
-   
-    
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update() {
         // TODO Auto-generated method stub
@@ -42,7 +49,10 @@ public class ScoreImpl implements Score {
 
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Integer getScore() {
         return score;
     }

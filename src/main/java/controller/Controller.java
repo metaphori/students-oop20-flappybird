@@ -8,21 +8,29 @@ import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
 import model.file.Gamer;
-import model.file.LeaderboardManager;
+import model.file.LeaderBoardManager;
 import view.View;
-import view.ViewImp;
+import view.ViewImpl;
 
-//controller gestisce tutto il gioco appena è partito
+/**
+ * The controller of the game
+ */
 public interface Controller {
     
-   
-    
+    /**
+     * Set the state of the game
+     * 
+     * @param state
+     *              the next state
+     */
     void setState(GameState state);
 
-  //  void start(String[] args, View view);
-    
-   
-
+    /**
+     * 
+     * 
+     * @param state
+     *              the next state
+     */
     void render(List<Column> list, Integer score, Bird circle);
 
    

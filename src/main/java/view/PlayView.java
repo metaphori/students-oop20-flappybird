@@ -22,7 +22,7 @@ public class PlayView {
         pane = p;
     }
 
-    public void display(ViewImp viewImp, Controller controller) {
+    public void display(ViewImpl viewImp, Controller controller) {
         
         width = controller.getGameWidth();
         height = controller.getGameHeight();
