@@ -13,7 +13,10 @@ import model.generator.ObstacleGenerator;
 import model.manager.ManagerBird;
 import model.manager.ManagerBirdImpl;
 
-public class WorldImp implements World{
+/**
+ * 
+ */
+public class WorldImpl implements World{
     
     private static final double HEIGHT_FLOOR = 50;
     private ManagerBird manager;
@@ -21,10 +24,16 @@ public class WorldImp implements World{
     private Score score;
     private double floorPosition;
     
-    
-   
-    
-    public WorldImp(double gameWorldWidth, double gameWorldHeight) {
+    /**
+     * Create a new World
+     * 
+     * @param gameWorldWidth
+     *                       the width dimension of the world   
+     *                                        
+     * @param gameWorldHeight
+     *                        the height dimension of the world
+     */
+    public WorldImpl(double gameWorldWidth, double gameWorldHeight) {
         
         this.floorPosition = gameWorldHeight - HEIGHT_FLOOR;
         score = new ScoreImpl(this);
@@ -33,19 +42,17 @@ public class WorldImp implements World{
         this.manager = new ManagerBirdImpl(floorPosition);
     }
 
-   
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Integer getScore() {
         return this.score.getScore();
     }
 
-   
-
-   
-
-  
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(boolean input, Controller controller) {
     
@@ -56,17 +63,19 @@ public class WorldImp implements World{
     }
 
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Column> getColumns() {
-        // TODO Auto-generated method stub
-     
+      
         return this.generator.getWorldElements();
         
     }
 
-
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Bird getBird() {
         // TODO Auto-generated method stub

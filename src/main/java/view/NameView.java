@@ -1,11 +1,5 @@
 package view;
 
-
-
-
-
-
-
 import controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,16 +9,20 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
-
-
+/**
+ * The view opened to save the gamer name
+ */
 public class NameView {
     
-
-    
-   
-    
-   
+    /**
+     * Show the view
+     * 
+     * @param parentStage
+     *                   the parentStage
+     *  
+     * @param controller
+     *                   the controller                  
+     */
     public static void show(Stage parentStage, Controller controller) {
         // TODO Auto-generated method stub
         Stage stage = new Stage();

@@ -1,15 +1,14 @@
 package flappybird;
 
 import controller.Controller;
-import controller.ControllerImp;
+import controller.ControllerImpl;
 import javafx.application.Application;
 import view.View;
-import view.ViewImp;
+import view.ViewImpl;
 
-// fa partire il gioco
-//run using gradle-> applicatiomn->run
-
-
+/**
+ * The Main class of the Application
+ */
 
 public class FlappyBird {
     
@@ -21,22 +20,13 @@ public class FlappyBird {
 
     public static void main(final String[] args) {
         
-        
-       // final Controller ctx = new ControllerImp();
-      //  final View view = new ViewImp();
-       // view.set(ctx, args);
-       // ctx.start(args,view);
-      // view.run(args);
-
-     // view.run(args);
-
-        Application.launch(ViewImp.class, args);
+    
+        Application.launch(ViewImpl.class, args);
 
         
     }
 
-  
-    }
+}
 
  
     

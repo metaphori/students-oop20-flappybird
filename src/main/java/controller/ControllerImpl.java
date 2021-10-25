@@ -15,12 +15,12 @@ import model.Column;
 import model.Model;
 import model.ModelImp;
 import model.file.Gamer;
-import model.file.Leaderboard;
-import model.file.LeaderboardManager;
+import model.file.LeaderBoard;
+import model.file.LeaderBoardManager;
 import view.View;
-import view.ViewImp;
+import view.ViewImpl;
 
-public class ControllerImp implements Controller{
+public class ControllerImpl implements Controller{
     
     
     
@@ -35,11 +35,11 @@ public class ControllerImp implements Controller{
     
     Pane pane;
  
-    public ControllerImp(ViewImp view) {
+    public ControllerImpl(ViewImpl view) {
      
         this.view = view;
         this.model = new ModelImp(this);
-      //  this.view = new ViewImp();
+     
         this.gameState = GameState.INITIALIZE;
         this.jump = false;
       
@@ -51,23 +51,15 @@ public class ControllerImp implements Controller{
   
         switch (gameState) {
         case GAME_OVER:
-            System.out.println("controll game over");
-            this.model.gameOver(this.score);
+         
+          this.model.gameOver(this.score);
           this.view.gameOver(topScorer());
             break;
         case INITIALIZE:
-       //     System.out.println("ciaoo2");
             this.model.startGame();
-           
-            
+   
             break;
-        case PLAYING:
-            this.model.updateGame();
-            break;
-        case READY:
-            
-            break;
-            
+     
         default:
             break;
         }

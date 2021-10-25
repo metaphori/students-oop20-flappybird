@@ -10,7 +10,10 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import model.Column;
 
-public class ViewObstacleImp implements ViewObstacle{
+/**
+ * View to show the obstacles
+ */
+public class ViewObstacleImpl implements ViewObstacle{
     
     private List<Rectangle> object;
     private Pane pane;
@@ -18,10 +21,15 @@ public class ViewObstacleImp implements ViewObstacle{
     private ImagePattern downImagePattern;
     private ImagePattern laserImagePattern;
 
-    
-    public ViewObstacleImp(Pane p) {
+    /**
+     * Create the view
+     * 
+     * @param p
+     *          the pane of the game
+     */
+    public ViewObstacleImpl(Pane pane) {
         object = new ArrayList<>();
-        pane = p;
+        this.pane = pane;
 
         this.upImagePattern = new ImagePattern(new Image(ImageID.UP_COLUMN.getPath()));
         this.downImagePattern = new ImagePattern(new Image(ImageID.DOWN_COLUMN.getPath()));
@@ -29,6 +37,9 @@ public class ViewObstacleImp implements ViewObstacle{
        
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void render(List<Column> list) {
         // TODO Auto-generated method stub
@@ -37,6 +48,9 @@ public class ViewObstacleImp implements ViewObstacle{
         pane.getChildren().addAll(object);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     private void checkNew(List<Column> list) {
         // TODO Auto-generated method stub
         pane.getChildren().removeAll(object);

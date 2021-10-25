@@ -14,23 +14,29 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * Rappresent the manager class of the LeaderBoard
+ */
+public class LeaderboardManagerImpl implements LeaderBoardManager{
 
-
-
-public class LeaderboardManagerImpl implements LeaderboardManager{
-
-    public Leaderboard leaderboard;
+    private LeaderBoard leaderBoard;
     private Gson gson;
     final String SEP = File.separator ;
     final String FILE_NAME = System.getProperty("user.home") + 
             SEP + "game.json";
     
+    /**
+     * Create a new LeaderBoard Manager
+     */
     public LeaderboardManagerImpl() {
-        leaderboard = new Leaderboard();
+        leaderBoard = new LeaderBoard();
         
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void read() {
         // TODO Auto-generated method stub
@@ -39,10 +45,9 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
             try (Reader reader = new FileReader(FILE_NAME)) {
 
                 // Convert JSON File to Java Object
-                leaderboard = gson.fromJson(reader, Leaderboard.class);
+                leaderBoard = gson.fromJson(reader, LeaderBoard.class);
                             
-                            // print staff 
-               // System.out.println(leaderboard);
+           
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -52,24 +57,30 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
      
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void write() {
-        // TODO Auto-generated method stub
+      
       
         try (final FileWriter writer = new FileWriter(FILE_NAME)) {
-            gson.toJson(leaderboard, writer);
+            gson.toJson(leaderBoard, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addNewGamer(Gamer gamer) {
         // TODO Auto-generated method stub
         
         if (checkTop10(gamer.getScore())) {
             
-            leaderboard.addGamer(gamer);
+            leaderBoard.addGamer(gamer);
            
         }
         
@@ -77,13 +88,14 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
      
     }
     
+  
     private boolean checkTop10(String score) {
         // TODO Auto-generated method stub
-        if (leaderboard.getLeadbord().size()<10) {
+        if (leaderBoard.getLeaderBoard().size()<10) {
             return true;
         }
         
-        return Integer.parseInt(score) > leaderboard.getLeadbord().stream()
+        return Integer.parseInt(score) > leaderBoard.getLeaderBoard().stream()
                 .map(i->Integer.parseInt(i.getScore()))
                 .sorted().collect(Collectors.toList()).get(0);
         
@@ -92,11 +104,15 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
        
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public List<Gamer> getLeaderboard() {
-        System.out.println(leaderboard.getLeadbord().stream()
+        System.out.println(leaderBoard.getLeaderBoard().stream()
                 .map(i->Integer.parseInt(i.getScore()))
                 .sorted().collect(Collectors.toList()));
-        return this.leaderboard.getLeadbord();
+        return this.leaderBoard.getLeaderBoard();
     }
 
 }

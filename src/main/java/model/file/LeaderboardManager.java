@@ -2,13 +2,31 @@ package model.file;
 
 import java.util.List;
 
-public interface LeaderboardManager {
+/**
+ *Rappresent the manager interface of the LeaderBoard
+ */
+public interface LeaderBoardManager {
     
+    /**
+     *Add new gamer to the top10
+     *
+     *@param gamer
+     *            the gamer to add
+     */
     void addNewGamer(Gamer gamer);
     
+    /**
+     *Read from the file system the leaderBoard
+     */
     void read();
     
+    /**
+     *Write on the file system the leaderBoard
+     */
     void write();
 
+    /**
+     *@return the leaderBoard
+     */
     List<Gamer> getLeaderboard();
 }

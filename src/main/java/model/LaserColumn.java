@@ -3,6 +3,9 @@ package model;
 import java.awt.Point;
 import java.util.Random;
 
+/**
+ * Represent a laser Column
+ */
 public class LaserColumn extends AbstractColumn{
     
     
@@ -12,6 +15,13 @@ public class LaserColumn extends AbstractColumn{
     private boolean upDownSwitch;
     private boolean typeUp;
     
+    /**
+     * Create a new laser column and setting if it is up or down
+     * @param position
+     *                  the point position of the new column
+     * @param type
+     *                  true if is a laserType                 
+     */
     public LaserColumn(Point position, boolean type) {
         
         super(position,type);
@@ -22,11 +32,14 @@ public class LaserColumn extends AbstractColumn{
             this.typeUp=false;
         }
             
-        
         this.upDownSwitch = false;
         this.random = new Random();
+        
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updatePosition(Point position) {
       
@@ -45,6 +58,9 @@ public class LaserColumn extends AbstractColumn{
         super.updatePosition(point);
     }
 
+    /**
+     * @return a small or a big laser column
+     */
     @Override
     public double updateHeight() {
        

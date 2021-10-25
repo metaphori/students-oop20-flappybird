@@ -9,6 +9,9 @@ import model.Column;
 import model.LaserColumn;
 import model.RandomColumn;
 
+/**
+ * Generator class of the columns
+ */
 public class ObstacleGenerator implements Generator{
     
     
@@ -21,19 +24,21 @@ public class ObstacleGenerator implements Generator{
     private Point upPosition;
     private double countColumn;
     private Point downPosition;
-    
-    
     private double basemantHeight;
     private double gameHeight;
     private int count=0;
     private boolean legendStep;
     
-  
-    
-    
-    
 
-    
+    /**
+     * Create the obstacle generator
+     * 
+     * @param gameWorldWidth
+     *                       world width
+     * 
+     * @param gameWorldHeight
+     *                        world height 
+     */
     public ObstacleGenerator(double gameWorldWidth, double gameWorldHeight) {
         
         basemantHeight = gameWorldHeight-BASEMANT;
@@ -42,16 +47,17 @@ public class ObstacleGenerator implements Generator{
         gameStep = GameStep.DIFFICULT;
         legendStep = false;
         this.obstacles = new ArrayList<>();
-     //   this.generate = new OperationGenerateImpl(gameWorldWidth,gameWorldHeight);
-        this.startNext = gameWorldWidth - SPACECOLUMN;
-        
+        this.startNext = gameWorldWidth - SPACECOLUMN;       
         this.upPosition = new Point();
-        upPosition.setLocation(gameWorldWidth,0);
-        
+        upPosition.setLocation(gameWorldWidth,0);        
         this.downPosition = new Point();
         downPosition.setLocation(gameWorldWidth, basemantHeight);
+        
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Column> getWorldElements() {
         // TODO Auto-generated method stub
@@ -60,11 +66,6 @@ public class ObstacleGenerator implements Generator{
 
 
     private void addElement() {
-        // TODO Auto-generated method stub
-       
-        
-        
-        
        
         switch (gameStep) {
         case EASY_UP:
@@ -122,7 +123,6 @@ public class ObstacleGenerator implements Generator{
         
         countColumn++;
         
-      //  this.obstacles.add(suppler.getElement());
     }
    
 
@@ -151,6 +151,9 @@ public class ObstacleGenerator implements Generator{
      
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update() {
       
@@ -191,11 +194,9 @@ public class ObstacleGenerator implements Generator{
     }
 
     private boolean checkDistance() {
-        
-        
+
                Column col= this.obstacles.get(this.obstacles.size()-1);
-              
-             //  System.out.println(col.getPosition().getX());
+   
                 return col.getPosition().getX() < startNext;
         
     }
