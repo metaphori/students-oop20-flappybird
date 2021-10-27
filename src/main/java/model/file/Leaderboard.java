@@ -10,14 +10,14 @@ import java.util.stream.Collectors;
 /**
  * Rapresent the leaderboard of the scores
  */
-public class LeaderBoard {
+public class Leaderboard {
     
     private List<Gamer> list;
     
     /**
      * Create a new list which rappresent the leaderboard
      */
-    public LeaderBoard() {
+    public Leaderboard() {
         this.list = new ArrayList<>();
     }
     

@@ -4,7 +4,7 @@ import java.util.List;
 
 import controller.GameState;
 import model.file.Gamer;
-import model.file.LeaderBoardManager;
+import model.file.LeaderboardManager;
 
 /**
  * The interface of the Score

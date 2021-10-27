@@ -17,9 +17,9 @@ import com.google.gson.GsonBuilder;
 /**
  * Rappresent the manager class of the LeaderBoard
  */
-public class LeaderboardManagerImpl implements LeaderBoardManager{
+public class LeaderboardManagerImpl implements LeaderboardManager{
 
-    private LeaderBoard leaderBoard;
+    private Leaderboard leaderBoard;
     private Gson gson;
     final String SEP = File.separator ;
     final String FILE_NAME = System.getProperty("user.home") + 
@@ -29,7 +29,7 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
      * Create a new LeaderBoard Manager
      */
     public LeaderboardManagerImpl() {
-        leaderBoard = new LeaderBoard();       
+        leaderBoard = new Leaderboard();       
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
@@ -42,7 +42,7 @@ public class LeaderboardManagerImpl implements LeaderBoardManager{
         if (f.exists()) {
             try (Reader reader = new FileReader(FILE_NAME)) {
                 // Convert JSON File to Java Object
-                leaderBoard = gson.fromJson(reader, LeaderBoard.class);                  
+                leaderBoard = gson.fromJson(reader, Leaderboard.class);                  
             } catch (IOException e) {
                 e.printStackTrace();
             }

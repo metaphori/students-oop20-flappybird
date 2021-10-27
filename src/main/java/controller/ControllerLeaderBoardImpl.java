@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Model;
 import model.file.Gamer;
-import model.file.LeaderBoard;
+import model.file.Leaderboard;
 
 public class ControllerLeaderBoardImpl implements ControllerLeaderBoard {
 

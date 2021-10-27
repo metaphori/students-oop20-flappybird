@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
 import model.file.Gamer;
-import model.file.LeaderBoardManager;
+import model.file.LeaderboardManager;
 import view.View;
 import view.ViewImpl;
 

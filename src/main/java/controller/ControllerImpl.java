@@ -15,8 +15,8 @@ import model.Column;
 import model.Model;
 import model.ModelImp;
 import model.file.Gamer;
-import model.file.LeaderBoard;
-import model.file.LeaderBoardManager;
+import model.file.Leaderboard;
+import model.file.LeaderboardManager;
 import view.View;
 import view.ViewImpl;
 

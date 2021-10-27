@@ -24,7 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.file.Gamer;
-import model.file.LeaderBoard;
+import model.file.Leaderboard;
 
 /**
  * The view opened when is gameOver

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  *Rappresent the manager interface of the LeaderBoard
  */
-public interface LeaderBoardManager {
+public interface LeaderboardManager {
     
     /**
      *Add new gamer to the top10

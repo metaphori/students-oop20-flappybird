@@ -6,8 +6,8 @@ import controller.Controller;
 import controller.ControllerImpl;
 import controller.GameState;
 import model.file.Gamer;
-import model.file.LeaderBoard;
-import model.file.LeaderBoardManager;
+import model.file.Leaderboard;
+import model.file.LeaderboardManager;
 import model.file.LeaderboardManagerImpl;
 import model.loop.GameLoop;
 import model.loop.GameLoopImpl;
@@ -20,7 +20,7 @@ public class ModelImp implements Model {
     private static final double GAME_WORLD_WIDTH = 800;
     private static final double GAME_WORLD_HEIGHT = 600;
     private GameLoopImpl gameLoop;
-    private LeaderBoardManager leaderboardManager;
+    private LeaderboardManager leaderboardManager;
     private Gamer gamer;
     private String score;
     
