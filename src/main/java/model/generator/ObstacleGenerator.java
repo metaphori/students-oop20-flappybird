@@ -3,7 +3,6 @@ package model.generator;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-
 import model.BasicColumn;
 import model.Column;
 import model.LaserColumn;
@@ -57,7 +56,6 @@ public class ObstacleGenerator implements Generator{
      */
     @Override
     public List<Column> getWorldElements() {
-        // TODO Auto-generated method stub
         return this.obstacles;
     }
 
@@ -156,7 +154,4 @@ public class ObstacleGenerator implements Generator{
                Column col= this.obstacles.get(this.obstacles.size()-1);  
                 return col.getPosition().getX() < startNext;       
     }
-
-   
-
 }

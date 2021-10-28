@@ -29,8 +29,8 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
      * Create a new LeaderBoard Manager
      */
     public LeaderboardManagerImpl() {
-        leaderBoard = new Leaderboard();       
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        this.leaderBoard = new Leaderboard();       
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
     
     /**
@@ -42,7 +42,7 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
         if (f.exists()) {
             try (Reader reader = new FileReader(FILE_NAME)) {
                 // Convert JSON File to Java Object
-                leaderBoard = gson.fromJson(reader, Leaderboard.class);                  
+                this.leaderBoard = gson.fromJson(reader, Leaderboard.class);                  
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -67,12 +67,11 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
     @Override
     public void addNewGamer(Gamer gamer) {
         if (checkTop10(gamer.getScore())) {          
-            leaderBoard.addGamer(gamer);         
+            this.leaderBoard.addGamer(gamer);         
         }
     }
      
     private boolean checkTop10(String score) {
-        // TODO Auto-generated method stub
         if (leaderBoard.getLeaderBoard().size()<10) {
             return true;
         }
@@ -87,9 +86,6 @@ public class LeaderboardManagerImpl implements LeaderboardManager{
      */
     @Override
     public List<Gamer> getLeaderboard() {
-        System.out.println(leaderBoard.getLeaderBoard().stream()
-                .map(i->Integer.parseInt(i.getScore()))
-                .sorted().collect(Collectors.toList()));
         return this.leaderBoard.getLeaderBoard();
     }
 

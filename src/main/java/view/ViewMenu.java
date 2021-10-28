@@ -14,18 +14,29 @@ import javafx.stage.Stage;
 
 public class ViewMenu {
 
-    Pane pane;
-    View view;
-    ViewBird viewBird;
-    Stage stage;
+    private static final int IMAGE_WIDTH = 800;
+    private static final int IMAGE_HEIGHT = 600;
+    private static final int BUTTON_FONT = 12;
+    private static final int START_BUTTON_WIDTH = 150;
+    private static final int START_BUTTON_Y = 250;
+    private static final int START_BUTTON_X = 325;
+    private static final int EXIT_BUTTON_WIDTH = 150;
+    private static final int EXIT_BUTTON_Y = 350;
+    private static final int EXIT_BUTTON_X = 325;
+    private static final int PLAYER_BUTTON_WIDTH = 150;
+    private static final int PLAYER_BUTTON_Y = 300;
+    private static final int PLAYER_BUTTON_X = 325;
+    private Pane pane;
+    private View view;
+    private ViewBird viewBird;
+    private Stage stage;
     
     
     public ViewMenu(View viewImp, Pane p, ViewBird viewBirdImp, Stage parentStage) {
-        // TODO Auto-generated constructor stub
         this.view = viewImp;
         this.viewBird = viewBirdImp;
         this.stage = parentStage;
-        pane= p;
+        this.pane= p;
     }
 
     /**
@@ -34,53 +45,47 @@ public class ViewMenu {
      */
     
     public void render() {
-        
         Button startButton= new Button();
-        startButton.setLayoutX(325);
-        startButton.setLayoutY(250);
-        startButton.setPrefWidth(150);
+        startButton.setLayoutX(START_BUTTON_X);
+        startButton.setLayoutY(START_BUTTON_Y);
+        startButton.setPrefWidth(START_BUTTON_WIDTH);
         startButton.setTextAlignment(TextAlignment.CENTER);
-     
         startButton.setText("START");
-        startButton.setFont(new Font("Arial", 12));
+        startButton.setFont(new Font("Arial", BUTTON_FONT));
         startButton.setOnAction(e->{
             pane.getChildren().clear();
             this.view.playGame();
         });
-        
         Button exitButton= new Button();
-        exitButton.setLayoutX(325);
-        exitButton.setLayoutY(350);
-        exitButton.setPrefWidth(150);
+        exitButton.setLayoutX(EXIT_BUTTON_X);
+        exitButton.setLayoutY(EXIT_BUTTON_Y);
+        exitButton.setPrefWidth(EXIT_BUTTON_WIDTH);
         exitButton.setTextAlignment(TextAlignment.CENTER);
         exitButton.setText("EXIT");
-        exitButton.setFont(new Font("Arial", 12));
+        exitButton.setFont(new Font("Arial", BUTTON_FONT));
         exitButton.setOnAction(e-> {
             stage.close();
         });
-        
         Button playerButton= new Button();
-        playerButton.setLayoutX(325);
-        playerButton.setLayoutY(300);
-        playerButton.setPrefWidth(150);
+        playerButton.setLayoutX(PLAYER_BUTTON_X);
+        playerButton.setLayoutY(PLAYER_BUTTON_Y);
+        playerButton.setPrefWidth(PLAYER_BUTTON_WIDTH);
         playerButton.setTextAlignment(TextAlignment.CENTER);
         playerButton.setText("SELECT PLAYER");
-        playerButton.setFont(new Font("Arial", 12));
+        playerButton.setFont(new Font("Arial", BUTTON_FONT));
         playerButton.setOnAction(e-> {
             PlayerView.show(viewBird,stage);
         });
         
         ImageView img = new ImageView();
         img.setImage(new Image(ImageID.MENU_BACKGROUND.getPath()));
-        img.setFitHeight(600);
-        img.setFitWidth(800);
-        
-        pane.getChildren().add(img);
-        pane.getChildren().add(startButton);
-        pane.getChildren().add(playerButton);
-        pane.getChildren().add(exitButton);
-        
-        
+        img.setFitHeight(IMAGE_HEIGHT);
+        img.setFitWidth(IMAGE_WIDTH);
+        this.pane.getChildren().add(img);
+        this.pane.getChildren().add(startButton);
+        this.pane.getChildren().add(playerButton);
+        this.pane.getChildren().add(exitButton);
+
     }
 }
 

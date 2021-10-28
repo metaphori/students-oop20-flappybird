@@ -1,13 +1,7 @@
 package model;
 
-import java.awt.Point;
-
-import java.util.ArrayList;
 import java.util.List;
-
 import controller.Controller;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Circle;
 import model.generator.Generator;
 import model.generator.ObstacleGenerator;
 import model.manager.ManagerBird;
@@ -38,7 +32,6 @@ public class WorldImpl implements World{
         this.floorPosition = gameWorldHeight - HEIGHT_FLOOR;
         score = new ScoreImpl(this);
         this.generator = new ObstacleGenerator(gameWorldWidth, gameWorldHeight);
-        
         this.manager = new ManagerBirdImpl(floorPosition);
     }
 
@@ -55,7 +48,6 @@ public class WorldImpl implements World{
      */
     @Override
     public void update(boolean input, Controller controller) {
-    
         this.generator.update();
         this.score.update();
         this.manager.checkEvent(input);
@@ -68,9 +60,7 @@ public class WorldImpl implements World{
      */
     @Override
     public List<Column> getColumns() {
-      
         return this.generator.getWorldElements();
-        
     }
 
     /**
@@ -81,9 +71,4 @@ public class WorldImpl implements World{
         // TODO Auto-generated method stub
         return this.manager.getBird();
     }
-
-
-   
-    
-
 }

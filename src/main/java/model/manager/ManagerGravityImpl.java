@@ -5,27 +5,24 @@ import model.BirdImpl;
 
 public class ManagerGravityImpl implements ManagerGravity{
 
-    private Bird bird;
     private double yBird;
     private double floorPosition;
     private int yMotion;
     
     public ManagerGravityImpl(double floorPosition) {
-        
        this.floorPosition = floorPosition;
        this.yMotion = 2;
-       
     }
 
-    
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double setGravity(Bird b) {
         // TODO Auto-generated method stub
         this.yBird= b.getCenterY();
         fallBird();
         return this.yBird;
-        
-    
     }
 
     /**
@@ -33,15 +30,9 @@ public class ManagerGravityImpl implements ManagerGravity{
      * @return yBird of the bird
      */
     private double fallBird() {
-        // TODO Auto-generated method stub
-        if (yBird > 0 && yBird < floorPosition) {
-            this.yBird= yBird + yMotion;
+        if (this.yBird > 0 && this.yBird < this.floorPosition) {
+            this.yBird= this.yBird + this.yMotion;
         }
-        else {
-            this.yBird= yBird; 
-        }
-        
         return this.yBird; 
-     
     }
 }

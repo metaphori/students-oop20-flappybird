@@ -31,10 +31,36 @@ import model.file.Leaderboard;
  */
 public class FinishView {
     
+    private static final int TABLE_Y = 150;
+    private static final int TABLE_X = 200;
+    private static final int TABLE_SIZE_Y = 300;
+    private static final int TABLE_SIZE_X = 400;
+    private static final int BUTTON_SIZE_Y = 50;
+    private static final int BUTTON_SIZE_X = 100;
+    private static final int BUTTON_Y = 500;
+    private static final int BUTTON_X = 350;
+    private static final int LEADERIMAGE_HEIGHT = 600;
+    private static final int LABEL_SUBTITLE_FONT = 20;
+    private static final int LABELSUBTILE_Y = 120;
+    private static final int LABLE_SUBTITLE_X = 200;
+    private static final int LABLETITLE_FONT = 30;
+    private static final int LABLETITLE_Y = 50;
+    private static final int LABELTITLE_X = 240;
+    private static final int BUTTONLEADER_HEIGHT = 100;
+    private static final int BUTTONLEADER_Y = 400;
+    private static final int BUTTONLEADER_X = 450;
+    private static final int IMAGE_OK_HEIGHT = 40;
+    private static final int BUTTON_RESET_HEIGHT = 40;
     private static final int GAME_OVER_IMAGE_HEIGHT = 200;
     private static final int GAME_OVER_IMAGE_WIDTH = 250;
     private static final int GAME_OVER_POS_X = 300;
     private static final int GAME_OVER_POS_Y = 50;
+    private static final int FINISH_IMAGE_HEIGHT = 200;
+    private static final int FINISH_IMAGE_WIDTH = 300;
+    private static final int FINISH_POS_X = 275;
+    private static final int FINISH_POS_Y = 175;
+    private static final int BUTTON_RESET_X = 300;
+    private static final int BUTTON_RESET_Y = 400;
     private static final int TOP_SCORE_FONT = 30;
     private static final int SCORE_POS_X = 500;
     private static final int SCORE_POS_Y = 230;
@@ -97,23 +123,22 @@ public class FinishView {
         
         ImageView finish= new ImageView();
         finish.setImage(new Image("finish_data.png"));
-        finish.setFitHeight(200);
-        finish.setFitWidth(300);
-        finish.setLayoutX(275);
-        finish.setLayoutY(175);
+        finish.setFitHeight(FINISH_IMAGE_HEIGHT);
+        finish.setFitWidth(FINISH_IMAGE_WIDTH);
+        finish.setLayoutX(FINISH_POS_X);
+        finish.setLayoutY(FINISH_POS_Y);
   
        // Image imageOk = new Image(getClass().getResourceAsStream("ok.png"));
         ImageView imageOk = new ImageView();
         imageOk.setImage(new Image("play.png"));
-        imageOk.setFitHeight(40);
+        imageOk.setFitHeight(IMAGE_OK_HEIGHT);
         imageOk.setPreserveRatio(true);
         
-       
         Button buttonReset = new Button();
         buttonReset.setGraphic(imageOk);
-        buttonReset.setLayoutX(300);
-        buttonReset.setLayoutY(400);
-        buttonReset.setPrefHeight(40);
+        buttonReset.setLayoutX(BUTTON_RESET_X);
+        buttonReset.setLayoutY(BUTTON_RESET_Y);
+        buttonReset.setPrefHeight(BUTTON_RESET_HEIGHT);
         buttonReset.setOnAction(e->{
           this.pane.getChildren().clear();
           view.initiate();       
@@ -125,9 +150,9 @@ public class FinishView {
         imageLeader.setPreserveRatio(true);
         Button buttonLeader = new Button();
         buttonLeader.setGraphic(imageLeader);
-        buttonLeader.setLayoutX(450);
-        buttonLeader.setLayoutY(400);
-        buttonLeader.setPrefHeight(100);
+        buttonLeader.setLayoutX(BUTTONLEADER_X);
+        buttonLeader.setLayoutY(BUTTONLEADER_Y);
+        buttonLeader.setPrefHeight(BUTTONLEADER_HEIGHT);
         buttonLeader.setOnAction(e->{
             pane.getChildren().clear();
            Platform.runLater(()->{
@@ -135,37 +160,34 @@ public class FinishView {
            });    
         });
        
-        pane.getChildren().add(gameover);
-        pane.getChildren().add(finish);
-        pane.getChildren().add(score);
-        pane.getChildren().add(this.topScore);
-        pane.getChildren().add(buttonReset);
-        pane.getChildren().add(buttonLeader);  
+        this.pane.getChildren().add(gameover);
+        this.pane.getChildren().add(finish);
+        this.pane.getChildren().add(this.score);
+        this.pane.getChildren().add(this.topScore);
+        this.pane.getChildren().add(buttonReset);
+        this.pane.getChildren().add(buttonLeader);  
     }
 
 
-    private void showLeaderboard() {
-        
+    private void showLeaderboard() {        
         Label labelTitle = new Label();
         labelTitle.setText(TITLE);
-        labelTitle.setLayoutX(240);
-        labelTitle.setLayoutY(50);
-        labelTitle.setFont(new Font(30));
+        labelTitle.setLayoutX(LABELTITLE_X);
+        labelTitle.setLayoutY(LABLETITLE_Y);
+        labelTitle.setFont(new Font(LABLETITLE_FONT));
         Label labelSubTitle = new Label();
         labelSubTitle.setText(TOP_SCORE);
-        labelSubTitle.setLayoutX(200);
-        labelSubTitle.setLayoutY(120);
-        labelSubTitle.setFont(new Font(20));
-        
+        labelSubTitle.setLayoutX(LABLE_SUBTITLE_X);
+        labelSubTitle.setLayoutY(LABELSUBTILE_Y);
+        labelSubTitle.setFont(new Font(LABEL_SUBTITLE_FONT));
         ImageView leaderImage= new ImageView();
-        leaderImage.setImage(new Image("leaderboard_background.png"));
-       
-        leaderImage.setFitHeight(600);
-       
+        leaderImage.setImage(new Image("leaderboard_background.png"));       
+        leaderImage.setFitHeight(LEADERIMAGE_HEIGHT);       
         Button button = new Button();
-        button.setLayoutX(350);
-        button.setLayoutY(500);
-        button.setPrefSize(100, 50);
+        button.setText("BACK");
+        button.setLayoutX(BUTTON_X);
+        button.setLayoutY(BUTTON_Y);
+        button.setPrefSize(BUTTON_SIZE_X, BUTTON_SIZE_Y);
         button.setOnAction(e->{
             this.pane.getChildren().clear();
             view.initiate();
@@ -180,8 +202,7 @@ public class FinishView {
         TableColumn<Gamer,String> score = new TableColumn<Gamer,String>("Score");
         score.setCellValueFactory(new PropertyValueFactory("score"));
         score.setComparator((i1,i2)-> Integer.parseInt(i1)-(Integer.parseInt(i2)));
-        table.getSortOrder().add(score);
-     
+        table.getSortOrder().add(score);   
         table.getColumns().setAll(name,score);
         table.getItems().setAll(data);
         name.setStyle("-fx-alignment: CENTER; "
@@ -195,16 +216,16 @@ public class FinishView {
                 + " -fx-font-weight: bold;");
 
        table.setStyle("-fx-font-size: 20;");
-       table.setPrefSize(400, 300);
-       table.setLayoutX(200);
-       table.setLayoutY(150);
+       table.setPrefSize(TABLE_SIZE_X, TABLE_SIZE_Y);
+       table.setLayoutX(TABLE_X);
+       table.setLayoutY(TABLE_Y);
        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-       pane.getChildren().add(leaderImage);
-       pane.getChildren().add(labelTitle);
-       pane.getChildren().add(labelSubTitle);
-       pane.getChildren().add(table);
-       pane.getChildren().add(button);  
+       this.pane.getChildren().add(leaderImage);
+       this.pane.getChildren().add(labelTitle);
+       this.pane.getChildren().add(labelSubTitle);
+       this.pane.getChildren().add(table);
+       this.pane.getChildren().add(button);  
     }
 
 }

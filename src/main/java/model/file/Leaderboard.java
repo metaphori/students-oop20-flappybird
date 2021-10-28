@@ -44,7 +44,4 @@ public class Leaderboard {
     List<Gamer> getLeaderBoard(){
         return Collections.unmodifiableList(list);
     }
-    
-    
-
 }

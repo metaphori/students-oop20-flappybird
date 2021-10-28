@@ -1,9 +1,6 @@
 package flappybird;
 
-import controller.Controller;
-import controller.ControllerImpl;
 import javafx.application.Application;
-import view.View;
 import view.ViewImpl;
 
 /**
@@ -11,25 +8,19 @@ import view.ViewImpl;
  */
 
 public class FlappyBird {
-    
- 
+
     private FlappyBird() {
-        
     }
-   
 
-    public static void main(final String[] args) {
-        
-    
+    /**
+     *Launch the application.
+     * 
+     * @param args
+     *            argument
+     */
+    public static void main(final String[] args) {     
         Application.launch(ViewImpl.class, args);
-
-        
     }
-
 }
 
- 
-    
-   
-    
 

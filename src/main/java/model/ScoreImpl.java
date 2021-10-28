@@ -21,32 +21,28 @@ public class ScoreImpl implements Score {
      *              the world which contains the game objects 
      */
     public ScoreImpl(World world) {
-        
-        
         this.flyPosX = 0;
         this.columnList = new ArrayList<>();
         this.score = 0;
         this.world = world;
-        
     }
-    
+
     /**
      * {@inheritDoc}
      */
     @Override
     public void update() {
-       
         this.flyPosX = world.getBird().getCenterX();
+
         if (!this.world.getColumns().isEmpty()) {
-           this.world.getColumns().forEach(a->{
-               if (!columnList.contains(a) && a.getPosition().getX()<flyPosX) {
+           this.world.getColumns().forEach(a -> {
+
+               if (!columnList.contains(a) && a.getPosition().getX() < this.flyPosX) {
                    columnList.add(a);
                    score++;
                }
            });
-           
         }
-
     }
 
     /**

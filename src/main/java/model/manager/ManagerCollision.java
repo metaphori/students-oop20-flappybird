@@ -1,13 +1,11 @@
 package model.manager;
 
 import java.util.List;
-
 import model.Bird;
 import model.Column;
 
 public interface ManagerCollision {
 
-    
     /**
      * Bird collision control with columns.
      * @param list of columns

@@ -3,8 +3,6 @@ package model;
 import java.util.List;
 
 import controller.Controller;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Circle;
 
 /**
  * Represent the interface that contains the world objects 
@@ -35,14 +33,4 @@ public interface World {
      *                   the controller of the game
      */
     void update(boolean input, Controller controller);
-
-
-   
-    
-    
-    
-    
-    
-    
-
 }

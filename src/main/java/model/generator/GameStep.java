@@ -33,12 +33,10 @@ public enum GameStep {
     private final int numb;
 
     GameStep(int numb) {
-        
         this.numb = numb;
     }
-    
+
     public int getNumb() {
-        
         return this.numb;
     }
     

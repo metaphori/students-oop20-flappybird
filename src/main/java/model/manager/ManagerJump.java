@@ -1,6 +1,5 @@
 package model.manager;
 
-import javafx.scene.input.KeyEvent;
 import model.Bird;
 
 public interface ManagerJump {
@@ -10,7 +9,4 @@ public interface ManagerJump {
      * @return bird's height.
      */
     double jump(Bird b);
-    
-    
-   
 }

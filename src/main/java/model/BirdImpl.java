@@ -7,33 +7,38 @@ public class BirdImpl implements Bird{
     private final static double RADIUS= 25;
     
     public BirdImpl() {
-        
         this.posy = 250;
     }
-    
-   
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updatePosition(double posY) {
-        // TODO Auto-generated method stub
         this.posy= posY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double getCenterX() {
-        // TODO Auto-generated method stub
         return POS_X;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double getCenterY() {
-        // TODO Auto-generated method stub
         return posy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double getRadius() {
-        // TODO Auto-generated method stub
         return RADIUS;
     }
 

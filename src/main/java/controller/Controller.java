@@ -1,22 +1,14 @@
 package controller;
 
 import java.util.List;
-
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
-import model.file.Gamer;
-import model.file.LeaderboardManager;
-import view.View;
-import view.ViewImpl;
 
 /**
  * The controller of the game
  */
 public interface Controller {
-    
+
     /**
      * Set the state of the game
      * 
@@ -30,6 +22,9 @@ public interface Controller {
      * 
      * @param list
      *              the Column list
+    
+     * @param cicle
+     *              the bird
      *              
      * @param score
      *              the score
@@ -47,13 +42,12 @@ public interface Controller {
     /**
      * @return the gameHeight
      */
-    public double getGameHeight();
+    double getGameHeight();
     
     /**
      * @return the gameWidth
      */
-    public double getGameWidth();
-
+    double getGameWidth();
 
     /**
      * Check if riceve input
@@ -76,7 +70,4 @@ public interface Controller {
      * @return the Controller LeaderBoard
      */
     ControllerLeaderBoard getLeaderBoardController();
-    
-
-
 }

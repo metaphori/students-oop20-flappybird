@@ -14,6 +14,21 @@ import javafx.stage.Stage;
 public class PlayerView {
 
     
+    private static final int STAGE_WIDTH = 350;
+    private static final int STAGE_HEIGHT = 250;
+    private static final int FIRST_BUTTON_WIDTH = 60;
+    private static final int FIRST_BUTTON_Y = 100;
+    private static final int FIRST_BUTTON_X = 42;
+    private static final int SECOND_BUTTON_WIDTH = 60;
+    private static final int SECOND_BUTTON_Y = 100;
+    private static final int SECOND_BUTTON_X = 144;
+    private static final int THIRD_BUTTON_WIDTH = 60;
+    private static final int THIRD_BUTTON_Y = 100;
+    private static final int THIRD_BUTTON_X = 248;
+    private static final int BIRD_HEIGHT = 40;
+    private static final int LABEL_Y = 20;
+    private static final int LABEL_X = 115;
+
     /**
      * Shows the new stage where you can choose the player.
      * @param parentStage is the owner window.
@@ -28,48 +43,47 @@ public class PlayerView {
         Button secondButton= new Button();
         Button thirdButton= new Button();
         label.setStyle("-fx-font-size: 20;");
-        label.setLayoutX(115);
-        label.setLayoutY(20);
+        label.setLayoutX(LABEL_X);
+        label.setLayoutY(LABEL_Y);
         label.setTextAlignment(TextAlignment.CENTER);
         
         
         ImageView firstBird= new ImageView();
         firstBird.setImage(new Image(ImageID.PLAYER_ONE_BUTTON.getPath()));
-        firstBird.setFitHeight(40);
+        firstBird.setFitHeight(BIRD_HEIGHT);
         firstBird.setPreserveRatio(true);
         
         ImageView secondBird= new ImageView();
         secondBird.setImage(new Image(ImageID.PLAYER_TWO_BUTTON.getPath()));
-        secondBird.setFitHeight(40);
+        secondBird.setFitHeight(BIRD_HEIGHT);
         secondBird.setPreserveRatio(true);
         
         ImageView thirdBird= new ImageView();
         thirdBird.setImage(new Image(ImageID.PLAYER_THREE_BUTTON.getPath()));
-        thirdBird.setFitHeight(40);
+        thirdBird.setFitHeight(BIRD_HEIGHT);
         thirdBird.setPreserveRatio(true);
         
-        firstButton.setLayoutX(42);
-        firstButton.setLayoutY(100);
-        firstButton.setPrefWidth(60);
+        firstButton.setLayoutX(FIRST_BUTTON_X);
+        firstButton.setLayoutY(FIRST_BUTTON_Y);
+        firstButton.setPrefWidth(FIRST_BUTTON_WIDTH);
         firstButton.setGraphic(firstBird);
         firstButton.setOnAction(e->{
             viewBird.setImage(firstBird.getImage());
             stage.close();
         });
-        
-        
-        secondButton.setLayoutX(144);
-        secondButton.setLayoutY(100);
-        secondButton.setPrefWidth(60);
+
+        secondButton.setLayoutX(SECOND_BUTTON_X);
+        secondButton.setLayoutY(SECOND_BUTTON_Y);
+        secondButton.setPrefWidth(SECOND_BUTTON_WIDTH);
         secondButton.setGraphic(secondBird);
         secondButton.setOnAction(e->{
             viewBird.setImage(secondBird.getImage());
             stage.close();
         });
         
-        thirdButton.setLayoutX(248);
-        thirdButton.setLayoutY(100);
-        thirdButton.setPrefWidth(60);
+        thirdButton.setLayoutX(THIRD_BUTTON_X);
+        thirdButton.setLayoutY(THIRD_BUTTON_Y);
+        thirdButton.setPrefWidth(THIRD_BUTTON_WIDTH);
         thirdButton.setGraphic(thirdBird);
         thirdButton.setOnAction(e->{
             viewBird.setImage(thirdBird.getImage());
@@ -83,8 +97,8 @@ public class PlayerView {
         stage.setTitle("PLAYER");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(parentStage);
-        stage.setHeight(250);
-        stage.setWidth(350);
+        stage.setHeight(STAGE_HEIGHT);
+        stage.setWidth(STAGE_WIDTH);
         stage.setScene(new Scene(pane));
         stage.requestFocus();
         stage.setResizable(false);

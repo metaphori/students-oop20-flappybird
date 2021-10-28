@@ -15,7 +15,7 @@ import model.Column;
  */
 public class ViewObstacleImpl implements ViewObstacle{
     
-    private List<Rectangle> object;
+    private List<Rectangle> listRectangles;
     private Pane pane;
     private ImagePattern upImagePattern;
     private ImagePattern downImagePattern;
@@ -28,9 +28,8 @@ public class ViewObstacleImpl implements ViewObstacle{
      *          the pane of the game
      */
     public ViewObstacleImpl(Pane pane) {
-        object = new ArrayList<>();
+        this.listRectangles = new ArrayList<>();
         this.pane = pane;
-
         this.upImagePattern = new ImagePattern(new Image(ImageID.UP_COLUMN.getPath()));
         this.downImagePattern = new ImagePattern(new Image(ImageID.DOWN_COLUMN.getPath()));
         this.laserImagePattern = new ImagePattern(new Image(ImageID.LASER.getPath()));
@@ -44,41 +43,32 @@ public class ViewObstacleImpl implements ViewObstacle{
     public void render(List<Column> list) {
         // TODO Auto-generated method stub
         checkNew(list);
-      
-        pane.getChildren().addAll(object);
+        this.pane.getChildren().addAll(listRectangles);
     }
 
     /**
      * {@inheritDoc}
      */
     private void checkNew(List<Column> list) {
-        // TODO Auto-generated method stub
-        pane.getChildren().removeAll(object);
-        object.clear();
+        this.pane.getChildren().removeAll(listRectangles);
+        this.listRectangles.clear();
         List<Column> l = List.copyOf(list);
         l.forEach(b->{
-           object.add(createObstacle(b)) ;
+           this.listRectangles.add(createObstacle(b)) ;
         });
-        
-        
     }
 
     private Rectangle createObstacle(Column b) {
-        // TODO Auto-generated method stub
         Rectangle rectangle = new Rectangle();
         rectangle.setLayoutX(b.getPosition().getX());
         rectangle.setLayoutY(b.getPosition().getY());
         rectangle.setWidth(b.getWidth());
         rectangle.setHeight(b.getHeigth());
         rectangle.setFill(getPaint(b));
-      
-        
-        return rectangle;
-     
+        return rectangle;    
     }
 
     private Paint getPaint(Column b) {
-        // TODO Auto-generated method stub
         if (b.isLaserType()) {
            return this.laserImagePattern;
         }else {

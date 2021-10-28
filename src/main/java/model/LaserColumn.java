@@ -8,7 +8,8 @@ import java.util.Random;
  */
 public class LaserColumn extends AbstractColumn{
     
-    
+    private static final int FLOOR_HEIGHT = 550;
+    private static final double PROBABILITY = 0.01;
     private static final double MIN_HEIGHT = 50;
     private static final double MAX_HEIGHT = 350;
     private final Random random;
@@ -23,38 +24,37 @@ public class LaserColumn extends AbstractColumn{
      *                  true if is a laserType                 
      */
     public LaserColumn(Point position, boolean type) {
-        
+
         super(position,type);
-     
+
         if (position.getY()==0) {
             this.typeUp=true;
         } else {
             this.typeUp=false;
         }
-            
+
         this.upDownSwitch = false;
         this.random = new Random();
-        
+
     }
-    
+
     /**
      * {@inheritDoc}
      */
     @Override
-    public void updatePosition(Point position) {
-      
+    public void updatePosition(final Point position) {
         Point point = new Point();
-        if (this.random.nextDouble()<0.01) {
-            
+
+        if (this.random.nextDouble() < PROBABILITY) {
             setHeight();    
         }
+
         if (!this.typeUp) {
-            
-            point.setLocation(position.getX(), 600-50-getHeigth());
+            point.setLocation(position.getX(), FLOOR_HEIGHT-getHeigth());
         } else {
             point = position;
         }
-        
+
         super.updatePosition(point);
     }
 
@@ -63,15 +63,13 @@ public class LaserColumn extends AbstractColumn{
      */
     @Override
     public double updateHeight() {
-       
-        if (this.upDownSwitch) {
+       if (this.upDownSwitch) {
             this.upDownSwitch = false;
             return MIN_HEIGHT;
         }
+
         this.upDownSwitch = true;
-        return MAX_HEIGHT ;
+        return MAX_HEIGHT;
     }
-    
-    
 
 }

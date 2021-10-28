@@ -40,8 +40,7 @@ public class ModelImp implements Model {
      */
     @Override
     public double getGameHeight() {
- 
-        return GAME_WORLD_HEIGHT;
+         return GAME_WORLD_HEIGHT;
     }
 
     /**
@@ -49,7 +48,6 @@ public class ModelImp implements Model {
      */
     @Override
     public double getGameWeidth() {
-      
         return GAME_WORLD_WIDTH;
     }
 
@@ -58,7 +56,6 @@ public class ModelImp implements Model {
      */
     @Override
     public void startGame() {
-        
         this.gameLoop.setDaemon(true);
         this.gameLoop.start();
     }
@@ -68,8 +65,7 @@ public class ModelImp implements Model {
      */
     @Override
     public List<Gamer> getLeaderboard() {
-         
-               leaderboardManager.read();
+        this.leaderboardManager.read();
         return leaderboardManager.getLeaderboard();
     }
 
@@ -78,10 +74,8 @@ public class ModelImp implements Model {
      */
     @Override
     public void gameOver(Integer score) {
-      
         this.leaderboardManager.read();
         this.score = Integer.toString(score);
-    
     }
 
     /**
@@ -89,9 +83,8 @@ public class ModelImp implements Model {
      */
     @Override
     public void addPlayer(String text) {
-        
-        gamer = new Gamer(text);
-        gamer.setScore(score);
+        this.gamer = new Gamer(text);
+        this.gamer.setScore(score);
         this.leaderboardManager.addNewGamer(gamer);
         this.leaderboardManager.write();
     }

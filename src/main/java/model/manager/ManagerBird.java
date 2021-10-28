@@ -23,6 +23,12 @@ public interface ManagerBird {
      */
     void checkCollision(List<Column> list, Controller controller);
 
+    /**
+     * Check if input is present.
+     * @param input
+     *             True if input is present.
+     * 
+     */
     void checkEvent(boolean input);
 
 }

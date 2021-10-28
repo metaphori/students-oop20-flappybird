@@ -6,12 +6,13 @@ import model.file.Gamer;
 /**
  * The controller of the leaderBoard
  */
-public interface ControllerLeaderBoard {  
+public interface ControllerLeaderBoard { 
+    
     /**
      * @return the list of gamer
      */
     List<Gamer> getLeaderBoard();
-    
+
     /**
      * Save a player on leaderBoard
      * 
@@ -19,5 +20,4 @@ public interface ControllerLeaderBoard {
      *             name of the player
      */
     void savePlayer(String name);
-
 }

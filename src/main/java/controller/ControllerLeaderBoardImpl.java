@@ -1,16 +1,14 @@
 package controller;
 
 import java.util.List;
-
 import model.Model;
 import model.file.Gamer;
-import model.file.Leaderboard;
 
 public class ControllerLeaderBoardImpl implements ControllerLeaderBoard {
 
     private Model model;
-    
-    public ControllerLeaderBoardImpl(Model model) {
+
+    public ControllerLeaderBoardImpl(final Model model) {
         this.model = model;
     }
 

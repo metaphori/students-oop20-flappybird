@@ -16,17 +16,20 @@ import javafx.scene.text.Font;
  */
 public class PlayView {
     
+    private static final int LABEL_FONT = 60;
+    private static final int LABEL_Y = 50;
+    private static final int LABEL_X = 400;
     private double width;
     private double height;
-    Label label;
-    Pane pane;
+    private Label label;
+    private Pane pane;
 
     /**
      * Set the main pane
      */
     public PlayView(Pane p) {
        
-        pane = p;
+        this.pane = p;
     }
 
     /**
@@ -38,23 +41,21 @@ public class PlayView {
     public void display( Controller controller) {
         
         this.width = controller.getGameWidth();
-        height = controller.getGameHeight();
+        this.height = controller.getGameHeight();
     
         ImageView img = new ImageView();
         img.setImage(new Image(ImageID.PLAYING_BACKGROUND.getPath()));
-        img.setFitHeight(height);
-        img.setFitWidth(width);
+        img.setFitHeight(this.height);
+        img.setFitWidth(this.width);
         
-        label = new Label();
-        label.setLayoutX(400);
-        label.setLayoutY(50);
-        label.setText("0");
-        label.setFont(new Font("Arial", 60));
-        label.setTextFill(Color.ANTIQUEWHITE);
-        
-        
-        pane.getChildren().add(img);
-        pane.getChildren().add(label);
+        this.label = new Label();
+        this.label.setLayoutX(LABEL_X);
+        this.label.setLayoutY(LABEL_Y);
+        this.label.setText("0");
+        this.label.setFont(new Font("Arial", LABEL_FONT));
+        this. label.setTextFill(Color.ANTIQUEWHITE);
+        this.pane.getChildren().add(img);
+        this.pane.getChildren().add(label);
     }
 
     /**
@@ -65,16 +66,15 @@ public class PlayView {
      */
     public void updateScore(Integer score) {
     
-        pane.getChildren().remove(label);
-        label.setText(Integer.toString(score));
-        pane.getChildren().add(label);
+        this.pane.getChildren().remove(label);
+       this. label.setText(Integer.toString(score));
+       this. pane.getChildren().add(label);
     }
 
     /**
      * @return the score
      */
     public Label getScore() {
-    
         return this.label;
     }
 

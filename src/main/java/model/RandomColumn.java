@@ -21,13 +21,9 @@ public class RandomColumn extends AbstractColumn{
      *                  true if is a laserType                 
      */
     public RandomColumn(Point position, boolean type,double height) {
-        
         super(position,type);
-        
-        newHeight= height;
-        
+        this.newHeight= height;
         this.random = new Random();
-        
     }
     
     /**
@@ -35,13 +31,6 @@ public class RandomColumn extends AbstractColumn{
      */
     @Override
     public double updateHeight() {
-       
-
         return this.newHeight==0? (MIN_HEIGHT + (MAX_HEIGHT - MIN_HEIGHT)* random.nextDouble()): this.newHeight;
     }
-
-    
-
-
-
 }

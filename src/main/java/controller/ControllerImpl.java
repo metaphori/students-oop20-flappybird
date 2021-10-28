@@ -1,43 +1,29 @@
 package controller;
 
-
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
-import javafx.application.Platform;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
 import model.Bird;
 import model.Column;
 import model.Model;
 import model.ModelImp;
-import model.file.Gamer;
-import model.file.Leaderboard;
-import model.file.LeaderboardManager;
 import view.View;
 import view.ViewImpl;
 
-public class ControllerImpl implements Controller{
-    
+public class ControllerImpl implements Controller {
+
     private GameState gameState;
     private Model model;
     private View view;
     private Integer score;
     private boolean jump;
-    private Pane pane;
     private ControllerLeaderBoard clb;
  
-    public ControllerImpl(ViewImpl view) {
-     
+    public ControllerImpl(final ViewImpl view) {
         this.view = view;
         this.model = new ModelImp(this);
         this.clb = new ControllerLeaderBoardImpl(model);
         this.gameState = GameState.INITIALIZE;
         this.jump = false;
-      
     }
 
     /**
@@ -57,13 +43,10 @@ public class ControllerImpl implements Controller{
             break;
         }
     }
-    
- 
 
     private Optional<Integer> topScorer() {
-        // TODO Auto-generated method stub
-        Optional<Integer> topScor =this.model.getLeaderboard().stream()
-                .map(a->a.getScore()).map(a-> Integer.parseInt(a)).max((a,b)->a-b);
+        Optional<Integer> topScor = this.model.getLeaderboard().stream()
+                .map(a -> a.getScore()).map(a -> Integer.parseInt(a)).max((a, b) -> a - b);
         return topScor;
     }
 
@@ -71,8 +54,7 @@ public class ControllerImpl implements Controller{
      * {@inheritDoc}
      */
     @Override
-    public void setState(GameState state) {
-
+    public void setState(final GameState state) {
         this.gameState = state;
     }
     
@@ -80,9 +62,9 @@ public class ControllerImpl implements Controller{
      * {@inheritDoc}
      */
     @Override
-    public void render(List<Column> list, Integer score, Bird bird) {       
+    public void render(final List<Column> list, final Integer score, final Bird bird) {       
            this.score = score;
-           this.view.render(list,score,bird);
+           this.view.render(list, score, bird);
     }
 
     /**
@@ -90,27 +72,22 @@ public class ControllerImpl implements Controller{
      */
     @Override
     public double getGameHeight() {
-        // TODO Auto-generated method stub
         return this.model.getGameHeight();
     }
-    
+
     /**
      * {@inheritDoc}
      */
     @Override
     public double getGameWidth() {
-        // TODO Auto-generated method stub
         return this.model.getGameWeidth();
     }
-   
  
     /**
      * {@inheritDoc}
      */
     @Override
     public void checkInput() {
-        
-        // TODO Auto-generated method stub
         this.view.checkInput();
     }
 
@@ -128,8 +105,6 @@ public class ControllerImpl implements Controller{
      */
     @Override
     public boolean jump() {
-        // TODO Auto-generated method stub
-        
         return this.jump;
     }
 
@@ -137,8 +112,7 @@ public class ControllerImpl implements Controller{
      * {@inheritDoc}
      */
     @Override
-    public void setJump(boolean input) {
-        // TODO Auto-generated method stub
+    public void setJump(final boolean input) {
         this.jump = input;
     }
 
@@ -147,16 +121,9 @@ public class ControllerImpl implements Controller{
      */
     @Override
     public ControllerLeaderBoard getLeaderBoardController() {
-        // TODO Auto-generated method stub
         return this.clb;
     }
-
  }
 
 
 
-
-   
-  
-
-   

@@ -33,7 +33,6 @@ public class GameLoopImpl  extends Thread implements GameLoop{
      *                        gameWorldHeight                              
      */
     public GameLoopImpl(Controller controller, double gameWorldWidth, double gameWorldHeight) {
-    
         this.world = new WorldImpl(gameWorldWidth,gameWorldHeight);
         this.controller = controller;
     }
@@ -50,21 +49,18 @@ public class GameLoopImpl  extends Thread implements GameLoop{
             final long finish = System.currentTimeMillis();
             final int elapsed = (int) (current - lastTime);
             lastTime = current;
-            
             this.controller.checkInput();
             this.world.update(this.controller.jump(),controller);
             this.controller.setJump(false);
-            
-           this.controller.render(this.getColumns(), this.world.getScore(), this.world.getBird());
-           
+            this.controller.render(this.getColumns(), this.world.getScore(), this.world.getBird());
 
-           if (this.controller.getState() == GameState.GAME_OVER) {
-
+            if (this.controller.getState() == GameState.GAME_OVER) {
                stop=false;                             
-           }
-           waitNextFrame(current);
-            
+            }
+           
+            waitNextFrame(current);
         }
+        
         this.controller.updateState();
     }
 
@@ -72,7 +68,6 @@ public class GameLoopImpl  extends Thread implements GameLoop{
         final long delta = System.currentTimeMillis() - current;
         if (delta < PERIOD) {
             try {
-                
                 Thread.sleep(PERIOD - delta);
                 //Thread.sleep(1000);
             } catch (Exception ex) {
@@ -80,10 +75,7 @@ public class GameLoopImpl  extends Thread implements GameLoop{
             }
         }
     }
-
-    
-
-   
+ 
     /**
      * {@inheritDoc}
      */
@@ -92,8 +84,5 @@ public class GameLoopImpl  extends Thread implements GameLoop{
         // TODO Auto-generated method stub
         return this.world.getColumns();
     }
-
-  
-    
 
 }
